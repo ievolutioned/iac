@@ -8,6 +8,7 @@
 
 #import "EncuestaSalidaController.h"
 #import "FXEncuentaSalidaController.h"
+#import "DynamicForm.h"
 
 @interface EncuestaSalidaController ()
 
@@ -20,9 +21,12 @@
 {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]))
     {
+        /*
         FXEncuentaSalidaController *viewlogin = [[FXEncuentaSalidaController alloc] init];
         
         self.formController.form = viewlogin;
+        */
+         self.formController.form = [[DynamicForm alloc] init];
     }
     return self;
 }
@@ -30,6 +34,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    scanner = [[RSScannerViewController alloc] initWithCornerView:YES
+                                                      controlView:YES
+                                                  barcodesHandler:^(NSArray *barcodeObjects) {
+                                                      if (barcodeObjects.count > 0) {
+                                                          [barcodeObjects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                                                              dispatch_async(dispatch_get_main_queue(), ^{
+                                                                  AVMetadataMachineReadableCodeObject *code = obj;
+                                                                  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Barcode found"
+                                                                                                                  message:code.stringValue
+                                                                                                                 delegate:self
+                                                                                                        cancelButtonTitle:@"OK"
+                                                                                                        otherButtonTitles:nil];
+                                                                  //[scanner dismissViewControllerAnimated:true completion:nil];
+                                                                  //[scanner.navigationController popViewControllerAnimated:YES];
+                                                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                                                      [scanner dismissViewControllerAnimated:true completion:nil];
+                                                                      [alert show];
+                                                                  });
+                                                              });
+                                                          }];
+                                                      }
+                                                      
+                                                  }
+               
+                                          preferredCameraPosition:AVCaptureDevicePositionBack];
+    
+    [scanner setIsButtonBordersVisible:YES];
+    [scanner setStopOnFirst:YES];
+    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,6 +100,7 @@
 }
 
 
+
 - (void)stophud
 {
     NSLog(@"stophud");
@@ -74,7 +109,12 @@
     self.HUD = nil;
 }
 
+#pragma mark - reader
+- (void)openCamera:(UITableViewCell<FXFormFieldCell> *)cell
+{
+    [self presentViewController:scanner animated:YES completion:nil];
 
+}
 /*
 #pragma mark - Navigation
 

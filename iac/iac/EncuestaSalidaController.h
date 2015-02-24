@@ -8,8 +8,12 @@
 
 #import "FXForms.h"
 #import "MBProgressHUD.h"
-
+#import "RSBarcodes.h"
 @interface EncuestaSalidaController : FXFormViewController
+{
+    RSScannerViewController *scanner;
+}
+
 @property (nonatomic, retain)  MBProgressHUD *HUD;
 
 @end

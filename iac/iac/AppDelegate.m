@@ -9,9 +9,12 @@
 #import "AppDelegate.h"
 #import <Crashlytics/Crashlytics.h>
 #import "HomeViewcontroller.h"
+#import "UiLeftPanelController.h"
+#import "JASidePanelController.h"
 
 @interface AppDelegate () <UISplitViewControllerDelegate>
 @property (nonatomic, strong) HomeViewcontroller * det;
+@property (strong, nonatomic) JASidePanelController *rootViewController;
 @end
 
 @implementation AppDelegate
@@ -21,27 +24,44 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     
-  [Crashlytics startWithAPIKey:@"aafc418d6588bb390cbabc7a049d9d424e1e6466"];
+  [Crashlytics startWithAPIKey:@"2b0ffb50e0ea57df9f66aed239124e0a9117c7ac"];
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.det = [[HomeViewcontroller alloc] init];
     
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.det];
-    [self.window setRootViewController:nav];
+    UiLeftPanelController *leftPanel = [[UiLeftPanelController alloc] initWithStyle:UITableViewStylePlain];
+    
+    self.rootViewController = [[JASidePanelController alloc] init];
+    self.rootViewController.shouldDelegateAutorotateToVisiblePanel = YES;
+    
+    self.rootViewController.leftPanel = [[UINavigationController alloc] initWithRootViewController:leftPanel];;
+    
+    self.rootViewController.leftFixedWidth = 240;
+    
+    HomeViewcontroller *dash = [[HomeViewcontroller alloc] init];
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:dash];
     
     nav.navigationBar.translucent = NO;
     
-    // init view without navigation
-    //[self.window setRootViewController:self.loginViewController];
+    self.rootViewController.centerPanel = nav;
+    
+    
+    [self.rootViewController showLeftPanelAnimated:NO];
+    
+    
+    self.rootViewController.rightPanel = nil;
     
     
     
+    self.window.rootViewController = self.rootViewController;;
     
     [self.window makeKeyAndVisible];
+    
+    
     return YES;
 }
 

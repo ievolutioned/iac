@@ -1,0 +1,13 @@
+PODS:
+  - JASidePanels (1.3.2)
+  - RSBarcodes (0.1)
+
+DEPENDENCIES:
+  - JASidePanels (~> 1.3.2)
+  - RSBarcodes (~> 0.1)
+
+SPEC CHECKSUMS:
+  JASidePanels: ca943907d88a0738c80755204c6098969d43e4e9
+  RSBarcodes: c4d54f52033f9af3d781230292568529ade14b78
+
+COCOAPODS: 0.35.0.rc2

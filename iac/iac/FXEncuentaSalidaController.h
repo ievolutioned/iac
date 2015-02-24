@@ -11,6 +11,7 @@
 @interface FXEncuentaSalidaController : NSObject<FXForm>
 @property (nonatomic, copy) NSString *email;
 @property (nonatomic, copy) NSString *password;
+@property (nonatomic, copy) NSNumber* number;
 @property (nonatomic, assign) BOOL isotroempleo;
 @property (nonatomic, assign) BOOL rememberMe;
 @end

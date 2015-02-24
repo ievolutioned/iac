@@ -3650,4 +3650,78 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
     if (self.field.action) self.field.action(self);
 }
 
+
+
+
 @end
+
+
+
+
+@interface FXFormOptionSegmentsCellCustom ()
+
+@property (nonatomic, strong, readwrite) UISegmentedControl *segmentedControl;
+
+@end
+
+
+@implementation FXFormOptionSegmentsCellCustom
+
+- (void)setUp
+{
+    self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[]];
+    [self.segmentedControl addTarget:self action:@selector(valueChanged) forControlEvents:UIControlEventValueChanged];
+    [self.contentView addSubview:self.segmentedControl];
+    
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    CGRect segmentedControlFrame = self.segmentedControl.frame;
+    segmentedControlFrame.origin.x = self.textLabel.frame.origin.x + self.textLabel.frame.size.width + FXFormFieldPaddingLeft;
+    segmentedControlFrame.origin.y = (self.contentView.frame.size.height - segmentedControlFrame.size.height) / 2;
+    segmentedControlFrame.size.width = self.contentView.bounds.size.width - segmentedControlFrame.origin.x - FXFormFieldPaddingRight;
+    
+    self.segmentedControl.frame = segmentedControlFrame;
+    
+    segmentedControlFrame.origin.x = [[UIScreen mainScreen] bounds].size.width - 220;
+}
+
+- (void)update
+{
+    self.textLabel.text = self.field.title;
+    
+    [self.segmentedControl removeAllSegments];
+    for (NSUInteger i = 0; i < [self.field optionCount]; i++)
+    {
+        [self.segmentedControl insertSegmentWithTitle:[self.field optionDescriptionAtIndex:i] atIndex:i animated:NO];
+        if ([self.field isOptionSelectedAtIndex:i])
+        {
+            [self.segmentedControl setSelectedSegmentIndex:i];
+        }
+    }
+}
+
+- (void)valueChanged
+{
+    //note: this loop is to prevent bugs when field type is multiselect
+    //which currently isn't supported by FXFormOptionSegmentsCell
+    NSInteger selectedIndex = self.segmentedControl.selectedSegmentIndex;
+    for (NSInteger i = 0; i < (NSInteger)[self.field optionCount]; i++)
+    {
+        [self.field setOptionSelected:(selectedIndex == i) atIndex:i];
+    }
+    
+    if (self.field.action) self.field.action(self);
+}
+
+
+
+
+@end
+
+
+

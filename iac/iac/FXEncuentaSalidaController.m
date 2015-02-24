@@ -23,6 +23,7 @@ typedef NS_ENUM(NSInteger, Gender)
     
     self.email = @"";
     self.password = @"";
+    self.number = [[NSNumber alloc] initWithInt:20];
     return @[
              
              //we want to add a group header for the field set of fields
@@ -37,6 +38,9 @@ typedef NS_ENUM(NSInteger, Gender)
              
              
              @{FXFormFieldKey: @"Nombre",FXFormFieldTitle: @"Nombre",FXFormFieldDefaultValue:self.email, FXFormFieldHeader: @"Datos Personales"},
+             
+              @{FXFormFieldKey: @"number",FXFormFieldTitle: @"Edad",FXFormFieldDefaultValue:self.number},
+             
              @{FXFormFieldKey: @"Edad",FXFormFieldTitle: @"Edad",FXFormFieldDefaultValue:self.password},
              @{FXFormFieldKey: @"jefe",FXFormFieldTitle: @"Nombre Jefe",FXFormFieldDefaultValue:self.password},
              @{FXFormFieldKey: @"puesto",FXFormFieldTitle: @"Puesto",FXFormFieldDefaultValue:self.password},

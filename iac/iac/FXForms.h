@@ -273,6 +273,12 @@ UIKIT_EXTERN NSString *const FXFormFieldTypeImage; //image
 
 @end
 
+@interface FXFormOptionSegmentsCellCustom : FXFormBaseCell
+
+@property (nonatomic, readonly) UISegmentedControl *segmentedControl;
+
+@end
+
 
 #pragma clang diagnostic pop
 
