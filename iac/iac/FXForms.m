@@ -3681,7 +3681,8 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
     [super layoutSubviews];
     
     CGRect segmentedControlFrame = self.segmentedControl.frame;
-    segmentedControlFrame.origin.x = self.textLabel.frame.origin.x + self.textLabel.frame.size.width + FXFormFieldPaddingLeft;
+    segmentedControlFrame.origin.x = [[UIScreen mainScreen] bounds].size.width - 220;
+
     segmentedControlFrame.origin.y = (self.contentView.frame.size.height - segmentedControlFrame.size.height) / 2;
     segmentedControlFrame.size.width = self.contentView.bounds.size.width - segmentedControlFrame.origin.x - FXFormFieldPaddingRight;
     
