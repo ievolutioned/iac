@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"FormFieldsSatisfaccion" ofType:@"json"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"FormFieldsCursos" ofType:@"json"];
     NSData *fieldsData = [NSData dataWithContentsOfFile:path];
     
     self.lstCursos = [NSJSONSerialization JSONObjectWithData:fieldsData options:(NSJSONReadingOptions)0 error:NULL];
