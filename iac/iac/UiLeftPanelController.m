@@ -42,7 +42,7 @@
     if (section == 0)
         return 3;
     else
-        return 3;
+        return 2;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -133,40 +133,16 @@
         switch (indexPath.row) {
             case 0:
             {
+                ListacursosViewController *lst = [[ListacursosViewController alloc] initWithStyle:UITableViewStylePlain];
+                lst.title = @"Cursos";
                 
-                scanner = [[RSScannerViewController alloc] initWithCornerView:YES
-                                                                  controlView:YES
-                                                              barcodesHandler:^(NSArray *barcodeObjects) {
-                                                                  if (barcodeObjects.count > 0) {
-                                                                      [barcodeObjects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                                                                          dispatch_async(dispatch_get_main_queue(), ^{
-                                                                              AVMetadataMachineReadableCodeObject *code = obj;
-                                                                              UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Barcode found"
-                                                                                                                              message:code.stringValue
-                                                                                                                             delegate:self
-                                                                                                                    cancelButtonTitle:@"OK"
-                                                                                                                    otherButtonTitles:nil];
-                                                                              //[scanner dismissViewControllerAnimated:true completion:nil];
-                                                                              //[scanner.navigationController popViewControllerAnimated:YES];
-                                                                              dispatch_async(dispatch_get_main_queue(), ^{
-                                                                                  [scanner dismissViewControllerAnimated:true completion:nil];
-                                                                                  [alert show];
-                                                                              });
-                                                                          });
-                                                                      }];
-                                                                  }
-                                                                  
-                                                              }
-                           
-                                                      preferredCameraPosition:AVCaptureDevicePositionBack];
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:lst];
                 
-                [scanner setIsButtonBordersVisible:YES];
-                [scanner setStopOnFirst:YES];
+                nav.navigationBar.translucent = NO;
+                
+                self.sidePanelController.centerPanel = nav;
 
                 
-                 [self presentViewController:scanner animated:YES completion:nil];
-                
-                return;
             }   break;
             case 1:
             {

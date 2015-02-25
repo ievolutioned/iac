@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09191F011A9D7AE000EE6580 /* ListacursosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09191F001A9D7AE000EE6580 /* ListacursosViewController.m */; };
+		09191F031A9D7B3B00EE6580 /* FormFieldsCursos.json in Resources */ = {isa = PBXBuildFile; fileRef = 09191F021A9D7B3B00EE6580 /* FormFieldsCursos.json */; };
 		09263D481A96CFF7008E1704 /* FXEncuentaSalidaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09263D471A96CFF7008E1704 /* FXEncuentaSalidaController.m */; };
 		09263D4B1A96D034008E1704 /* EncuestaSalidaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09263D4A1A96D034008E1704 /* EncuestaSalidaController.m */; };
 		09263D4E1A96DED7008E1704 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09263D4D1A96DED7008E1704 /* Crashlytics.framework */; };
@@ -43,6 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09191EFF1A9D7AE000EE6580 /* ListacursosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListacursosViewController.h; sourceTree = "<group>"; };
+		09191F001A9D7AE000EE6580 /* ListacursosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListacursosViewController.m; sourceTree = "<group>"; };
+		09191F021A9D7B3B00EE6580 /* FormFieldsCursos.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FormFieldsCursos.json; sourceTree = "<group>"; };
 		09263D461A96CFF7008E1704 /* FXEncuentaSalidaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXEncuentaSalidaController.h; sourceTree = "<group>"; };
 		09263D471A96CFF7008E1704 /* FXEncuentaSalidaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXEncuentaSalidaController.m; sourceTree = "<group>"; };
 		09263D491A96D034008E1704 /* EncuestaSalidaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncuestaSalidaController.h; sourceTree = "<group>"; };
@@ -107,6 +112,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09191EFE1A9D7AC600EE6580 /* ListaCursos */ = {
+			isa = PBXGroup;
+			children = (
+				09191EFF1A9D7AE000EE6580 /* ListacursosViewController.h */,
+				09191F001A9D7AE000EE6580 /* ListacursosViewController.m */,
+			);
+			name = ListaCursos;
+			sourceTree = "<group>";
+		};
 		09263D451A96CF20008E1704 /* EncuestaSalida */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +171,7 @@
 		092843651A9658C20099545A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				09191F021A9D7B3B00EE6580 /* FormFieldsCursos.json */,
 				09BF387D1A9D2DEA00DCB402 /* FormFieldsSatisfaccion.json */,
 				09BF38751A9D147B00DCB402 /* images */,
 				094B73A11A9CD9D70082EE1C /* FormFields.json */,
@@ -220,6 +235,7 @@
 		0928439A1A965C620099545A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				09191EFE1A9D7AC600EE6580 /* ListaCursos */,
 				09BF387C1A9D238900DCB402 /* EncuestaSatisfacion */,
 				09BF38781A9D1E5600DCB402 /* webView */,
 				09BF38711A9D102F00DCB402 /* menu */,
@@ -380,6 +396,7 @@
 				09BF38771A9D148400DCB402 /* logoIcon.jpg in Resources */,
 				094B73A21A9CD9D70082EE1C /* FormFields.json in Resources */,
 				092843761A9658C20099545A /* Images.xcassets in Resources */,
+				09191F031A9D7B3B00EE6580 /* FormFieldsCursos.json in Resources */,
 				09BF387E1A9D2DEA00DCB402 /* FormFieldsSatisfaccion.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,6 +474,7 @@
 				0928439F1A965C960099545A /* HomeViewcontroller.m in Sources */,
 				09BF38741A9D103600DCB402 /* UiLeftPanelController.m in Sources */,
 				09263D4B1A96D034008E1704 /* EncuestaSalidaController.m in Sources */,
+				09191F011A9D7AE000EE6580 /* ListacursosViewController.m in Sources */,
 				09BF38811A9D2E9E00DCB402 /* EscuestaSatisfaccionController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

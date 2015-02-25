@@ -13,6 +13,7 @@
 #import "WebViewController.h"
 #import "RSBarcodes.h"
 #import "EscuestaSatisfaccionController.h"
+#import "ListacursosViewController.h"
 
 @interface UiLeftPanelController : UITableViewController
 {

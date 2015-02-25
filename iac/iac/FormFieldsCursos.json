@@ -1,0 +1,8 @@
+[
+{"header": "Cursos Activos", "key": "course1", "title": "ENTRENAMIENTOS DIARIOS MAQ 14 MOLDE 10-109-01", "class": "CourseViewController"},
+ {"key": "course2", "title": "ENTRENAMIENTOS DIARIOS MAQ 18 MOLDE 10-419-01", "class": "CourseViewController"},
+ {"key": "course3", "title": "ENTRENAMIENTOS DIARIOS MAQ 18 MOLDE 10-200-01", "class": "CourseViewController"},
+ {"key": "course4", "title": "ENTRENAMIENTOS DIARIOS MAQ 4 MOLDE 2-03-321-1", "class": "CourseViewController"}
+  ]
+
+ 
