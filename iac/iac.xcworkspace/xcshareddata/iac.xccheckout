@@ -5,7 +5,11 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
+<<<<<<< HEAD
 	<string>5E5C2077-91C1-4A76-BC8C-518BFFC3C581</string>
+=======
+	<string>5E00B4D1-02AA-4E60-8170-AD1261959DC4</string>
+>>>>>>> origin/master
 	<key>IDESourceControlProjectName</key>
 	<string>iac</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
