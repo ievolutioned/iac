@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "AllEmpleadoController.h"
 @interface ListacursosViewController : UITableViewController
 
 @end

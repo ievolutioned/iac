@@ -75,7 +75,7 @@ UIKIT_EXTERN NSString *const FXFormFieldTypeDate; //date
 UIKIT_EXTERN NSString *const FXFormFieldTypeTime; //time
 UIKIT_EXTERN NSString *const FXFormFieldTypeDateTime; //datetime
 UIKIT_EXTERN NSString *const FXFormFieldTypeImage; //image
-
+UIKIT_EXTERN NSString *const FXFormFieldTypeEmpleado; //image
 
 #pragma mark -
 #pragma mark Models
@@ -144,6 +144,8 @@ UIKIT_EXTERN NSString *const FXFormFieldTypeImage; //image
 @property (nonatomic, strong) FXFormController *parentFormController;
 @property (nonatomic, weak) id<FXFormControllerDelegate> delegate;
 @property (nonatomic, strong) id<FXForm> form;
+@property (nonatomic, readwrite) NSMutableArray *sections;
+
 
 - (NSUInteger)numberOfSections;
 - (NSUInteger)numberOfFieldsInSection:(NSUInteger)section;
@@ -260,6 +262,13 @@ UIKIT_EXTERN NSString *const FXFormFieldTypeImage; //image
 @end
 
 
+@interface FXFormPickerEmpleadoCell : FXFormBaseCell
+
+@property (nonatomic, readwrite) NSString *empleadoNo;
+
+@end
+
+
 @interface FXFormOptionPickerCell : FXFormBaseCell
 
 @property (nonatomic, readonly) UIPickerView *pickerView;
@@ -278,7 +287,6 @@ UIKIT_EXTERN NSString *const FXFormFieldTypeImage; //image
 @property (nonatomic, readonly) UISegmentedControl *segmentedControl;
 
 @end
-
 
 #pragma clang diagnostic pop
 

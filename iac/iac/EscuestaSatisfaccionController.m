@@ -26,7 +26,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+- (void)submitRegistrationForm:(UITableViewCell<FXFormFieldCell> *)cell
+{
+    
+}
 /*
 #pragma mark - Navigation
 

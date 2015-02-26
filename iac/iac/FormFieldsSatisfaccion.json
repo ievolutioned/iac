@@ -1,50 +1,63 @@
-[
- {"header": "Parte 1\nInstrucciones",
- "key": "instructions", "type": "label", "title":"Lee con atención las siguientes preguntas y responde con honestidad"},
- {"key": "instructions2", "type": "label2", "title":"1=Nunca  2=Pocas veces  3=La mitad de las veces  4=La mayoría de las veces  5=Siempre"},
- 
- {"header": "Comedor",
- "key": "clean", "title": "Es un lugar limpio en el que puedo comer", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
- {"key": "conditions", "title": "El mobiliario está en buenas condiciones", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
- {"key": "microwave", "title": "Los hornos de microondas funcionan cuando los uso", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
- {"key": "temperature", "title": "La temperatura ambiente del lugar es adecuada", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
- 
- {"header": "Enfermeria",
- "key": "treatment", "title": "El trato que me dan en la Enfermería es profesional", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
- {"key": "firstAid", "title": "Los primeros auxilios que recibo en Enfermería son efectivos", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
- {"key": "information", "title": "Recibo información sobre salud e higiene por parte de Enfermería", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
- 
- {"header": "Servicios Sanitarios",
- "key": "bathrooms_clean", "title": "Cuando uso los baños los encuentro limpios", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
- {"key": "bathrooms_working", "title": "Cuando uso los baños los encuentro funcionando", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
- {"key": "bathrooms_accesories", "title": "Los baños tienen papel sanitario, jabón y papel secamanos", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
- 
- {"header": "Transporte",
- "key": "travel", "title": "Considero seguro viajar en las unidades de la empresa", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
- {"key": "drivers", "title": "Los choferes respetan el horario y la ruta de las unidades", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
- 
- {"header": "Pagos",
- "key": "atm", "title": "Me resulta fácil utilizar los Cajeros automáticos", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
- {"key": "atm_withdrawal", "title": "Cuando hago retiros en los cajeros encuentro dinero disponible", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
- {"key": "atm_receipt", "title": "Al ver mi recibo de pago puedo entender claramente su contenido", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
- 
- {"header": "Parte 2\nInstrucciones",
- "key": "instructions", "type": "label", "title":"Por favor completa cada una de las siguientes frases con la primera idea que se te ocurra al leerlas"},
- 
- {"header": "Comedor",   "key": "diningA", "title": "Lo que venden en el Comedor", "type": "longtext", "placeholder": " Tu primera idea..."},
- {"key": "diningB", "title": "Quisiera que en el Comedor", "type": "longtext", "placeholder": " Tu primera idea..."},
- 
- {"header": "Enfermería",   "key": "enfermaryA", "title": "Pienso que en la Enfermería se necesita", "type": "longtext", "placeholder": " Tu primera idea..."},
- {"key": "enfermaryB", "title": "Me gustaría que en la Enfermería", "type": "longtext", "placeholder": "  Tu primera idea..."},
- 
- {"header": "Baños",   "key": "bathroomsA", "title": "Los baños estarían mejor si", "type": "longtext", "placeholder": " Tu primera idea..."},
- 
- {"header": "Transporte",   "key": "transportationA", "title": "Los choferes de las unidades", "type": "longtext", "placeholder": " Tu primera idea..."},
- {"key": "transportationB", "title": "Si you usara el transporte público", "type": "longtext", "placeholder": "  Tu primera idea..."},
- 
- {"header": "Servicio de Nóminas/Pagos",   "key": "paymentsA", "title": "Utilizar los cajeros automáticos es para mi", "type": "longtext", "placeholder": " Tu primera idea..."},
- {"key": "paymentsB", "title": "En mi recibo de pago es comun que", "type": "longtext", "placeholder": "  Tu primera idea..."},
- 
- {"header": "", "title": "Enviar", "action": "submitRegistrationForm:"}
+ [
+  {"header": "Parte 1 Instrucciones",
+  "key": "instructions" , "title":"",
+  
+  "placeholder":"Lee con atención las siguientes preguntas y responde con honestidad",
+  "value":"",
+  "type": "label"
+  },
+  {"key": "instructions2", "title":"", "placeholder":"1=Nunca  2=Pocas veces  3=La mitad de las veces 4=La mayoría de las veces  5=Siempre","value":"", "type": "label"},
+  
+  {"header": "Comedor",
+  "key": "clean", "title": "Es un lugar limpio en el que puedo comer", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
+  {"key": "conditions", "title": "El mobiliario está en buenas condiciones", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
+  {"key": "microwave", "title": "Los hornos de microondas funcionan cuando los uso", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
+  {"key": "temperature", "title": "La temperatura ambiente del lugar es adecuada", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
+  
+  {"header": "Enfermeria",
+  "key": "treatment", "title": "El trato que me dan en la Enfermería es profesional", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
+  {"key": "firstAid", "title": "Los primeros auxilios que recibo en Enfermería son efectivos", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
+  {"key": "information", "title": "Recibo información sobre salud e higiene por parte de Enfermería", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
+  
+  {"header": "Servicios Sanitarios",
+  "key": "bathrooms_clean", "title": "Cuando uso los baños los encuentro limpios", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
+  {"key": "bathrooms_working", "title": "Cuando uso los baños los encuentro funcionando", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
+  {"key": "bathrooms_accesories", "title": "Los baños tienen papel sanitario, jabón y papel secamanos", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
+  
+  {"header": "Transporte",
+  "key": "travel", "title": "Considero seguro viajar en las unidades de la empresa", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
+  {"key": "drivers", "title": "Los choferes respetan el horario y la ruta de las unidades", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
+  
+  {"header": "Pagos",
+  "key": "atm", "title": "Me resulta fácil utilizar los Cajeros automáticos", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
+  {"key": "atm_withdrawal", "title": "Cuando hago retiros en los cajeros encuentro dinero disponible", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
+  {"key": "atm_receipt", "title": "Al ver mi recibo de pago puedo entender claramente su contenido", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
+  
+  {"header": "Parte 2\nInstrucciones",
+  
+  "value":"",
+  
+  
+  "key": "instructions", "type": "label", "placeholder":"Por favor completa cada una de las siguientes"},
+  
+  {"key": "instructions22", "title":"", "placeholder":" frases con la primera idea que se te ocurra al leerlas","value":"", "type": "label"},
 
-]
+  
+  
+  {"header": "Comedor",   "key": "diningA", "title": "Lo que venden en el Comedor", "type": "longtext", "placeholder": " Tu primera idea..."},
+  {"key": "diningB", "title": "Quisiera que en el Comedor", "type": "longtext", "placeholder": " Tu primera idea..."},
+  
+  {"header": "Enfermería",   "key": "enfermaryA", "title": "Pienso que en la Enfermería se necesita", "type": "longtext", "placeholder": " Tu primera idea..."},
+  {"key": "enfermaryB", "title": "Me gustaría que en la Enfermería", "type": "longtext", "placeholder": "  Tu primera idea..."},
+  
+  {"header": "Baños",   "key": "bathroomsA", "title": "Los baños estarían mejor si", "type": "longtext", "placeholder": " Tu primera idea..."},
+  
+  {"header": "Transporte",   "key": "transportationA", "title": "Los choferes de las unidades", "type": "longtext", "placeholder": " Tu primera idea..."},
+  {"key": "transportationB", "title": "Si you usara el transporte público", "type": "longtext", "placeholder": "  Tu primera idea..."},
+  
+  {"header": "Servicio de Nóminas/Pagos",   "key": "paymentsA", "title": "Utilizar los cajeros automáticos es para mi", "type": "longtext", "placeholder": " Tu primera idea..."},
+  {"key": "paymentsB", "title": "En mi recibo de pago es comun que", "type": "longtext", "placeholder": "  Tu primera idea..."},
+  
+  {"header": "", "title": "Enviar", "action": "submitRegistrationForm:"}
+  
+  ]

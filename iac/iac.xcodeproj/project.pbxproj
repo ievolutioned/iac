@@ -25,6 +25,8 @@
 		094B739D1A9CD7650082EE1C /* ISO3166CountryValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 094B739C1A9CD7650082EE1C /* ISO3166CountryValueTransformer.m */; };
 		094B73A01A9CD9CB0082EE1C /* DynamicForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 094B739F1A9CD9CB0082EE1C /* DynamicForm.m */; };
 		094B73A21A9CD9D70082EE1C /* FormFields.json in Resources */ = {isa = PBXBuildFile; fileRef = 094B73A11A9CD9D70082EE1C /* FormFields.json */; };
+		095C756B1A9E778D00459FE3 /* RootForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 095C756A1A9E778D00459FE3 /* RootForm.m */; };
+		095C756E1A9E781C00459FE3 /* AllEmpleadoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 095C756D1A9E781C00459FE3 /* AllEmpleadoController.m */; };
 		09BF38741A9D103600DCB402 /* UiLeftPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BF38731A9D103600DCB402 /* UiLeftPanelController.m */; };
 		09BF38771A9D148400DCB402 /* logoIcon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 09BF38761A9D148400DCB402 /* logoIcon.jpg */; };
 		09BF387B1A9D1E7600DCB402 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BF387A1A9D1E7600DCB402 /* WebViewController.m */; };
@@ -77,6 +79,10 @@
 		094B739E1A9CD9CB0082EE1C /* DynamicForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicForm.h; sourceTree = "<group>"; };
 		094B739F1A9CD9CB0082EE1C /* DynamicForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicForm.m; sourceTree = "<group>"; };
 		094B73A11A9CD9D70082EE1C /* FormFields.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FormFields.json; sourceTree = "<group>"; };
+		095C75691A9E778D00459FE3 /* RootForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootForm.h; sourceTree = "<group>"; };
+		095C756A1A9E778D00459FE3 /* RootForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootForm.m; sourceTree = "<group>"; };
+		095C756C1A9E781C00459FE3 /* AllEmpleadoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllEmpleadoController.h; sourceTree = "<group>"; };
+		095C756D1A9E781C00459FE3 /* AllEmpleadoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllEmpleadoController.m; sourceTree = "<group>"; };
 		09BF38721A9D103600DCB402 /* UiLeftPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UiLeftPanelController.h; sourceTree = "<group>"; };
 		09BF38731A9D103600DCB402 /* UiLeftPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UiLeftPanelController.m; sourceTree = "<group>"; };
 		09BF38761A9D148400DCB402 /* logoIcon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logoIcon.jpg; sourceTree = "<group>"; };
@@ -235,6 +241,8 @@
 		0928439A1A965C620099545A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				095C75681A9E778100459FE3 /* agregarEmpleado */,
+				095C75671A9E438200459FE3 /* altaCurso */,
 				09191EFE1A9D7AC600EE6580 /* ListaCursos */,
 				09BF387C1A9D238900DCB402 /* EncuestaSatisfacion */,
 				09BF38781A9D1E5600DCB402 /* webView */,
@@ -253,6 +261,24 @@
 				0928439E1A965C960099545A /* HomeViewcontroller.xib */,
 			);
 			name = main;
+			sourceTree = "<group>";
+		};
+		095C75671A9E438200459FE3 /* altaCurso */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = altaCurso;
+			sourceTree = "<group>";
+		};
+		095C75681A9E778100459FE3 /* agregarEmpleado */ = {
+			isa = PBXGroup;
+			children = (
+				095C75691A9E778D00459FE3 /* RootForm.h */,
+				095C756A1A9E778D00459FE3 /* RootForm.m */,
+				095C756C1A9E781C00459FE3 /* AllEmpleadoController.h */,
+				095C756D1A9E781C00459FE3 /* AllEmpleadoController.m */,
+			);
+			name = agregarEmpleado;
 			sourceTree = "<group>";
 		};
 		09BF38711A9D102F00DCB402 /* menu */ = {
@@ -474,6 +500,8 @@
 				0928439F1A965C960099545A /* HomeViewcontroller.m in Sources */,
 				09BF38741A9D103600DCB402 /* UiLeftPanelController.m in Sources */,
 				09263D4B1A96D034008E1704 /* EncuestaSalidaController.m in Sources */,
+				095C756E1A9E781C00459FE3 /* AllEmpleadoController.m in Sources */,
+				095C756B1A9E778D00459FE3 /* RootForm.m in Sources */,
 				09191F011A9D7AE000EE6580 /* ListacursosViewController.m in Sources */,
 				09BF38811A9D2E9E00DCB402 /* EscuestaSatisfaccionController.m in Sources */,
 			);

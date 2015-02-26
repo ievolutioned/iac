@@ -79,7 +79,7 @@ NSString *const FXFormFieldTypeDate = @"date";
 NSString *const FXFormFieldTypeTime = @"time";
 NSString *const FXFormFieldTypeDateTime = @"datetime";
 NSString *const FXFormFieldTypeImage = @"image";
-
+NSString *const FXFormFieldTypeEmpleado = @"label";
 
 static NSString *const FXFormsException = @"FXFormsException";
 
@@ -166,7 +166,7 @@ static inline void FXFormLabelSetMinFontSize(UILabel *label, CGFloat fontSize)
 static inline NSArray *FXFormProperties(id<FXForm> form)
 {
     if (!form) return nil;
-
+    
     static void *FXFormPropertiesKey = &FXFormPropertiesKey;
     NSMutableArray *properties = objc_getAssociatedObject(form, FXFormPropertiesKey);
     if (!properties)
@@ -211,7 +211,7 @@ static inline NSArray *FXFormProperties(id<FXForm> form)
                         continue;
                     }
                 }
-
+                
                 //get property type
                 Class valueClass = nil;
                 NSString *valueType = nil;
@@ -283,7 +283,7 @@ static inline NSArray *FXFormProperties(id<FXForm> form)
                     }
                 }
                 free(typeEncoding);
- 
+                
                 //add to properties
                 NSMutableDictionary *inferred = [NSMutableDictionary dictionaryWithObject:key forKey:FXFormFieldKey];
                 if (valueClass) inferred[FXFormFieldClass] = valueClass;
@@ -411,6 +411,10 @@ static NSString *FXFormFieldInferType(NSDictionary *dictionary)
     {
         return FXFormFieldTypeImage;
     }
+    else if (valueClass == nil)
+    {
+        // return FXFormFieldTypeEmpleado;
+    }
     
     if (!valueClass && ! dictionary[FXFormFieldAction] && !dictionary[FXFormFieldSegue])
     {
@@ -478,7 +482,8 @@ static Class FXFormFieldInferClass(NSDictionary *dictionary)
              FXFormFieldTypeDate: [NSDate class],
              FXFormFieldTypeTime: [NSDate class],
              FXFormFieldTypeDateTime: [NSDate class],
-             FXFormFieldTypeImage: [UIImage class]
+             FXFormFieldTypeImage: [UIImage class],
+             FXFormFieldTypeEmpleado: [NSString class],
              }[type];
 }
 
@@ -545,7 +550,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
     {
         dictionary[FXFormFieldHeader] = @"";
     }
-
+    
     //convert footer from string to class
     id footer = dictionary[FXFormFieldFooter];
     if ([footer isKindOfClass:[NSString class]])
@@ -607,7 +612,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
 
 @interface FXFormController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, copy) NSArray *sections;
+//@property (nonatomic, readwrite) NSMutableArray *sections;
 @property (nonatomic, strong) NSMutableDictionary *cellHeightCache;
 @property (nonatomic, strong) NSMutableDictionary *cellClassesForFieldTypes;
 @property (nonatomic, strong) NSMutableDictionary *cellClassesForFieldClasses;
@@ -646,7 +651,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
 
 @interface FXFormSection : NSObject
 
-+ (NSArray *)sectionsWithForm:(id<FXForm>)form controller:(FXFormController *)formController;
++ (NSMutableArray *)sectionsWithForm:(id<FXForm>)form controller:(FXFormController *)formController;
 
 @property (nonatomic, strong) id<FXForm> form;
 @property (nonatomic, strong) id header;
@@ -980,7 +985,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
             //handle case where value is numeric but value class is string
             value = [value description];
         }
-      
+        
         if (self.valueClass == [NSMutableString class])
         {
             //replace string or make mutable copy of it
@@ -995,7 +1000,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
                 value = [NSMutableString stringWithString:value];
             }
         }
-      
+        
         if (!value)
         {
             for (NSDictionary *field in FXFormProperties(self.form))
@@ -1130,7 +1135,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
 {
     return _isSortable &&
     ([self.valueClass isSubclassOfClass:[NSArray class]] ||
-    [self.valueClass isSubclassOfClass:[NSOrderedSet class]]);
+     [self.valueClass isSubclassOfClass:[NSOrderedSet class]]);
 }
 
 #pragma mark -
@@ -1293,7 +1298,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
     {
         index = (index == 0)? NSNotFound: index - 1;
     }
-
+    
     id option = (index == NSNotFound)? nil: self.options[index];
     if ([self isCollectionType])
     {
@@ -1482,7 +1487,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
         NSIndexPath *indexPath = [tableView indexPathForCell:cell];
         FXFormSection *section = formController.sections[indexPath.section];
         [section addNewField];
-
+        
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         
@@ -1599,7 +1604,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
 {
     NSMutableDictionary *field = self.fields[index1];
     [self.fields removeObjectAtIndex:index1];
-
+    
     id value = self.values[index1];
     [self.values removeObjectAtIndex:index1];
     
@@ -1636,7 +1641,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
 
 @implementation FXFormSection
 
-+ (NSArray *)sectionsWithForm:(id<FXForm>)form controller:(FXFormController *)formController
++ (NSMutableArray *)sectionsWithForm:(id<FXForm>)form controller:(FXFormController *)formController
 {
     NSMutableArray *sections = [NSMutableArray array];
     FXFormSection *section = nil;
@@ -1809,7 +1814,9 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
                                        FXFormFieldTypeDate: [FXFormDatePickerCell class],
                                        FXFormFieldTypeTime: [FXFormDatePickerCell class],
                                        FXFormFieldTypeDateTime: [FXFormDatePickerCell class],
-                                       FXFormFieldTypeImage: [FXFormImagePickerCell class]} mutableCopy];
+                                       FXFormFieldTypeImage: [FXFormImagePickerCell class],
+                                       FXFormFieldTypeEmpleado: [FXFormPickerEmpleadoCell class],
+                                       } mutableCopy];
         _cellClassesForFieldClasses = [NSMutableDictionary dictionary];
         _controllerClassesForFieldTypes = [@{FXFormFieldTypeDefault: [FXFormViewController class]} mutableCopy];
         _controllerClassesForFieldClasses = [NSMutableDictionary dictionary];
@@ -2100,7 +2107,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
         {
             style = UITableViewCellStyleValue1;
         }
-
+        
         //don't recycle cells - it would make things complicated
         return [[cellClass alloc] initWithStyle:style reuseIdentifier:NSStringFromClass(cellClass)];
     }
@@ -2114,7 +2121,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
     {
         return [cellClass heightForField:field width:self.tableView.frame.size.width];
     }
-
+    
     NSString *className = NSStringFromClass(cellClass);
     NSNumber *cachedHeight = _cellHeightCache[className];
     if (!cachedHeight)
@@ -2123,7 +2130,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
         cachedHeight = @(cell.bounds.size.height);
         _cellHeightCache[className] = cachedHeight;
     }
-
+    
     return [cachedHeight floatValue];
 }
 
@@ -2251,7 +2258,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FXFormField *field = [self fieldForIndexPath:indexPath];
-
+    
     //configure cell before setting field (in case it affects how value is displayed)
     [field.cellConfig enumerateKeysAndObjectsUsingBlock:^(NSString *keyPath, id value, __unused BOOL *stop) {
         [cell setValue:value forKeyPath:keyPath];
@@ -2685,8 +2692,6 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
             //deselect the cell
             [tableView deselectRowAtIndexPath:tableView.indexPathForSelectedRow animated:YES];
         }
-        
-        [controller.navigationController popViewControllerAnimated:YES];
     }
     else if (self.field.action && (![self.field isSubform] || !self.field.optionCount))
     {
@@ -2801,7 +2806,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
                          @"textField.enablesReturnKeyAutomatically": ^(UITextField *f, NSInteger v){ f.enablesReturnKeyAutomatically = !!v; },
                          @"textField.secureTextEntry": ^(UITextField *f, NSInteger v){ f.secureTextEntry = !!v; }};
     });
-
+    
     void (^block)(UITextField *f, NSInteger v) = specialCases[keyPath];
     if (block)
     {
@@ -2945,7 +2950,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
 - (void)textFieldDidEndEditing:(__unused UITextField *)textField
 {
     [self updateFieldValue];
-
+    
     if (self.field.action) self.field.action(self);
 }
 
@@ -3349,6 +3354,179 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
 @end
 
 
+@interface FXFormPickerEmpleadoCell () <UINavigationControllerDelegate, UIActionSheetDelegate,UIAlertViewDelegate>
+
+//@property (nonatomic, readwrite) NSString *empleadoNo;
+@property (nonatomic, weak) UIViewController *controller;
+
+@end
+
+
+@implementation FXFormPickerEmpleadoCell
+
+- (void)setUp
+{
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    imageView.clipsToBounds = YES;
+    self.accessoryView = imageView;
+    [self setNeedsLayout];
+}
+
+- (void)dealloc
+{
+    
+}
+
+- (void)layoutSubviews
+{
+    /*
+     CGRect frame = self.imagePickerView.bounds;
+     frame.size.height = self.bounds.size.height - 10;
+     UIImage *image = self.imagePickerView.image;
+     frame.size.width = image.size.height? image.size.width * (frame.size.height / image.size.height): 0;
+     self.imagePickerView.bounds = frame;
+     */
+    [super layoutSubviews];
+}
+
+- (void)update
+{
+    self.textLabel.text = [self imageValue];//self.field.title;
+    //self.detailTextLabel.text = [self imageValue];
+    [self setNeedsLayout];
+}
+
+- (NSString *)imageValue
+{
+    if (self.field.value)
+    {
+        return self.field.value;
+    }
+    else if (self.field.placeholder)
+    {
+        NSString *placeholderImage = self.field.placeholder;
+        
+        
+        return placeholderImage;
+    }
+    return nil;
+}
+
+
+
+- (void)didSelectWithTableView:(UITableView *)tableView controller:(UIViewController *)controller
+{
+    [FXFormsFirstResponder(tableView) resignFirstResponder];
+    [tableView deselectRowAtIndexPath:tableView.indexPathForSelectedRow animated:YES];
+    
+    if (!TARGET_IPHONE_SIMULATOR && ![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        //self.imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        //[controller presentViewController:self.imagePickerController animated:YES completion:nil];
+    }
+    else if ([UIAlertController class])
+    {
+        UIAlertControllerStyle style = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)? UIAlertControllerStyleAlert: UIAlertControllerStyleActionSheet;
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:style];
+        
+        [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Escanear Credencial", nil) style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
+            [self actionSheet:nil didDismissWithButtonIndex:0];
+        }]];
+        
+        [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Agregar Manualmente", nil) style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
+            [self actionSheet:nil didDismissWithButtonIndex:1];
+        }]];
+        
+        [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Cancelar", nil) style:UIAlertActionStyleCancel handler:NULL]];
+        
+        self.controller = controller;
+        [controller presentViewController:alert animated:YES completion:NULL];
+    }
+    else
+    {
+        self.controller = controller;
+        [[[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancelar", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Escanear Credencial", nil), NSLocalizedString(@"Agregar Manualmente", nil), nil] showInView:controller.view];
+    }
+}
+
+
+
+- (void)actionSheet:(__unused UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    
+    switch (buttonIndex)
+    {
+        case 0:
+        {
+            self.field.action(self);
+
+            break;
+        }
+        case 1:
+        {
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"No. De Credencial"
+                                                              message:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancelar"
+                                                    otherButtonTitles:@"Continuar", nil];
+            
+            [message setAlertViewStyle:UIAlertViewStylePlainTextInput];
+            
+            [message show];
+            break;
+        }
+    }
+    
+    //presentamos camara
+    
+    /*
+     
+     self.field.value = @"12345";
+     
+     if (self.field.action) self.field.action(self);
+     
+     [self update];
+     */
+    
+   // self.field.action(self);
+    
+    self.controller = nil;
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    
+    UITextField *username = [alertView textFieldAtIndex:0];
+    
+    self.field.value = username.text;
+    
+    [self update];
+}
+
+- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
+{
+    NSString *inputText = [[alertView textFieldAtIndex:0] text];
+    if( [inputText length] >= 1 )
+    {
+
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+}
+
+@end
+
+
+
+//FXFormPickerEmpleadoCell
+
 @interface FXFormImagePickerCell () <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) UIImagePickerController *imagePickerController;
@@ -3650,13 +3828,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
     if (self.field.action) self.field.action(self);
 }
 
-
-
-
 @end
-
-
-
 
 @interface FXFormOptionSegmentsCellCustom ()
 
@@ -3682,7 +3854,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
     
     CGRect segmentedControlFrame = self.segmentedControl.frame;
     segmentedControlFrame.origin.x = [[UIScreen mainScreen] bounds].size.width - 220;
-
+    
     segmentedControlFrame.origin.y = (self.contentView.frame.size.height - segmentedControlFrame.size.height) / 2;
     segmentedControlFrame.size.width = self.contentView.bounds.size.width - segmentedControlFrame.origin.x - FXFormFieldPaddingRight;
     
@@ -3723,6 +3895,5 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
 
 
 @end
-
 
 

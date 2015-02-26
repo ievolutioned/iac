@@ -9,7 +9,7 @@
 #import "FXForms.h"
 #import "MBProgressHUD.h"
 #import "RSBarcodes.h"
-@interface EncuestaSalidaController : FXFormViewController
+@interface EncuestaSalidaController : FXFormViewController<UINavigationControllerDelegate, UIActionSheetDelegate,UIAlertViewDelegate>
 {
     RSScannerViewController *scanner;
 }

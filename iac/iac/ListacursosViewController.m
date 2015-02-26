@@ -69,4 +69,11 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    AllEmpleadoController *rm = [[AllEmpleadoController alloc] init];
+    
+    [self.navigationController pushViewController:rm animated:rm];
+}
+
 @end

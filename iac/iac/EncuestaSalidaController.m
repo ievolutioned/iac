@@ -21,14 +21,20 @@
 {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]))
     {
-        /*
-        FXEncuentaSalidaController *viewlogin = [[FXEncuentaSalidaController alloc] init];
         
-        self.formController.form = viewlogin;
-        */
-         self.formController.form = [[DynamicForm alloc] init];
+        //FXEncuentaSalidaController *viewlogin = [[FXEncuentaSalidaController alloc] init];
+        
+        //self.formController.form = viewlogin;
+        
+        //
+        self.formController.form = [[DynamicForm alloc] init];
     }
     return self;
+}
+
+- (void)submitRegistrationForm:(UITableViewCell<FXFormFieldCell> *)cell
+{
+    NSLog(@"..");
 }
 
 - (void)viewDidLoad {
@@ -109,20 +115,96 @@
     self.HUD = nil;
 }
 
+
+
+
 #pragma mark - reader
 - (void)openCamera:(UITableViewCell<FXFormFieldCell> *)cell
 {
-    [self presentViewController:scanner animated:YES completion:nil];
+    //[self presentViewController:scanner animated:YES completion:nil];
 
+    if ([UIAlertController class])
+    {
+        UIAlertControllerStyle style = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)? UIAlertControllerStyleAlert: UIAlertControllerStyleActionSheet;
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:style];
+        
+        [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Escanear Credencial", nil) style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
+            [self actionSheet:nil didDismissWithButtonIndex:0];
+        }]];
+        
+        [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Agregar Manualmente", nil) style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
+            [self actionSheet:nil didDismissWithButtonIndex:1];
+        }]];
+        
+        [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Cancelar", nil) style:UIAlertActionStyleCancel handler:NULL]];
+        
+       
+        [self presentViewController:alert animated:YES completion:NULL];
+    }
+    else
+    {
+        
+        [[[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancelar", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Escanear Credencial", nil), NSLocalizedString(@"Agregar Manualmente", nil), nil] showInView:self.view];
+    }
 }
-/*
+
+
+
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
+- (void)actionSheet:(__unused UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    
+    switch (buttonIndex)
+    {
+        case 0:
+        {
+            [self presentViewController:scanner animated:YES completion:nil];
+            
+            break;
+        }
+        case 1:
+        {
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"No. De Credencial"
+                                                              message:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancelar"
+                                                    otherButtonTitles:@"Continuar", nil];
+            
+            [message setAlertViewStyle:UIAlertViewStylePlainTextInput];
+            
+            [message show];
+            break;
+        }
+    }
+    
 }
-*/
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    
+    UITextField *username = [alertView textFieldAtIndex:0];
+    
+    self.field.value = username.text;
+    
+   
+}
+
+- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
+{
+    NSString *inputText = [[alertView textFieldAtIndex:0] text];
+    if( [inputText length] >= 1 )
+    {
+        
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+}
 
 @end

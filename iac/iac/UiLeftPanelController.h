@@ -14,7 +14,7 @@
 #import "RSBarcodes.h"
 #import "EscuestaSatisfaccionController.h"
 #import "ListacursosViewController.h"
-
+#import "RootForm.h"
 @interface UiLeftPanelController : UITableViewController
 {
      RSScannerViewController *scanner;

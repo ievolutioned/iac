@@ -91,7 +91,7 @@ typedef NS_ENUM(NSInteger, Gender)
 
 - (void)submitRegistrationForm:(UITableViewCell<FXFormFieldCell> *)cell
 {
-    
+    NSLog(@"..");
 }
 
 @end
