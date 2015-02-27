@@ -11,10 +11,16 @@
 #import "HomeViewcontroller.h"
 #import "UiLeftPanelController.h"
 #import "JASidePanelController.h"
+#import "objc/message.h"
 
-@interface AppDelegate () <UISplitViewControllerDelegate>
+@interface AppDelegate () <UIApplicationDelegate>
+
 @property (nonatomic, strong) HomeViewcontroller * det;
 @property (strong, nonatomic) JASidePanelController *rootViewController;
+
+@property (nonatomic) BOOL screenIsPortraitOnly;
+@property (nonatomic) BOOL screenIsLansCapeOnly;
+
 @end
 
 @implementation AppDelegate
@@ -93,6 +99,67 @@
     
         return NO;
     }
+
+
+
+-(void)reverseLandCape
+
+{
+    
+    [UIApplication sharedApplication].statusBarHidden = NO;
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+    
+    
+    
+    [UIApplication sharedApplication].statusBarOrientation = UIDeviceOrientationPortrait;
+    
+    
+    
+    // [[UIApplication sharedApplication] setStatusBarOrientation:UIDeviceOrientationPortrait];
+    
+    
+    
+    
+    
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+       //objc_msgSend()
+        //objc_msgSend([UIDevice currentDevice], @selector(setOrientation:),    UIDeviceOrientationPortrait );
+        
+    }
+    
+    
+    
+    
+    
+    [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIInterfaceOrientationPortrait] forKey:@"orientation"];
+    
+}
+
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window{
+    NSUInteger orientations = UIInterfaceOrientationMaskPortrait;
+    if (self.screenIsPortraitOnly) {
+        return UIInterfaceOrientationMaskPortrait;
+    }
+    else if (self.screenIsLansCapeOnly) {
+        return UIInterfaceOrientationMaskLandscape;
+    }
+    else {
+        if(self.window.rootViewController){
+            
+            UiLeftPanelController *leftPanel = (UiLeftPanelController *)self.window.rootViewController;
+            
+            
+            
+            UIViewController *presentedViewController = [[leftPanel.navigationController viewControllers] lastObject];
+            orientations = [presentedViewController supportedInterfaceOrientations];
+            
+            if (presentedViewController != nil)
+                NSLog(@"..");
+        }
+        return orientations;
+    }
+}
 
 
 @end

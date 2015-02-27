@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>1399D96B-5E8F-4483-AA5B-6738CE08D7A7</string>
+	<key>IDESourceControlProjectName</key>
+	<string>rteertrt</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7BBE7E510709CB4CF265B17FF5C2395752FB12F5</key>
+		<string>https://github.com/ievolutioned/iac.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>rteertrt/rteertrt.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7BBE7E510709CB4CF265B17FF5C2395752FB12F5</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/ievolutioned/iac.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7BBE7E510709CB4CF265B17FF5C2395752FB12F5</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7BBE7E510709CB4CF265B17FF5C2395752FB12F5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iac</string>
+		</dict>
+	</array>
+</dict>
+</plist>

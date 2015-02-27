@@ -7,6 +7,7 @@
 //
 
 #import "ListacursosViewController.h"
+#import "ServerConnection.h"
 
 @interface ListacursosViewController ()
 @property (nonatomic, strong) NSArray *lstCursos;
@@ -20,12 +21,74 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"FormFieldsCursos" ofType:@"json"];
     NSData *fieldsData = [NSData dataWithContentsOfFile:path];
     
-    self.lstCursos = [NSJSONSerialization JSONObjectWithData:fieldsData options:(NSJSONReadingOptions)0 error:NULL];
+    [self starthud];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+            [ServerConnection curseList:^(NSArray * lst) {
+        
+            self.lstCursos = lst;
+        
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    //Your main thread code goes in here
+                    [self.tableView reloadData];
+                    
+                    [self stophud];
+
+                });
+                
+                
+            }];
+    });
+   
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = [UIColor lightGrayColor];
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    [self.refreshControl addTarget:self
+                            action:@selector(getLatestCurses)
+                  forControlEvents:UIControlEventValueChanged];
+
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Curses
+
+-(void)getLatestCurses
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        [ServerConnection curseList:^(NSArray * lst) {
+            
+            self.lstCursos = lst;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //Your main thread code goes in here
+                [self.tableView reloadData];
+                
+                if (self.refreshControl) {
+                    
+                    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                    [formatter setDateFormat:@"MMM d, h:mm a"];
+                    NSString *title = [NSString stringWithFormat:@"Ultima Actualizaciòn: %@", [formatter stringFromDate:[NSDate date]]];
+                    NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:[UIColor whiteColor]
+                                                                                forKey:NSForegroundColorAttributeName];
+                    NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
+                    self.refreshControl.attributedTitle = attributedTitle;
+                    
+                    [self.refreshControl endRefreshing];
+                }
+                
+            });
+            
+            
+        }];
+    });
 }
 
 #pragma mark - Table view data source
@@ -50,7 +113,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     
-    UILabel * lblDescription = [[UILabel alloc] initWithFrame:CGRectMake(57, 8, [[UIScreen mainScreen] bounds].size.width - 80, 25)];
+    UILabel * lblDescription = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, [[UIScreen mainScreen] bounds].size.width - 80, 25)];
     lblDescription.textColor = [UIColor blackColor];
 
     
@@ -64,7 +127,7 @@
     lblDescription.backgroundColor = [UIColor clearColor];
     [cell addSubview:lblDescription];
     
-    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
@@ -75,5 +138,46 @@
     
     [self.navigationController pushViewController:rm animated:rm];
 }
+
+
+
+#pragma mark - Msg
+
+-(void)show:(NSString *)msg
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"" message:msg delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+    
+    [alertView show];
+}
+
+#pragma mark - hud
+
+- (void)starthud
+{
+    NSLog(@"starthud");
+    self.HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    self.HUD.labelText = @"Cargando";
+    self.HUD.detailsLabelText = @"Por favor Espere...";
+    
+    
+    [self.view addSubview:self.HUD];
+    
+    [self.HUD show:YES];
+    
+    
+    
+    [self.HUD bringSubviewToFront:self.HUD];
+}
+
+
+
+- (void)stophud
+{
+    NSLog(@"stophud");
+    [self.HUD  hide:YES];
+    [self.HUD removeFromSuperview];
+    self.HUD = nil;
+}
+
 
 @end

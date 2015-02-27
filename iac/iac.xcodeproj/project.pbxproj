@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090149FB1AA0C95000E087DC /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 090149FA1AA0C95000E087DC /* ServerConnection.m */; };
 		09191F011A9D7AE000EE6580 /* ListacursosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09191F001A9D7AE000EE6580 /* ListacursosViewController.m */; };
 		09191F031A9D7B3B00EE6580 /* FormFieldsCursos.json in Resources */ = {isa = PBXBuildFile; fileRef = 09191F021A9D7B3B00EE6580 /* FormFieldsCursos.json */; };
 		09263D481A96CFF7008E1704 /* FXEncuentaSalidaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09263D471A96CFF7008E1704 /* FXEncuentaSalidaController.m */; };
@@ -22,6 +23,7 @@
 		092843991A965C120099545A /* FXForms.m in Sources */ = {isa = PBXBuildFile; fileRef = 092843981A965C120099545A /* FXForms.m */; };
 		0928439F1A965C960099545A /* HomeViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0928439D1A965C960099545A /* HomeViewcontroller.m */; };
 		092843A01A965C960099545A /* HomeViewcontroller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0928439E1A965C960099545A /* HomeViewcontroller.xib */; };
+		093273CB1A9FEEB60001CC70 /* fondoCamara.png in Resources */ = {isa = PBXBuildFile; fileRef = 093273CA1A9FEEB60001CC70 /* fondoCamara.png */; };
 		094B739D1A9CD7650082EE1C /* ISO3166CountryValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 094B739C1A9CD7650082EE1C /* ISO3166CountryValueTransformer.m */; };
 		094B73A01A9CD9CB0082EE1C /* DynamicForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 094B739F1A9CD9CB0082EE1C /* DynamicForm.m */; };
 		094B73A21A9CD9D70082EE1C /* FormFields.json in Resources */ = {isa = PBXBuildFile; fileRef = 094B73A11A9CD9D70082EE1C /* FormFields.json */; };
@@ -33,6 +35,7 @@
 		09BF387E1A9D2DEA00DCB402 /* FormFieldsSatisfaccion.json in Resources */ = {isa = PBXBuildFile; fileRef = 09BF387D1A9D2DEA00DCB402 /* FormFieldsSatisfaccion.json */; };
 		09BF38811A9D2E9E00DCB402 /* EscuestaSatisfaccionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BF38801A9D2E9E00DCB402 /* EscuestaSatisfaccionController.m */; };
 		09BF38841A9D2F2700DCB402 /* DynamicFormSatisfaccion.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BF38831A9D2F2700DCB402 /* DynamicFormSatisfaccion.m */; };
+		09D175D51A9FAD6E009B6EB0 /* LoadingCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D175D41A9FAD6E009B6EB0 /* LoadingCameraViewController.m */; };
 		E65C08FD162BC70C2E0CBA59 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F946CAC4D9A06C0392FAF0B1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		090149F91AA0C95000E087DC /* ServerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerConnection.h; sourceTree = "<group>"; };
+		090149FA1AA0C95000E087DC /* ServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnection.m; sourceTree = "<group>"; };
 		09191EFF1A9D7AE000EE6580 /* ListacursosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListacursosViewController.h; sourceTree = "<group>"; };
 		09191F001A9D7AE000EE6580 /* ListacursosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListacursosViewController.m; sourceTree = "<group>"; };
 		09191F021A9D7B3B00EE6580 /* FormFieldsCursos.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FormFieldsCursos.json; sourceTree = "<group>"; };
@@ -74,6 +79,7 @@
 		0928439C1A965C960099545A /* HomeViewcontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewcontroller.h; sourceTree = "<group>"; };
 		0928439D1A965C960099545A /* HomeViewcontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewcontroller.m; sourceTree = "<group>"; };
 		0928439E1A965C960099545A /* HomeViewcontroller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewcontroller.xib; sourceTree = "<group>"; };
+		093273CA1A9FEEB60001CC70 /* fondoCamara.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fondoCamara.png; sourceTree = "<group>"; };
 		094B739B1A9CD7650082EE1C /* ISO3166CountryValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISO3166CountryValueTransformer.h; sourceTree = "<group>"; };
 		094B739C1A9CD7650082EE1C /* ISO3166CountryValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISO3166CountryValueTransformer.m; sourceTree = "<group>"; };
 		094B739E1A9CD9CB0082EE1C /* DynamicForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicForm.h; sourceTree = "<group>"; };
@@ -93,6 +99,8 @@
 		09BF38801A9D2E9E00DCB402 /* EscuestaSatisfaccionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EscuestaSatisfaccionController.m; sourceTree = "<group>"; };
 		09BF38821A9D2F2700DCB402 /* DynamicFormSatisfaccion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicFormSatisfaccion.h; sourceTree = "<group>"; };
 		09BF38831A9D2F2700DCB402 /* DynamicFormSatisfaccion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicFormSatisfaccion.m; sourceTree = "<group>"; };
+		09D175D31A9FAD6E009B6EB0 /* LoadingCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingCameraViewController.h; sourceTree = "<group>"; };
+		09D175D41A9FAD6E009B6EB0 /* LoadingCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingCameraViewController.m; sourceTree = "<group>"; };
 		1F82C7CFC24DB830533C5913 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3E59A50359271EF4F7A134A5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F946CAC4D9A06C0392FAF0B1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -177,6 +185,7 @@
 		092843651A9658C20099545A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				093273CA1A9FEEB60001CC70 /* fondoCamara.png */,
 				09191F021A9D7B3B00EE6580 /* FormFieldsCursos.json */,
 				09BF387D1A9D2DEA00DCB402 /* FormFieldsSatisfaccion.json */,
 				09BF38751A9D147B00DCB402 /* images */,
@@ -207,6 +216,7 @@
 		0928438E1A9659150099545A /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				0986BDC51AA0C8B60098AF4A /* ServerConnection */,
 				0928438F1A965A0B0099545A /* BaseViewController.h */,
 				092843901A965A0B0099545A /* BaseViewController.m */,
 				092843911A965A0B0099545A /* MBProgressHUD.h */,
@@ -241,6 +251,7 @@
 		0928439A1A965C620099545A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				09D175D21A9FAD52009B6EB0 /* loadingCamera */,
 				095C75681A9E778100459FE3 /* agregarEmpleado */,
 				095C75671A9E438200459FE3 /* altaCurso */,
 				09191EFE1A9D7AC600EE6580 /* ListaCursos */,
@@ -281,6 +292,15 @@
 			name = agregarEmpleado;
 			sourceTree = "<group>";
 		};
+		0986BDC51AA0C8B60098AF4A /* ServerConnection */ = {
+			isa = PBXGroup;
+			children = (
+				090149F91AA0C95000E087DC /* ServerConnection.h */,
+				090149FA1AA0C95000E087DC /* ServerConnection.m */,
+			);
+			name = ServerConnection;
+			sourceTree = "<group>";
+		};
 		09BF38711A9D102F00DCB402 /* menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +334,15 @@
 				09BF38801A9D2E9E00DCB402 /* EscuestaSatisfaccionController.m */,
 			);
 			name = EncuestaSatisfacion;
+			sourceTree = "<group>";
+		};
+		09D175D21A9FAD52009B6EB0 /* loadingCamera */ = {
+			isa = PBXGroup;
+			children = (
+				09D175D31A9FAD6E009B6EB0 /* LoadingCameraViewController.h */,
+				09D175D41A9FAD6E009B6EB0 /* LoadingCameraViewController.m */,
+			);
+			name = loadingCamera;
 			sourceTree = "<group>";
 		};
 		0FCD07F6F8928E6C0307F0FF /* Frameworks */ = {
@@ -424,6 +453,7 @@
 				092843761A9658C20099545A /* Images.xcassets in Resources */,
 				09191F031A9D7B3B00EE6580 /* FormFieldsCursos.json in Resources */,
 				09BF387E1A9D2DEA00DCB402 /* FormFieldsSatisfaccion.json in Resources */,
+				093273CB1A9FEEB60001CC70 /* fondoCamara.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,9 +526,11 @@
 				094B73A01A9CD9CB0082EE1C /* DynamicForm.m in Sources */,
 				092843681A9658C20099545A /* main.m in Sources */,
 				09BF387B1A9D1E7600DCB402 /* WebViewController.m in Sources */,
+				090149FB1AA0C95000E087DC /* ServerConnection.m in Sources */,
 				09263D481A96CFF7008E1704 /* FXEncuentaSalidaController.m in Sources */,
 				0928439F1A965C960099545A /* HomeViewcontroller.m in Sources */,
 				09BF38741A9D103600DCB402 /* UiLeftPanelController.m in Sources */,
+				09D175D51A9FAD6E009B6EB0 /* LoadingCameraViewController.m in Sources */,
 				09263D4B1A96D034008E1704 /* EncuestaSalidaController.m in Sources */,
 				095C756E1A9E781C00459FE3 /* AllEmpleadoController.m in Sources */,
 				095C756B1A9E778D00459FE3 /* RootForm.m in Sources */,
@@ -571,7 +603,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -607,7 +639,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -626,6 +658,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = iac/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "51d5040f-d07b-4622-91a6-c2c74960730f";
@@ -643,6 +676,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = iac/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "51d5040f-d07b-4622-91a6-c2c74960730f";

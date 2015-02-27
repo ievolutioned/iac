@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "AllEmpleadoController.h"
-@interface ListacursosViewController : UITableViewController
+#import "MBProgressHUD.h"
 
+@interface ListacursosViewController : UITableViewController
+@property (nonatomic, retain)  MBProgressHUD *HUD;
 @end

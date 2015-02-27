@@ -26,6 +26,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Navigation
+
+-(void) cancelScannel
+{
+    [scanner dismissViewControllerAnimated:YES completion:nil];
+    
+    scanner = nil;
+}
+
+-(void) flipCamera
+{
+    [scanner switchCamera];
+    
+}
 
 
 - (void)submitRegistrationForm:(UITableViewCell<FXFormFieldCell> *)cell
@@ -67,7 +81,15 @@
     
     NSLog(@"..");
    
-    [self presentViewController:scanner animated:YES completion:nil];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:scanner];
+    
+    nav.navigationBar.translucent = NO;
+    
+    scanner.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(cancelScannel)];
+    
+    scanner.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Flip" style:UIBarButtonItemStyleDone target:self action:@selector(flipCamera)];
+    
+    [self presentViewController:nav animated:YES completion:nil];
     
 }
 

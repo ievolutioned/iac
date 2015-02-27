@@ -20,6 +20,8 @@ NSString *const AVMetadataObjectTypeFace = @"face";
 
 @interface RSScannerViewController () <AVCaptureMetadataOutputObjectsDelegate>
 
+@property(nonatomic, strong) UIView *mainView;
+
 @property(nonatomic, strong) AVCaptureSession *session;
 @property(nonatomic, strong) AVCaptureDevice *device;
 @property(nonatomic, strong) AVCaptureDeviceInput *input;
@@ -65,7 +67,7 @@ NSString *const AVMetadataObjectTypeFace = @"face";
 
 - (void)__setup {
     self.isCornersVisible = YES;
-    self.isBorderRectsVisible = NO;
+    self.isBorderRectsVisible = YES;
     self.isFocusMarkVisible = YES;
     
     if (self.session) {
@@ -100,11 +102,16 @@ NSString *const AVMetadataObjectTypeFace = @"face";
         [self.session addInput:self.input];
     }
     
+    self.mainView = [[UIView alloc] initWithFrame:self.view.bounds];
+    
+    [self.view addSubview:self.mainView];
+    
     self.layer =
     [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.session];
     self.layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     self.layer.frame = self.view.bounds;
-    [self.view.layer addSublayer:self.layer];
+    
+    [self.mainView.layer addSublayer:self.layer];
     
     self.output = [[AVCaptureMetadataOutput alloc] init];
     dispatch_queue_t queue =
@@ -121,12 +128,96 @@ NSString *const AVMetadataObjectTypeFace = @"face";
         self.output.metadataObjectTypes = self.barcodeObjectTypes;
     }
     
-    [self.view bringSubviewToFront:self.highlightView];
+    [self.mainView bringSubviewToFront:self.highlightView];
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc]
                                                     initWithTarget:self
                                                     action:@selector(__handleTapGesture:)];
-    [self.view addGestureRecognizer:tapGestureRecognizer];
+
+    [self.mainView addGestureRecognizer:tapGestureRecognizer];
+}
+- (void)viewWillLayoutSubviews {
+    self.layer.frame = self.view.bounds;
+    if (self.layer.connection.supportsVideoOrientation) {
+        self.layer.connection.videoOrientation = [self interfaceOrientationToVideoOrientation:[UIApplication sharedApplication].statusBarOrientation];
+    }
+}
+
+- (AVCaptureVideoOrientation)interfaceOrientationToVideoOrientation:(UIInterfaceOrientation)orientation {
+    switch (orientation) {
+        case UIInterfaceOrientationPortrait:
+            return AVCaptureVideoOrientationPortrait;
+        case UIInterfaceOrientationPortraitUpsideDown:
+            return AVCaptureVideoOrientationPortraitUpsideDown;
+        case UIInterfaceOrientationLandscapeLeft:
+            return AVCaptureVideoOrientationLandscapeLeft;
+        case UIInterfaceOrientationLandscapeRight:
+            return AVCaptureVideoOrientationLandscapeRight;
+        default:
+            break;
+    }
+    NSLog(@"Warning - Didn't recognise interface orientation (%d)",orientation);
+    return AVCaptureVideoOrientationPortrait;
+}
+
+-(void)initViews
+{
+ 
+}
+
+-(void)initConstraints
+{
+    
+    UIView *superview = self.view;
+    
+    UILabel *mylabel = [[UILabel alloc]init];
+    [mylabel setTranslatesAutoresizingMaskIntoConstraints:NO];
+    mylabel.text = @"MyLabel";
+    
+    UIButton *mybutton = [UIButton
+                          buttonWithType:UIButtonTypeRoundedRect];
+    [mybutton setTitle:@"My Button"
+              forState:UIControlStateNormal];
+    [mybutton setTranslatesAutoresizingMaskIntoConstraints:NO];
+    
+    //[superview addSubview:mylabel];
+    
+    
+    UIImageView *picture = [[UIImageView alloc] init];
+    picture.image = [UIImage imageNamed:@"fondoCamara.png"];
+    picture.translatesAutoresizingMaskIntoConstraints = NO;
+    picture.contentMode = UIViewContentModeCenter;
+    
+    [superview addSubview:picture];
+
+
+    
+    NSLayoutConstraint *myConstraint =[NSLayoutConstraint
+                                       constraintWithItem:picture
+                                       attribute:NSLayoutAttributeCenterY
+                                       relatedBy:NSLayoutRelationEqual
+                                       toItem:superview
+                                       attribute:NSLayoutAttributeCenterY
+                                       multiplier:1.0
+                                       constant:0];
+    
+    [superview addConstraint:myConstraint];
+    
+    myConstraint =[NSLayoutConstraint
+                   constraintWithItem:picture
+                   attribute:NSLayoutAttributeCenterX
+                   relatedBy:NSLayoutRelationEqual
+                   toItem:superview
+                   attribute:NSLayoutAttributeCenterX
+                   multiplier:1.0
+                   constant:0];
+    
+    [superview addConstraint:myConstraint];
+ 
+   
+    
+    
+    
 }
 
 - (void)startRunning {
@@ -155,8 +246,8 @@ NSString *const AVMetadataObjectTypeFace = @"face";
     if (!self.highlightView && showCornerView) {
         RSCornersView *cornerView =
         [[RSCornersView alloc] initWithFrame:self.view.frame];
-        [self.view addSubview:cornerView];
-        [self.view bringSubviewToFront:cornerView];
+        [self.mainView addSubview:cornerView];
+        [self.mainView bringSubviewToFront:cornerView];
         
         self.highlightView = cornerView;
         
@@ -165,15 +256,15 @@ NSString *const AVMetadataObjectTypeFace = @"face";
     
     if (!self.controlsView && showControlsView) {
         UIView *controlsView = [[UIView alloc] initWithFrame:self.view.frame];
-        [self.view addSubview:controlsView];
-        [self.view bringSubviewToFront:controlsView];
+        [self.mainView addSubview:controlsView];
+        [self.mainView bringSubviewToFront:controlsView];
         
         self.controlsView = controlsView;
         self.isControlsVisible = showControlsView;
         
         self.isButtonBordersVisible = false;
         
-        [self updateView];
+       [self updateView];
     }
     
     if (self) {
@@ -191,6 +282,12 @@ NSString *const AVMetadataObjectTypeFace = @"face";
  preferredCameraPosition:(AVCaptureDevicePosition)cameraDevicePosition {
     self.preferredCameraPosition = cameraDevicePosition;
     
+    /*
+    [[UIDevice currentDevice] setValue:
+     [NSNumber numberWithInteger: UIInterfaceOrientationPortrait]
+                                forKey:@"orientation"];
+
+    */
     return [self initWithCornerView:showCornerView
                         controlView:showControlsView
                     barcodesHandler:barcodesHandler];
@@ -198,12 +295,26 @@ NSString *const AVMetadataObjectTypeFace = @"face";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor blackColor]];
+    
+   /*
+    [[UIDevice currentDevice] setValue:
+     [NSNumber numberWithInteger: UIInterfaceOrientationPortrait]
+                                forKey:@"orientation"];
+
+    */
+    [self.mainView setBackgroundColor:[UIColor blackColor]];
     [self __setup];
+    
+    [self initConstraints];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    /*
+    [[UIDevice currentDevice] setValue:
+     [NSNumber numberWithInteger: UIInterfaceOrientationPortrait]
+                                forKey:@"orientation"];
+*/
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self
@@ -218,6 +329,8 @@ NSString *const AVMetadataObjectTypeFace = @"face";
     
     [self startRunning];
     [self updateView];
+    
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -236,8 +349,8 @@ NSString *const AVMetadataObjectTypeFace = @"face";
 }
 
 - (BOOL)shouldAutorotate {
-    [self updateView];
-    return NO;
+   [self updateView];
+    return YES;
 }
 
 #pragma mark - AVCaptureMetadataOutputObjectsDelegate
@@ -403,6 +516,9 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
     
     CGSize viewSize = self.view.frame.size;
     
+    self.sidebarView.hidden = YES;
+    self.controlsView.hidden = YES;
+
     if (!self.sidebarView) {
         self.sidebarView = [[UIView alloc] init];
         [self.sidebarView
@@ -426,7 +542,7 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
                               action:@selector(exit)
                     forControlEvents:UIControlEventTouchDown];
         
-        [self.controlsView addSubview:self.cancelButton];
+       [self.controlsView addSubview:self.cancelButton];
         [self.controlsView bringSubviewToFront:self.cancelButton];
     }
     
@@ -448,7 +564,7 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
                                  action:@selector(switchCamera)
                        forControlEvents:UIControlEventTouchDown];
              
-             [self.controlsView addSubview:self.flipButton];
+             //[self.controlsView addSubview:self.flipButton];
              [self.controlsView bringSubviewToFront:self.flipButton];
          }
     
@@ -564,11 +680,14 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
     [self.flipButton sizeToFit];
     [self.cancelButton sizeToFit];
     [self.torchButton sizeToFit];
+    
+    
+   
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:
 (UIInterfaceOrientation)interfaceOrientation {
-    return NO;
+    return YES;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -582,6 +701,7 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
 - (NSUInteger)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
 }
+
 
 - (BOOL)isModal {
     if ([self presentingViewController])
@@ -597,5 +717,9 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
     
     return NO;
 }
+
+
+
+
 
 @end

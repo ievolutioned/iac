@@ -17,36 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    scanner = [[RSScannerViewController alloc] initWithCornerView:YES
-                                                      controlView:YES
-                                                  barcodesHandler:^(NSArray *barcodeObjects) {
-                                                      if (barcodeObjects.count > 0) {
-                                                          [barcodeObjects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                                                              dispatch_async(dispatch_get_main_queue(), ^{
-                                                                  AVMetadataMachineReadableCodeObject *code = obj;
-                                                                  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Barcode found"
-                                                                                                                  message:code.stringValue
-                                                                                                                 delegate:self
-                                                                                                        cancelButtonTitle:@"OK"
-                                                                                                        otherButtonTitles:nil];
-                                                                  //[scanner dismissViewControllerAnimated:true completion:nil];
-                                                                  //[scanner.navigationController popViewControllerAnimated:YES];
-                                                                  dispatch_async(dispatch_get_main_queue(), ^{
-                                                                      [scanner dismissViewControllerAnimated:true completion:nil];
-                                                                      [alert show];
-                                                                  });
-                                                              });
-                                                          }];
-                                                      }
-                                                      
-                                                  }
-               
-                                          preferredCameraPosition:AVCaptureDevicePositionBack];
-    
-    [scanner setIsButtonBordersVisible:YES];
-    [scanner setStopOnFirst:YES];
-    
-    [self initViews];
+        [self initViews];
     [self initConstraints];
     // Do any additional setup after loading the view from its nib.
 }

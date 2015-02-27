@@ -59,6 +59,7 @@ NSString *const FXFormFieldFooter = @"footer";
 NSString *const FXFormFieldInline = @"inline";
 NSString *const FXFormFieldSortable = @"sortable";
 NSString *const FXFormFieldViewController = @"viewController";
+NSString *const FXFormFieldValidate = @"validate";
 
 NSString *const FXFormFieldTypeDefault = @"default";
 NSString *const FXFormFieldTypeLabel = @"label";
@@ -80,6 +81,7 @@ NSString *const FXFormFieldTypeTime = @"time";
 NSString *const FXFormFieldTypeDateTime = @"datetime";
 NSString *const FXFormFieldTypeImage = @"image";
 NSString *const FXFormFieldTypeEmpleado = @"label";
+
 
 static NSString *const FXFormsException = @"FXFormsException";
 
@@ -523,6 +525,12 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
     if ([cellClass isKindOfClass:[NSString class]])
     {
         dictionary[FXFormFieldCell] = cellClass = FXFormClassFromString(cellClass);
+    }
+    
+    id cellClasss = dictionary[FXFormFieldValidate];
+    if ([cellClasss isKindOfClass:[NSString class]])
+    {
+        dictionary[FXFormFieldValidate] = @"1";//cellClasss = FXFormClassFromString(cellClasss);
     }
     
     //convert view controller from string to class
@@ -2538,7 +2546,8 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
 {
     if (![keyPath isEqualToString:@"style"])
     {
-        [super setValue:value forKeyPath:keyPath];
+       if (![keyPath isEqualToString:@"validate"])
+            [super setValue:value forKeyPath:keyPath];
     }
 }
 

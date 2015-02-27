@@ -9,7 +9,7 @@
 #import "EncuestaSalidaController.h"
 #import "FXEncuentaSalidaController.h"
 #import "DynamicForm.h"
-
+#import "LoadingCameraViewController.h"
 @interface EncuestaSalidaController ()
 
 @end
@@ -32,43 +32,107 @@
     return self;
 }
 
+
+-(bool) validateField:(NSArray *)fields withCell:(UITableViewCell<FXFormFieldCell> *)cell
+{
+    DynamicForm *form = cell.field.form;
+    
+    BOOL resp = YES;
+    
+    for (NSDictionary *dic in form.fields) {
+        
+        
+        if ([dic valueForKey:@"validate"] != nil)
+        {
+            id valueee = [form valueForKey:[dic valueForKey:@"key"]];
+            
+            if ([valueee isKindOfClass:[NSString class]])
+            {
+                if (valueee == (id)[NSNull null] || ( (NSString *) valueee).length == 0 )
+                {
+                    resp = NO;
+                }
+            }
+            else
+            {
+                if (valueee == [NSNull null])
+                {
+                    resp = NO;
+                }
+                else if (valueee == nil)
+                {
+                    resp = NO;
+                }
+            }
+         
+            if (!resp)
+            {
+                NSString *title = [dic valueForKey:@"title"];
+                
+                if (title.length == 0)
+                    title = [dic valueForKey:@"key"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                   [self show:[NSString stringWithFormat:@"%@ es requerido",title]];
+                });
+                
+                
+                return resp;
+            }
+            
+        }
+        
+    }
+    
+    
+    
+    return resp;
+}
+
 - (void)submitRegistrationForm:(UITableViewCell<FXFormFieldCell> *)cell
 {
-    NSLog(@"..");
+    DynamicForm *form = cell.field.form;
+
+    
+    if (![self validateField:form.fields withCell:cell])
+    {
+        return;
+    }
+    
+    
+    
+    /*
+    if ([[form valueForKey:@"agreedToTerms"] boolValue])
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Login Form Submitted" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil] show];
+    }
+    else
+    {
+        [[[UIAlertView alloc] initWithTitle:@"User Error" message:@"Please agree to the terms and conditions before proceeding" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Yes Sir!", nil] show];
+    }
+*/
+}
+
+-(void) describeDictionary :(NSDictionary *)dict
+{
+    NSArray *keys;
+    int i, count;
+    id key, value;
+    
+    keys = [dict allKeys];
+    count = [keys count];
+    for (i = 0; i < count; i++)
+    {
+        key = [keys objectAtIndex: i];
+        value = [dict objectForKey: key];
+        NSLog (@"Key: %@ for value: %@", key, value);
+    }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    scanner = [[RSScannerViewController alloc] initWithCornerView:YES
-                                                      controlView:YES
-                                                  barcodesHandler:^(NSArray *barcodeObjects) {
-                                                      if (barcodeObjects.count > 0) {
-                                                          [barcodeObjects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                                                              dispatch_async(dispatch_get_main_queue(), ^{
-                                                                  AVMetadataMachineReadableCodeObject *code = obj;
-                                                                  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Barcode found"
-                                                                                                                  message:code.stringValue
-                                                                                                                 delegate:self
-                                                                                                        cancelButtonTitle:@"OK"
-                                                                                                        otherButtonTitles:nil];
-                                                                  //[scanner dismissViewControllerAnimated:true completion:nil];
-                                                                  //[scanner.navigationController popViewControllerAnimated:YES];
-                                                                  dispatch_async(dispatch_get_main_queue(), ^{
-                                                                      [scanner dismissViewControllerAnimated:true completion:nil];
-                                                                      [alert show];
-                                                                  });
-                                                              });
-                                                          }];
-                                                      }
-                                                      
-                                                  }
-               
-                                          preferredCameraPosition:AVCaptureDevicePositionBack];
     
-    [scanner setIsButtonBordersVisible:YES];
-    [scanner setStopOnFirst:YES];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -81,7 +145,7 @@
 
 -(void)show:(NSString *)msg
 {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"" message:msg delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"" message:msg delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil];
     
     [alertView show];
 }
@@ -121,7 +185,8 @@
 #pragma mark - reader
 - (void)openCamera:(UITableViewCell<FXFormFieldCell> *)cell
 {
-    //[self presentViewController:scanner animated:YES completion:nil];
+    //[self presentViewController:scanner animated:YES completion:nil]
+  
 
     if ([UIAlertController class])
     {
@@ -153,6 +218,18 @@
 
 #pragma mark - Navigation
 
+-(void) cancelScannel
+{
+    [scanner dismissViewControllerAnimated:YES completion:nil];
+    
+    scanner = nil;
+}
+
+-(void) flipCamera
+{
+    [scanner switchCamera];
+    
+}
 
 - (void)actionSheet:(__unused UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
@@ -161,7 +238,47 @@
     {
         case 0:
         {
-            [self presentViewController:scanner animated:YES completion:nil];
+          
+            scanner = [[RSScannerViewController alloc] initWithCornerView:YES
+                                                              controlView:YES
+                                                          barcodesHandler:^(NSArray *barcodeObjects) {
+                                                              if (barcodeObjects.count > 0) {
+                                                                  [barcodeObjects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                                                                      dispatch_async(dispatch_get_main_queue(), ^{
+                                                                          AVMetadataMachineReadableCodeObject *code = obj;
+                                                                          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Barcode found"
+                                                                                                                          message:code.stringValue
+                                                                                                                         delegate:self
+                                                                                                                cancelButtonTitle:@"OK"
+                                                                                                                otherButtonTitles:nil];
+                                                                          //[scanner dismissViewControllerAnimated:true completion:nil];
+                                                                          //[scanner.navigationController popViewControllerAnimated:YES];
+                                                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                                                              [scanner dismissViewControllerAnimated:true completion:nil];
+                                                                              [alert show];
+                                                                          });
+                                                                      });
+                                                                  }];
+                                                              }
+                                                              
+                                                          }
+                       
+                                                  preferredCameraPosition:AVCaptureDevicePositionBack];
+            
+            [scanner setIsButtonBordersVisible:YES];
+            [scanner setStopOnFirst:YES];
+            
+            
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:scanner];
+            
+            nav.navigationBar.translucent = NO;
+            
+            scanner.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(cancelScannel)];
+            
+            scanner.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Flip" style:UIBarButtonItemStyleDone target:self action:@selector(flipCamera)];
+            
+            [self presentViewController:nav animated:YES completion:nil];
+            
             
             break;
         }
