@@ -33,6 +33,7 @@
 #import "FXForms.h"
 #import <objc/runtime.h>
 
+#import "DynamicJsonControllerViewController.h"
 
 #pragma clang diagnostic ignored "-Wobjc-missing-property-synthesis"
 #pragma clang diagnostic ignored "-Wdirect-ivar-access"
@@ -1236,17 +1237,22 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
         {
             //need to preserve order for ordered collections
             [collection removeAllObjects];
+            
+            [collection addObject:[self.options objectAtIndex:index]];
+            /*
             [self.options enumerateObjectsUsingBlock:^(id option, NSUInteger i, __unused BOOL *stop) {
                 
                 if (i == index)
                 {
-                    if (selected) [collection addObject:option];
+                    if (selected)
+                        [collection addObject:option];
                 }
                 else if ([self.value containsObject:option])
                 {
                     [collection addObject:option];
                 }
             }];
+             */
         }
         
         if (copyNeeded) collection = [collection copy];
@@ -2411,6 +2417,15 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
 
 @synthesize field = _field;
 
+- (void) atomaticBack
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+- (void) atomaticBackRoot
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
 - (void)dealloc
 {
     _formController.delegate = nil;
@@ -2684,9 +2699,13 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
     if ([self.field.type isEqualToString:FXFormFieldTypeBoolean] || [self.field.type isEqualToString:FXFormFieldTypeOption])
     {
         [FXFormsFirstResponder(tableView) resignFirstResponder];
+        
         self.field.value = @(![self.field.value boolValue]);
+        
         if (self.field.action) self.field.action(self);
+        
         self.accessoryType = [self.field.value boolValue]? UITableViewCellAccessoryCheckmark: UITableViewCellAccessoryNone;
+        
         if ([self.field.type isEqualToString:FXFormFieldTypeOption])
         {
             NSIndexPath *indexPath = [tableView indexPathForCell:self];
@@ -2729,6 +2748,8 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
     {
         [FXFormsFirstResponder(tableView) resignFirstResponder];
         UIViewController *subcontroller = nil;
+        
+        
         if ([self.field.valueClass isSubclassOfClass:[UIViewController class]])
         {
             subcontroller = self.field.value ?: [[self.field.valueClass alloc] init];
@@ -2748,7 +2769,16 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
             subcontroller = [[self.field.viewController ?: [FXFormViewController class] alloc] init];
             ((id <FXFormFieldViewController>)subcontroller).field = self.field;
         }
-        if (!subcontroller.title) subcontroller.title = self.field.title;
+        
+        if ([subcontroller isKindOfClass:[DynamicJsonControllerViewController class]])
+        {
+            DynamicJsonControllerViewController *jsonClass = (DynamicJsonControllerViewController *)subcontroller;
+            
+            jsonClass.jsonName = self.field.key;
+        }
+        
+       if (!subcontroller.title) subcontroller.title = self.field.title;
+        
         if (self.field.segue)
         {
             UIStoryboardSegue *segue = [[self.field.segue alloc] initWithIdentifier:self.field.key source:controller destination:subcontroller];
@@ -3303,6 +3333,8 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
 
 - (void)setUp
 {
+    
+
     self.datePicker = [[UIDatePicker alloc] init];
     [self.datePicker addTarget:self action:@selector(valueChanged) forControlEvents:UIControlEventValueChanged];
 }

@@ -19,7 +19,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-     self.formController.form = [[DynamicFormSatisfaccion alloc] init];
+    self.formController.form = [[DynamicFormSatisfaccion alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,7 +28,7 @@
 }
 - (void)submitRegistrationForm:(UITableViewCell<FXFormFieldCell> *)cell
 {
-    
+    NSLog(@"...");
 }
 /*
 #pragma mark - Navigation

@@ -1,18 +1,20 @@
 //
-//  DynamicForm.m
-//  DynamicFieldsExample
+//  DynamicFromLocalJson.m
+//  iac
 //
-//  Created by Nick Lockwood on 04/03/2014.
-//  Copyright (c) 2014 Charcoal Design. All rights reserved.
+//  Created by Hipolyto Obeso Huerta on 11/03/15.
+//  Copyright (c) 2015 ievolutioned. All rights reserved.
 //
 
-#import "DynamicForm.h"
+#import "DynamicFromLocalJson.h"
 
+@implementation DynamicFromLocalJson
 
-@implementation DynamicForm
-
-- (id)init
+- (id)initWitJsonName :(NSString *)_jsonName
 {
+    
+    self.jsonName = _jsonName;
+    
     if ((self = [super init]))
     {
         //set up dictionary for storing form values
@@ -54,9 +56,8 @@
 
 - (NSArray *)fields
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"FormFields" ofType:@"json"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:self.jsonName ofType:@"json"];
     NSData *fieldsData = [NSData dataWithContentsOfFile:path];
     return [NSJSONSerialization JSONObjectWithData:fieldsData options:(NSJSONReadingOptions)0 error:NULL];
 }
-
 @end

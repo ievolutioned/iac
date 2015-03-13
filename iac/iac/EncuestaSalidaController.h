@@ -9,11 +9,17 @@
 #import "FXForms.h"
 #import "MBProgressHUD.h"
 #import "RSBarcodes.h"
+
+
+#import "DynamicJsonControllerViewController.h"
+
 @interface EncuestaSalidaController : FXFormViewController<UINavigationControllerDelegate, UIActionSheetDelegate,UIAlertViewDelegate>
 {
     RSScannerViewController *scanner;
 }
 
 @property (nonatomic, retain)  MBProgressHUD *HUD;
+
+@property (nonatomic, assign) BOOL alredyPresenting;
 
 @end

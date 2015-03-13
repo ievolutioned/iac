@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		090149FB1AA0C95000E087DC /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 090149FA1AA0C95000E087DC /* ServerConnection.m */; };
+		0918BC861AB0B5BD000034A5 /* DynamicFromLocalJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 0918BC851AB0B5BD000034A5 /* DynamicFromLocalJson.m */; };
+		0918BC8C1AB0B9CD000034A5 /* DynamicJsonControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0918BC8B1AB0B9CD000034A5 /* DynamicJsonControllerViewController.m */; };
+		0918BC901AB0BB4B000034A5 /* TermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0918BC8E1AB0BB4B000034A5 /* TermsViewController.m */; };
+		0918BC911AB0BB4B000034A5 /* TermsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0918BC8F1AB0BB4B000034A5 /* TermsViewController.xib */; };
 		09191F011A9D7AE000EE6580 /* ListacursosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09191F001A9D7AE000EE6580 /* ListacursosViewController.m */; };
 		09191F031A9D7B3B00EE6580 /* FormFieldsCursos.json in Resources */ = {isa = PBXBuildFile; fileRef = 09191F021A9D7B3B00EE6580 /* FormFieldsCursos.json */; };
 		09263D481A96CFF7008E1704 /* FXEncuentaSalidaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09263D471A96CFF7008E1704 /* FXEncuentaSalidaController.m */; };
@@ -27,8 +31,11 @@
 		094B739D1A9CD7650082EE1C /* ISO3166CountryValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 094B739C1A9CD7650082EE1C /* ISO3166CountryValueTransformer.m */; };
 		094B73A01A9CD9CB0082EE1C /* DynamicForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 094B739F1A9CD9CB0082EE1C /* DynamicForm.m */; };
 		094B73A21A9CD9D70082EE1C /* FormFields.json in Resources */ = {isa = PBXBuildFile; fileRef = 094B73A11A9CD9D70082EE1C /* FormFields.json */; };
+		095312EF1AB151CE001CC3E8 /* FormFieldsMotivo.json in Resources */ = {isa = PBXBuildFile; fileRef = 095312EE1AB151CE001CC3E8 /* FormFieldsMotivo.json */; };
 		095C756B1A9E778D00459FE3 /* RootForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 095C756A1A9E778D00459FE3 /* RootForm.m */; };
 		095C756E1A9E781C00459FE3 /* AllEmpleadoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 095C756D1A9E781C00459FE3 /* AllEmpleadoController.m */; };
+		09766C9C1AAF9137003F0CCF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 09766C9A1AAF9137003F0CCF /* Model.xcdatamodeld */; };
+		09766CA21AAF941B003F0CCF /* Poll.m in Sources */ = {isa = PBXBuildFile; fileRef = 09766CA11AAF941B003F0CCF /* Poll.m */; };
 		09BF38741A9D103600DCB402 /* UiLeftPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BF38731A9D103600DCB402 /* UiLeftPanelController.m */; };
 		09BF38771A9D148400DCB402 /* logoIcon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 09BF38761A9D148400DCB402 /* logoIcon.jpg */; };
 		09BF387B1A9D1E7600DCB402 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BF387A1A9D1E7600DCB402 /* WebViewController.m */; };
@@ -52,6 +59,13 @@
 /* Begin PBXFileReference section */
 		090149F91AA0C95000E087DC /* ServerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerConnection.h; sourceTree = "<group>"; };
 		090149FA1AA0C95000E087DC /* ServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnection.m; sourceTree = "<group>"; };
+		0918BC841AB0B5BD000034A5 /* DynamicFromLocalJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicFromLocalJson.h; sourceTree = "<group>"; };
+		0918BC851AB0B5BD000034A5 /* DynamicFromLocalJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicFromLocalJson.m; sourceTree = "<group>"; };
+		0918BC8A1AB0B9CD000034A5 /* DynamicJsonControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicJsonControllerViewController.h; sourceTree = "<group>"; };
+		0918BC8B1AB0B9CD000034A5 /* DynamicJsonControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicJsonControllerViewController.m; sourceTree = "<group>"; };
+		0918BC8D1AB0BB4B000034A5 /* TermsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TermsViewController.h; sourceTree = "<group>"; };
+		0918BC8E1AB0BB4B000034A5 /* TermsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TermsViewController.m; sourceTree = "<group>"; };
+		0918BC8F1AB0BB4B000034A5 /* TermsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TermsViewController.xib; sourceTree = "<group>"; };
 		09191EFF1A9D7AE000EE6580 /* ListacursosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListacursosViewController.h; sourceTree = "<group>"; };
 		09191F001A9D7AE000EE6580 /* ListacursosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListacursosViewController.m; sourceTree = "<group>"; };
 		09191F021A9D7B3B00EE6580 /* FormFieldsCursos.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FormFieldsCursos.json; sourceTree = "<group>"; };
@@ -85,10 +99,14 @@
 		094B739E1A9CD9CB0082EE1C /* DynamicForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicForm.h; sourceTree = "<group>"; };
 		094B739F1A9CD9CB0082EE1C /* DynamicForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicForm.m; sourceTree = "<group>"; };
 		094B73A11A9CD9D70082EE1C /* FormFields.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FormFields.json; sourceTree = "<group>"; };
+		095312EE1AB151CE001CC3E8 /* FormFieldsMotivo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FormFieldsMotivo.json; sourceTree = "<group>"; };
 		095C75691A9E778D00459FE3 /* RootForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootForm.h; sourceTree = "<group>"; };
 		095C756A1A9E778D00459FE3 /* RootForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootForm.m; sourceTree = "<group>"; };
 		095C756C1A9E781C00459FE3 /* AllEmpleadoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllEmpleadoController.h; sourceTree = "<group>"; };
 		095C756D1A9E781C00459FE3 /* AllEmpleadoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllEmpleadoController.m; sourceTree = "<group>"; };
+		09766C9B1AAF9137003F0CCF /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		09766CA01AAF941B003F0CCF /* Poll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Poll.h; sourceTree = "<group>"; };
+		09766CA11AAF941B003F0CCF /* Poll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Poll.m; sourceTree = "<group>"; };
 		09BF38721A9D103600DCB402 /* UiLeftPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UiLeftPanelController.h; sourceTree = "<group>"; };
 		09BF38731A9D103600DCB402 /* UiLeftPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UiLeftPanelController.m; sourceTree = "<group>"; };
 		09BF38761A9D148400DCB402 /* logoIcon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logoIcon.jpg; sourceTree = "<group>"; };
@@ -126,6 +144,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0918BC921AB0BF86000034A5 /* formularioDinamico */ = {
+			isa = PBXGroup;
+			children = (
+				0918BC8A1AB0B9CD000034A5 /* DynamicJsonControllerViewController.h */,
+				0918BC8B1AB0B9CD000034A5 /* DynamicJsonControllerViewController.m */,
+			);
+			name = formularioDinamico;
+			sourceTree = "<group>";
+		};
 		09191EFE1A9D7AC600EE6580 /* ListaCursos */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,7 +176,6 @@
 		092843591A9658C10099545A = {
 			isa = PBXGroup;
 			children = (
-				09263D4D1A96DED7008E1704 /* Crashlytics.framework */,
 				092843641A9658C20099545A /* iac */,
 				092843811A9658C20099545A /* iacTests */,
 				092843631A9658C20099545A /* Products */,
@@ -170,6 +196,7 @@
 		092843641A9658C20099545A /* iac */ = {
 			isa = PBXGroup;
 			children = (
+				09766C991AAF9129003F0CCF /* CoreData */,
 				0928439A1A965C620099545A /* ViewControllers */,
 				092843951A965A620099545A /* Libs */,
 				0928438E1A9659150099545A /* Class */,
@@ -185,6 +212,7 @@
 		092843651A9658C20099545A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				095312EE1AB151CE001CC3E8 /* FormFieldsMotivo.json */,
 				093273CA1A9FEEB60001CC70 /* fondoCamara.png */,
 				09191F021A9D7B3B00EE6580 /* FormFieldsCursos.json */,
 				09BF387D1A9D2DEA00DCB402 /* FormFieldsSatisfaccion.json */,
@@ -244,6 +272,8 @@
 				092843981A965C120099545A /* FXForms.m */,
 				09BF38821A9D2F2700DCB402 /* DynamicFormSatisfaccion.h */,
 				09BF38831A9D2F2700DCB402 /* DynamicFormSatisfaccion.m */,
+				0918BC841AB0B5BD000034A5 /* DynamicFromLocalJson.h */,
+				0918BC851AB0B5BD000034A5 /* DynamicFromLocalJson.m */,
 			);
 			name = Fx;
 			sourceTree = "<group>";
@@ -251,6 +281,7 @@
 		0928439A1A965C620099545A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				0918BC921AB0BF86000034A5 /* formularioDinamico */,
 				09D175D21A9FAD52009B6EB0 /* loadingCamera */,
 				095C75681A9E778100459FE3 /* agregarEmpleado */,
 				095C75671A9E438200459FE3 /* altaCurso */,
@@ -277,6 +308,9 @@
 		095C75671A9E438200459FE3 /* altaCurso */ = {
 			isa = PBXGroup;
 			children = (
+				0918BC8D1AB0BB4B000034A5 /* TermsViewController.h */,
+				0918BC8E1AB0BB4B000034A5 /* TermsViewController.m */,
+				0918BC8F1AB0BB4B000034A5 /* TermsViewController.xib */,
 			);
 			name = altaCurso;
 			sourceTree = "<group>";
@@ -290,6 +324,16 @@
 				095C756D1A9E781C00459FE3 /* AllEmpleadoController.m */,
 			);
 			name = agregarEmpleado;
+			sourceTree = "<group>";
+		};
+		09766C991AAF9129003F0CCF /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				09766C9A1AAF9137003F0CCF /* Model.xcdatamodeld */,
+				09766CA01AAF941B003F0CCF /* Poll.h */,
+				09766CA11AAF941B003F0CCF /* Poll.m */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 		0986BDC51AA0C8B60098AF4A /* ServerConnection */ = {
@@ -348,6 +392,7 @@
 		0FCD07F6F8928E6C0307F0FF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				09263D4D1A96DED7008E1704 /* Crashlytics.framework */,
 				F946CAC4D9A06C0392FAF0B1 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -447,10 +492,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				092843A01A965C960099545A /* HomeViewcontroller.xib in Resources */,
+				0918BC911AB0BB4B000034A5 /* TermsViewController.xib in Resources */,
 				092843791A9658C20099545A /* LaunchScreen.xib in Resources */,
 				09BF38771A9D148400DCB402 /* logoIcon.jpg in Resources */,
 				094B73A21A9CD9D70082EE1C /* FormFields.json in Resources */,
 				092843761A9658C20099545A /* Images.xcassets in Resources */,
+				095312EF1AB151CE001CC3E8 /* FormFieldsMotivo.json in Resources */,
 				09191F031A9D7B3B00EE6580 /* FormFieldsCursos.json in Resources */,
 				09BF387E1A9D2DEA00DCB402 /* FormFieldsSatisfaccion.json in Resources */,
 				093273CB1A9FEEB60001CC70 /* fondoCamara.png in Resources */,
@@ -522,8 +569,12 @@
 				0928436B1A9658C20099545A /* AppDelegate.m in Sources */,
 				092843941A965A0B0099545A /* MBProgressHUD.m in Sources */,
 				092843931A965A0B0099545A /* BaseViewController.m in Sources */,
+				09766CA21AAF941B003F0CCF /* Poll.m in Sources */,
 				092843991A965C120099545A /* FXForms.m in Sources */,
 				094B73A01A9CD9CB0082EE1C /* DynamicForm.m in Sources */,
+				0918BC861AB0B5BD000034A5 /* DynamicFromLocalJson.m in Sources */,
+				0918BC8C1AB0B9CD000034A5 /* DynamicJsonControllerViewController.m in Sources */,
+				09766C9C1AAF9137003F0CCF /* Model.xcdatamodeld in Sources */,
 				092843681A9658C20099545A /* main.m in Sources */,
 				09BF387B1A9D1E7600DCB402 /* WebViewController.m in Sources */,
 				090149FB1AA0C95000E087DC /* ServerConnection.m in Sources */,
@@ -531,6 +582,7 @@
 				0928439F1A965C960099545A /* HomeViewcontroller.m in Sources */,
 				09BF38741A9D103600DCB402 /* UiLeftPanelController.m in Sources */,
 				09D175D51A9FAD6E009B6EB0 /* LoadingCameraViewController.m in Sources */,
+				0918BC901AB0BB4B000034A5 /* TermsViewController.m in Sources */,
 				09263D4B1A96D034008E1704 /* EncuestaSalidaController.m in Sources */,
 				095C756E1A9E781C00459FE3 /* AllEmpleadoController.m in Sources */,
 				095C756B1A9E778D00459FE3 /* RootForm.m in Sources */,
@@ -748,6 +800,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		09766C9A1AAF9137003F0CCF /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				09766C9B1AAF9137003F0CCF /* Model.xcdatamodel */,
+			);
+			currentVersion = 09766C9B1AAF9137003F0CCF /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0928435A1A9658C10099545A /* Project object */;
 }

@@ -88,6 +88,55 @@
     return resp;
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    self.alredyPresenting = NO;
+}
+
+- (void)presentNewForm:(UITableViewCell<FXFormFieldCell> *)cell
+{
+    DynamicForm *form = cell.field.form;
+    
+    
+    NSArray *options =  [form valueForKey:@"reasonToLeave"];
+    
+    if (options.count == 0)
+        self.alredyPresenting = NO;
+    
+    for (NSString *op in options) {
+        
+        if ([[op lowercaseString] isEqualToString:@"aceptar otro empleo"])
+        {
+            
+            if (!self.alredyPresenting)
+            {
+                self.alredyPresenting = YES;
+            
+                [self presentFormFromOption];
+            }
+            break;
+        }
+    }
+    
+    if (!self.alredyPresenting)
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
+}
+
+-(void)presentFormFromOption
+{
+    DynamicJsonControllerViewController *dynamic = [[DynamicJsonControllerViewController alloc] init];
+    
+    dynamic.jsonName = @"FormFieldsMotivo";
+    
+    [self.navigationController pushViewController:dynamic animated:YES];
+    
+}
+
 - (void)submitRegistrationForm:(UITableViewCell<FXFormFieldCell> *)cell
 {
     DynamicForm *form = cell.field.form;

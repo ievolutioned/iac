@@ -8,6 +8,8 @@
   },
   {"key": "instructions2", "title":"", "placeholder":"1=Nunca  2=Pocas veces  3=La mitad de las veces 4=La mayoría de las veces  5=Siempre","value":"", "type": "label"},
   
+   
+  
   {"header": "Comedor",
   "key": "clean", "title": "Es un lugar limpio en el que puedo comer", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},
   {"key": "conditions", "title": "El mobiliario está en buenas condiciones", "options": ["1", "2", "3", "4", "5"],  "cell": "FXFormOptionSegmentsCellCustom"},

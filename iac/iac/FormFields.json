@@ -1,8 +1,16 @@
  [
   
   {"header": "Datos Personales",
+  
+  
+  
+  
   "key": "barcodeReader", "title": "Presiona aquí para leer el código de barras de la credencial", "action": "openCamera:"},
-  {"key": "employeeID", "type": "unsigned", "title": "Número de Empleado", "placeholder": "123456789","validate":"yes"},
+  
+  
+  
+  
+  {"header":"Capacitación","key": "employeeID", "type": "unsigned", "title": "Número de Empleado", "placeholder": "123456789","validate":"yes"},
   {"key": "age", "title": "Edad", "type": "unsigned", "placeholder":"Su edad","validate":"yes"},
   {"key": "bossName", "title": "Jefe Inmediato", "type": "text", "placeholder":"Nombre (ej. Juan Perez)"},
   {"key": "jobName", "title": "Puesto", "type": "text", "placeholder":"Su Puesto"},
@@ -30,7 +38,7 @@
    "Negocio Propio",
    "Otro"
    ],
-  "placeholder": "Ninguno", "class": "NSArray"},
+  "placeholder": "Ninguno", "class": "NSArray","action": "presentNewForm:"},
   
   {"header":"Trabajo", "key": "workInteresting", "title": "Fué interesante tu trabajo",
   "options": ["Si", "No"], "cell": "FXFormOptionSegmentsCellCustom"},

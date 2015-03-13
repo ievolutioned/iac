@@ -1,0 +1,7 @@
+[
+ {"header": "Motivo de salida - Aceptar Otro empleo",
+ "key": "newCompany", "title": "Empresa", "type": "text", "placeholder":"La empresa a dónde se va"},
+ {"key": "newJob", "title": "Puesto", "type": "text", "placeholder":"Su nuevo puesto"},
+ {"key": "newSalary", "title": "Salario Ofrecido", "type": "unsigned", "placeholder":"0"},
+  {"header": "", "title": "Siguiente", "action": "atomaticBackRoot"}
+ ]
