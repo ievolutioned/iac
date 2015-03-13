@@ -56,7 +56,7 @@
     self.rootViewController.centerPanel = nav;
     
     
-    [self.rootViewController showLeftPanelAnimated:NO];
+    [self.rootViewController showLeftPanelAnimated:YES];
     
     
     self.rootViewController.rightPanel = nil;

@@ -77,6 +77,7 @@ UIKIT_EXTERN NSString *const FXFormFieldTypeDateTime; //datetime
 UIKIT_EXTERN NSString *const FXFormFieldTypeImage; //image
 UIKIT_EXTERN NSString *const FXFormFieldTypeEmpleado; //image
 UIKIT_EXTERN NSString *const FXFormFieldValidate; //key
+UIKIT_EXTERN NSString *const FXFormFieldKeyOptions; //key
 #pragma mark -
 #pragma mark Models
 
@@ -109,6 +110,7 @@ UIKIT_EXTERN NSString *const FXFormFieldValidate; //key
 @property (nonatomic, readonly) NSString *key;
 @property (nonatomic, readonly) NSString *type;
 @property (nonatomic, readonly) NSString *title;
+@property (nonatomic, readonly) NSString *keyoptions;
 @property (nonatomic, readonly) id placeholder;
 @property (nonatomic, readonly) NSDictionary *fieldTemplate;
 @property (nonatomic, readonly) BOOL isSortable;

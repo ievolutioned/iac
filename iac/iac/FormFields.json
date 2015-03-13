@@ -38,7 +38,7 @@
    "Negocio Propio",
    "Otro"
    ],
-  "placeholder": "Ninguno", "class": "NSArray","action": "presentNewForm:"},
+  "placeholder": "Ninguno", "class": "NSArray","action": "presentNewForm:","keyoptions":"Aceptar otro Empleo"},
   
   {"header":"Trabajo", "key": "workInteresting", "title": "Fué interesante tu trabajo",
   "options": ["Si", "No"], "cell": "FXFormOptionSegmentsCellCustom"},

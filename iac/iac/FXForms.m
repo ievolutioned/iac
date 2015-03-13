@@ -61,6 +61,7 @@ NSString *const FXFormFieldInline = @"inline";
 NSString *const FXFormFieldSortable = @"sortable";
 NSString *const FXFormFieldViewController = @"viewController";
 NSString *const FXFormFieldValidate = @"validate";
+NSString *const FXFormFieldKeyOptions = @"keyoptions";
 
 NSString *const FXFormFieldTypeDefault = @"default";
 NSString *const FXFormFieldTypeLabel = @"label";
@@ -533,6 +534,11 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
     {
         dictionary[FXFormFieldValidate] = @"1";//cellClasss = FXFormClassFromString(cellClasss);
     }
+    id cellClassss = dictionary[FXFormFieldKeyOptions];
+    if ([cellClassss isKindOfClass:[NSString class]])
+    {
+        dictionary[FXFormFieldKeyOptions] =  cellClassss;//@"1";//cellClassss = FXFormClassFromString(cellClassss);
+    }
     
     //convert view controller from string to class
     id viewController = dictionary[FXFormFieldViewController];
@@ -639,6 +645,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
 @property (nonatomic, strong) Class valueClass;
 @property (nonatomic, strong) Class cellClass;
 @property (nonatomic, readwrite) NSString *key;
+@property (nonatomic, readwrite) NSString *keyoptions;
 @property (nonatomic, readwrite) NSArray *options;
 @property (nonatomic, readwrite) NSDictionary *fieldTemplate;
 @property (nonatomic, readwrite) BOOL isSortable;
@@ -2562,7 +2569,10 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
     if (![keyPath isEqualToString:@"style"])
     {
        if (![keyPath isEqualToString:@"validate"])
+       {
+           if (![keyPath isEqualToString:@"keyoptions"])
             [super setValue:value forKeyPath:keyPath];
+       }
     }
 }
 

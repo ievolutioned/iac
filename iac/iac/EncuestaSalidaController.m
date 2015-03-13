@@ -98,7 +98,17 @@
 - (void)presentNewForm:(UITableViewCell<FXFormFieldCell> *)cell
 {
     DynamicForm *form = cell.field.form;
-    
+    //keyoptions
+    NSString *keyoptions = @"";
+    for (NSDictionary *dic in form.fields) {
+        if ([dic valueForKey:@"keyoptions"] != nil)
+        {
+            NSLog(@"%@",[dic valueForKey:@"keyoptions"]);
+            keyoptions = [dic valueForKey:@"keyoptions"];
+            break;
+        }
+        
+    }
     
     NSArray *options =  [form valueForKey:@"reasonToLeave"];
     
@@ -107,7 +117,7 @@
     
     for (NSString *op in options) {
         
-        if ([[op lowercaseString] isEqualToString:@"aceptar otro empleo"])
+        if ([[op lowercaseString] isEqualToString:[keyoptions lowercaseString]])
         {
             
             if (!self.alredyPresenting)
