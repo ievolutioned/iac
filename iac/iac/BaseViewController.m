@@ -144,4 +144,38 @@
 
 
 
++(BOOL) isLogin
+{
+    
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    BOOL isUserLogged = ([defaults boolForKey:@"currentUser_2"]);
+    
+    return isUserLogged;
+}
+
++(void) logOut
+{
+    
+    NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
+    
+    [defs setBool:NO forKey:@"currentUser_2"];
+    
+    //[[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"UserData_3"];
+    
+    
+    [defs synchronize];
+}
+
++(void) setLogin
+{
+    
+    NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
+    
+    [defs setBool:YES forKey:@"currentUser_2"];
+    
+    
+}
+
+
+
 @end

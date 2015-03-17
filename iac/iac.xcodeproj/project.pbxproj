@@ -36,6 +36,10 @@
 		095C756E1A9E781C00459FE3 /* AllEmpleadoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 095C756D1A9E781C00459FE3 /* AllEmpleadoController.m */; };
 		09766C9C1AAF9137003F0CCF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 09766C9A1AAF9137003F0CCF /* Model.xcdatamodeld */; };
 		09766CA21AAF941B003F0CCF /* Poll.m in Sources */ = {isa = PBXBuildFile; fileRef = 09766CA11AAF941B003F0CCF /* Poll.m */; };
+		09A6A84E1AB7D58400267367 /* ServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A6A84D1AB7D58400267367 /* ServerController.m */; };
+		09A6A8511AB7D80A00267367 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A6A8501AB7D80A00267367 /* NSString+MD5.m */; };
+		09A6A8551AB7EACB00267367 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A6A8541AB7EACB00267367 /* LoginViewController.m */; };
+		09A6A8581AB7EAD600267367 /* FXFormLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A6A8571AB7EAD600267367 /* FXFormLoginController.m */; };
 		09BF38741A9D103600DCB402 /* UiLeftPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BF38731A9D103600DCB402 /* UiLeftPanelController.m */; };
 		09BF38771A9D148400DCB402 /* logoIcon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 09BF38761A9D148400DCB402 /* logoIcon.jpg */; };
 		09BF387B1A9D1E7600DCB402 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BF387A1A9D1E7600DCB402 /* WebViewController.m */; };
@@ -107,6 +111,14 @@
 		09766C9B1AAF9137003F0CCF /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		09766CA01AAF941B003F0CCF /* Poll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Poll.h; sourceTree = "<group>"; };
 		09766CA11AAF941B003F0CCF /* Poll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Poll.m; sourceTree = "<group>"; };
+		09A6A84C1AB7D58400267367 /* ServerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerController.h; sourceTree = "<group>"; };
+		09A6A84D1AB7D58400267367 /* ServerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerController.m; sourceTree = "<group>"; };
+		09A6A84F1AB7D80A00267367 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		09A6A8501AB7D80A00267367 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		09A6A8531AB7EACB00267367 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		09A6A8541AB7EACB00267367 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		09A6A8561AB7EAD600267367 /* FXFormLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXFormLoginController.h; sourceTree = "<group>"; };
+		09A6A8571AB7EAD600267367 /* FXFormLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXFormLoginController.m; sourceTree = "<group>"; };
 		09BF38721A9D103600DCB402 /* UiLeftPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UiLeftPanelController.h; sourceTree = "<group>"; };
 		09BF38731A9D103600DCB402 /* UiLeftPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UiLeftPanelController.m; sourceTree = "<group>"; };
 		09BF38761A9D148400DCB402 /* logoIcon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logoIcon.jpg; sourceTree = "<group>"; };
@@ -196,6 +208,7 @@
 		092843641A9658C20099545A /* iac */ = {
 			isa = PBXGroup;
 			children = (
+				09A6A84B1AB7D52C00267367 /* controller */,
 				09766C991AAF9129003F0CCF /* CoreData */,
 				0928439A1A965C620099545A /* ViewControllers */,
 				092843951A965A620099545A /* Libs */,
@@ -256,6 +269,8 @@
 		092843951A965A620099545A /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				09A6A84F1AB7D80A00267367 /* NSString+MD5.h */,
+				09A6A8501AB7D80A00267367 /* NSString+MD5.m */,
 				092843961A965C080099545A /* Fx */,
 			);
 			name = Libs;
@@ -281,6 +296,7 @@
 		0928439A1A965C620099545A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				09A6A8521AB7EA7600267367 /* Login */,
 				0918BC921AB0BF86000034A5 /* formularioDinamico */,
 				09D175D21A9FAD52009B6EB0 /* loadingCamera */,
 				095C75681A9E778100459FE3 /* agregarEmpleado */,
@@ -343,6 +359,26 @@
 				090149FA1AA0C95000E087DC /* ServerConnection.m */,
 			);
 			name = ServerConnection;
+			sourceTree = "<group>";
+		};
+		09A6A84B1AB7D52C00267367 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				09A6A84C1AB7D58400267367 /* ServerController.h */,
+				09A6A84D1AB7D58400267367 /* ServerController.m */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		09A6A8521AB7EA7600267367 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				09A6A8561AB7EAD600267367 /* FXFormLoginController.h */,
+				09A6A8571AB7EAD600267367 /* FXFormLoginController.m */,
+				09A6A8531AB7EACB00267367 /* LoginViewController.h */,
+				09A6A8541AB7EACB00267367 /* LoginViewController.m */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 		09BF38711A9D102F00DCB402 /* menu */ = {
@@ -569,11 +605,13 @@
 				0928436B1A9658C20099545A /* AppDelegate.m in Sources */,
 				092843941A965A0B0099545A /* MBProgressHUD.m in Sources */,
 				092843931A965A0B0099545A /* BaseViewController.m in Sources */,
+				09A6A8551AB7EACB00267367 /* LoginViewController.m in Sources */,
 				09766CA21AAF941B003F0CCF /* Poll.m in Sources */,
 				092843991A965C120099545A /* FXForms.m in Sources */,
 				094B73A01A9CD9CB0082EE1C /* DynamicForm.m in Sources */,
 				0918BC861AB0B5BD000034A5 /* DynamicFromLocalJson.m in Sources */,
 				0918BC8C1AB0B9CD000034A5 /* DynamicJsonControllerViewController.m in Sources */,
+				09A6A84E1AB7D58400267367 /* ServerController.m in Sources */,
 				09766C9C1AAF9137003F0CCF /* Model.xcdatamodeld in Sources */,
 				092843681A9658C20099545A /* main.m in Sources */,
 				09BF387B1A9D1E7600DCB402 /* WebViewController.m in Sources */,
@@ -583,9 +621,11 @@
 				09BF38741A9D103600DCB402 /* UiLeftPanelController.m in Sources */,
 				09D175D51A9FAD6E009B6EB0 /* LoadingCameraViewController.m in Sources */,
 				0918BC901AB0BB4B000034A5 /* TermsViewController.m in Sources */,
+				09A6A8511AB7D80A00267367 /* NSString+MD5.m in Sources */,
 				09263D4B1A96D034008E1704 /* EncuestaSalidaController.m in Sources */,
 				095C756E1A9E781C00459FE3 /* AllEmpleadoController.m in Sources */,
 				095C756B1A9E778D00459FE3 /* RootForm.m in Sources */,
+				09A6A8581AB7EAD600267367 /* FXFormLoginController.m in Sources */,
 				09191F011A9D7AE000EE6580 /* ListacursosViewController.m in Sources */,
 				09BF38811A9D2E9E00DCB402 /* EscuestaSatisfaccionController.m in Sources */,
 			);

@@ -27,4 +27,10 @@
 +(NSDictionary *)UserData;
 
 -(void)showMsg:(NSString *)msg;
+
++(BOOL) isLogin;
++(void) logOut;
+
++(void) setLogin;
+
 @end

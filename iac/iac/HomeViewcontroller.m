@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewcontroller.h"
+#import "LoginViewController.h"
 
 @interface HomeViewcontroller ()
 @property (nonatomic, strong) UIImageView *picture;
@@ -19,6 +20,16 @@
     
         [self initViews];
     [self initConstraints];
+    
+    
+    if (![BaseViewController isLogin])
+    {
+        
+        LoginViewController *controller = [[LoginViewController alloc] init];
+        
+        [self.navigationController presentViewController:controller animated:YES completion:nil];
+    }
+    
     // Do any additional setup after loading the view from its nib.
 }
 
