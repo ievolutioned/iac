@@ -21,6 +21,8 @@
     
     if (self.jsonName.length > 0)
         self.formController.form = [[DynamicFromLocalJson alloc] initWitJsonName:self.jsonName];
+    else if (self.jsonForm.count > 0)
+        self.formController.form = [[DynamicFromLocalJson alloc] initWitJsonForm:self.jsonForm];
     
 }
 

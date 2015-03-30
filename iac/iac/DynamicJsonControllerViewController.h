@@ -15,7 +15,7 @@
 @interface DynamicJsonControllerViewController : FXFormViewController
 @property (nonatomic, retain)  MBProgressHUD *HUD;
 
-
+@property (nonatomic, strong) NSArray *jsonForm;
 @property (nonatomic, strong) NSString *jsonName;
 //@property (nonatomic, strong) NSString *title;
 @end

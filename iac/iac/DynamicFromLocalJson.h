@@ -13,8 +13,11 @@
 
 - (id)initWitJsonName :(NSString *)_jsonName;
 
-@property (nonatomic, strong) NSMutableDictionary *valuesByKey;
+- (id)initWitJsonForm :(NSArray *)_jsonForm;
 
+
+@property (nonatomic, strong) NSMutableDictionary *valuesByKey;
+@property (nonatomic, strong) NSArray *jsonForm;
 @property (nonatomic, strong) NSString  *jsonName;
 
 @end
