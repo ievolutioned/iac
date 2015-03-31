@@ -99,6 +99,7 @@
 {
     DynamicForm *form = cell.field.form;
     //keyoptions
+    /*
     NSString *keyoptions = @"";
     for (NSDictionary *dic in form.fields) {
         if ([dic valueForKey:@"keyoptions"] != nil)
@@ -111,7 +112,48 @@
     }
     
     NSArray *options =  [form valueForKey:@"reasonToLeave"];
+    */
+    NSDictionary *dicKey =  [form valueForKey:cell.field.key];
     
+    if ([dicKey isKindOfClass:[NSDictionary class]])
+    {
+        
+        NSDictionary *dicVal = [dicKey objectForKey:[[dicKey allKeys] objectAtIndex:0]];
+        
+        NSArray *dicValue = [dicVal objectForKey:[[dicVal allKeys] objectAtIndex:0]];
+        
+        if ([dicValue isKindOfClass:[NSArray class]])
+        {
+            if (dicValue.count > 0)
+            {
+            DynamicJsonControllerViewController *dynamic = [[DynamicJsonControllerViewController alloc] init];
+            
+            dynamic.jsonForm = dicValue;
+            
+            [self.navigationController pushViewController:dynamic animated:YES];
+            }
+            
+            
+            
+             NSLog(@"... we are here....");
+        }
+        
+       else
+       {
+            NSLog(@"... or here....");
+           
+       }
+        
+       
+
+        
+    }
+    else
+    {
+        
+    }
+    
+    /*
     if (options.count == 0)
         self.alredyPresenting = NO;
     
@@ -134,6 +176,7 @@
     {
         [self.navigationController popViewControllerAnimated:YES];
     }
+     */
     
 }
 

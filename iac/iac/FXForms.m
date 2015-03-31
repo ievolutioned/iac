@@ -1228,6 +1228,10 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
             {
                 [collection removeIndex:index];
             }
+            
+            [collection removeAllObjects];
+            
+            [collection addObject:[self.options objectAtIndex:index]];
         }
         else if ([self.valueClass isSubclassOfClass:[NSDictionary class]])
         {
@@ -1239,6 +1243,17 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
             {
                 [(NSMutableDictionary *)collection removeObjectForKey:@(index)];
             }
+            
+            
+            [(NSMutableDictionary *)collection removeAllObjects];
+            if (selected)
+            {
+                collection[@(index)] = self.options[index];
+            }
+           // [collection removeAllObjects];
+            
+           
+
         }
         else
         {
@@ -1376,6 +1391,8 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
 @property (nonatomic, strong) FXFormField *field;
 @property (nonatomic, strong) NSArray *fields;
 
+@property (nonatomic, strong) NSString *keySecondForms;
+
 @end
 
 
@@ -1408,11 +1425,38 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
                                 FXFormFieldType: FXFormFieldTypeOption,
                                 FXFormFieldAction: action}];
         }
+        
         for (NSUInteger i = 0; i < [field.options count]; i++)
         {
+            NSDictionary *opt = [field.options objectAtIndex:i];
+            
+            
+            NSString *titleOpt = @"";
+            
+            if ([opt isKindOfClass:[NSDictionary class]])
+            {
+                titleOpt = [[opt allKeys] objectAtIndex:0];
+                
+                
+                /*
+                NSArray *optDic = [opt objectForKey:titleOpt];
+                
+                if ([optDic isKindOfClass:[NSArray class]])
+                {
+                    if (optDic.count > 0)
+                        _keySecondForms = titleOpt;
+                }
+                 */
+                
+            }
+            else
+            {
+                titleOpt = [field optionDescriptionAtIndex:index];
+            }
+            
             NSInteger index = i + (field.placeholder? 1: 0);
             [fields addObject:@{FXFormFieldKey: [@(index) description],
-                                FXFormFieldTitle: [field optionDescriptionAtIndex:index],
+                                FXFormFieldTitle: titleOpt,//[field optionDescriptionAtIndex:index],
                                 FXFormFieldType: FXFormFieldTypeOption,
                                 FXFormFieldAction: action}];
         }
@@ -2712,7 +2756,8 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
         
         self.field.value = @(![self.field.value boolValue]);
         
-        if (self.field.action) self.field.action(self);
+         if (self.field.action)
+            self.field.action(self);
         
         self.accessoryType = [self.field.value boolValue]? UITableViewCellAccessoryCheckmark: UITableViewCellAccessoryNone;
         

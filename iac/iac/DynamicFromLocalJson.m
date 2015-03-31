@@ -26,6 +26,22 @@
     return self;
 }
 
+- (id)initWitJsonForm :(NSArray *)_jsonForm
+{
+    
+    self.jsonForm = _jsonForm;
+    
+    if ((self = [super init]))
+    {
+        //set up dictionary for storing form values
+        //we could prepopulate this with defaults if we wanted
+        //or load previously saved values from a file or database
+        
+        _valuesByKey = [NSMutableDictionary dictionary];
+    }
+    return self;
+}
+
 //these two methods proxy any values that we set/get on the form
 //to the internal valuesByKey dictionary. you don't have to store
 //them in a dictionary though - you could put them into a coredata
@@ -56,8 +72,15 @@
 
 - (NSArray *)fields
 {
+    if (self.jsonName .length > 0 )
+    {
     NSString *path = [[NSBundle mainBundle] pathForResource:self.jsonName ofType:@"json"];
     NSData *fieldsData = [NSData dataWithContentsOfFile:path];
     return [NSJSONSerialization JSONObjectWithData:fieldsData options:(NSJSONReadingOptions)0 error:NULL];
+    }
+    else
+    {
+        return self.jsonForm;
+    }
 }
 @end
