@@ -37,7 +37,6 @@
 
 #import <UIKit/UIKit.h>
 
-
 UIKIT_EXTERN NSString *const FXFormFieldKey; //key
 UIKIT_EXTERN NSString *const FXFormFieldType; //type
 UIKIT_EXTERN NSString *const FXFormFieldClass; //class

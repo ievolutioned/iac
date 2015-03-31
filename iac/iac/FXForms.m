@@ -1403,6 +1403,30 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
     if ((self = [super init]))
     {
         _field = field;
+        
+        
+        for (NSUInteger i = 0; i < [field.options count]; i++)
+        {
+            NSDictionary *opt = [field.options objectAtIndex:i];
+            
+            
+           
+            
+            if ([opt isKindOfClass:[NSDictionary class]])
+            {
+                field.action = @"presentNewForm:";
+                break;
+            }
+            else
+            {
+               
+            }
+            
+            
+        }
+        
+       
+        
         id action = ^(__unused id sender)
         {
             if (field.action)
@@ -1436,18 +1460,6 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
             if ([opt isKindOfClass:[NSDictionary class]])
             {
                 titleOpt = [[opt allKeys] objectAtIndex:0];
-                
-                
-                /*
-                NSArray *optDic = [opt objectForKey:titleOpt];
-                
-                if ([optDic isKindOfClass:[NSArray class]])
-                {
-                    if (optDic.count > 0)
-                        _keySecondForms = titleOpt;
-                }
-                 */
-                
             }
             else
             {
@@ -1455,6 +1467,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
             }
             
             NSInteger index = i + (field.placeholder? 1: 0);
+            
             [fields addObject:@{FXFormFieldKey: [@(index) description],
                                 FXFormFieldTitle: titleOpt,//[field optionDescriptionAtIndex:index],
                                 FXFormFieldType: FXFormFieldTypeOption,
@@ -2564,6 +2577,9 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
         [self.tableView deselectRowAtIndexPath:selected animated:YES];
     }
 }
+
+
+
 
 @end
 

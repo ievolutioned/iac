@@ -8,7 +8,10 @@
 
 #import "EscuestaSatisfaccionController.h"
 #import "DynamicFormSatisfaccion.h"
-
+#import "FXEncuentaSalidaController.h"
+#import "DynamicForm.h"
+#import "LoadingCameraViewController.h"
+#import "DynamicJsonControllerViewController.h"
 @interface EscuestaSatisfaccionController ()
 
 @end
@@ -39,5 +42,51 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (void)presentNewForm:(UITableViewCell<FXFormFieldCell> *)cell
+{
+    DynamicForm *form = cell.field.form;
+    
+    NSDictionary *dicKey =  [form valueForKey:cell.field.key];
+    
+    if ([dicKey isKindOfClass:[NSDictionary class]])
+    {
+        
+        NSDictionary *dicVal = [dicKey objectForKey:[[dicKey allKeys] objectAtIndex:0]];
+        
+        NSArray *dicValue = [dicVal objectForKey:[[dicVal allKeys] objectAtIndex:0]];
+        
+        if ([dicValue isKindOfClass:[NSArray class]])
+        {
+            if (dicValue.count > 0)
+            {
+                DynamicJsonControllerViewController *dynamic = [[DynamicJsonControllerViewController alloc] init];
+                
+                dynamic.jsonForm = dicValue;
+                
+                [self.navigationController pushViewController:dynamic animated:YES];
+            }
+            
+            
+            
+            NSLog(@"... we are here....");
+        }
+        
+        else
+        {
+            NSLog(@"... or here....");
+            
+        }
+        
+        
+        
+        
+    }
+    else
+    {
+        
+    }
+    
+}
 
 @end

@@ -98,21 +98,7 @@
 - (void)presentNewForm:(UITableViewCell<FXFormFieldCell> *)cell
 {
     DynamicForm *form = cell.field.form;
-    //keyoptions
-    /*
-    NSString *keyoptions = @"";
-    for (NSDictionary *dic in form.fields) {
-        if ([dic valueForKey:@"keyoptions"] != nil)
-        {
-            NSLog(@"%@",[dic valueForKey:@"keyoptions"]);
-            keyoptions = [dic valueForKey:@"keyoptions"];
-            break;
-        }
-        
-    }
-    
-    NSArray *options =  [form valueForKey:@"reasonToLeave"];
-    */
+  
     NSDictionary *dicKey =  [form valueForKey:cell.field.key];
     
     if ([dicKey isKindOfClass:[NSDictionary class]])
@@ -152,31 +138,6 @@
     {
         
     }
-    
-    /*
-    if (options.count == 0)
-        self.alredyPresenting = NO;
-    
-    for (NSString *op in options) {
-        
-        if ([[op lowercaseString] isEqualToString:[keyoptions lowercaseString]])
-        {
-            
-            if (!self.alredyPresenting)
-            {
-                self.alredyPresenting = YES;
-            
-                [self presentFormFromOption];
-            }
-            break;
-        }
-    }
-    
-    if (!self.alredyPresenting)
-    {
-        [self.navigationController popViewControllerAnimated:YES];
-    }
-     */
     
 }
 
