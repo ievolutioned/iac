@@ -80,7 +80,12 @@
                               "title":"Empresa",
                               "type":"text",
                               "placeholder":"La empresa a dónde se va"
-                              }
+                              },
+                              {
+                              "header":"",
+                              "title":"Siguiente",
+                              "action":"automaticBackRoot"
+                              },
                               ]
              },
              {
@@ -96,7 +101,7 @@
   {
   "header":"",
   "title":"Siguiente",
-  "action":"atomaticBackRoot"
+  "action":"automaticBackRoot"
   },
   
   {
@@ -162,7 +167,13 @@
                                     "title":"Salario Ofrecido",
                                     "type":"unsigned",
                                     "placeholder":"0"
-                                    }
+                                    },
+                                    {
+                                    "header":"",
+                                    "title":"Siguiente",
+                                    "action":"automaticBackRoot"
+                                    },
+                                    
                                     ]
              },
              {
@@ -202,11 +213,7 @@
              ],
   "placeholder":"Ninguno"
   },
-  {
-  "header":"",
-  "title":"Siguiente",
-  "action":"atomaticBackRoot"
-  },
+  
   {
   "header":"Trabajo",
   "key":"workInteresting",

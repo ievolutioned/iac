@@ -2489,6 +2489,10 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
+- (void) automaticBackRoot
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 
 - (void)dealloc
 {
