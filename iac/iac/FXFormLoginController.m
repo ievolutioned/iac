@@ -15,7 +15,7 @@
 - (NSArray *)fields
 {
     
-    self.email = @"";
+    self.NoEmpleado = @"";
     self.password = @"";
     return @[
              
@@ -30,7 +30,7 @@
               */
              
              
-             @{FXFormFieldKey: @"email",FXFormFieldDefaultValue:self.email, FXFormFieldHeader: @"Account"},
+             @{FXFormFieldKey: @"NoEmpleado",FXFormFieldDefaultValue:self.NoEmpleado, FXFormFieldHeader: @"Account",FXFormFieldTitle: @"No. empleado"},
              @{FXFormFieldKey: @"password",FXFormFieldDefaultValue:self.password},
               @{FXFormFieldTitle: @"Sing In", FXFormFieldHeader: @"", FXFormFieldAction: @"submitRegistrationForm:"},
              

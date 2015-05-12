@@ -12,8 +12,9 @@
 
 +(void)doLogin:(NSString * )username  withPass:(NSString *)pass withCallback:(void(^)(bool ,NSString *)) callback
 {
-    NSString *urlsource = [NSString stringWithFormat:@"https://iacgroup.herokuapp.com/api/services/access?emai=%@&password=%@",username,pass];
+    NSString *urlsource = [NSString stringWithFormat:@"https://iacgroup.herokuapp.com/api/services/access?iac_id=%@&password=%@",username,pass];
     NSString *escapedUrl = [urlsource stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
     NSString *jsonString = [ServerController performServiceCallToUrl:escapedUrl secretString:[self getLoginSecretString] dateString:[self getDateString] andDeviceID:[self getDeviceID]];
     
     NSLog(@"%@",jsonString);
@@ -55,6 +56,10 @@
         //3bdac397f6b625ed86d05c46b4228f6d
         [request setValue:@"V2" forHTTPHeaderField:@"X-version"];
         [request setValue:@"3b7336f6d1f2a733903b6cd828cafdfc" forHTTPHeaderField:@"X-token"];
+        
+        
+        [request setValue:@"nosession" forHTTPHeaderField:@"X-admin-token"];
+        
         [request setValue:secretString forHTTPHeaderField:@"X-secret"];
         [request setValue:dateString forHTTPHeaderField:@"X-device-date"];
         [request setValue:deviceID forHTTPHeaderField:@"X-device-id"];
@@ -91,14 +96,14 @@
 
 +(NSString *) getLoginSecretString
 {
-    NSString *secretString = [NSString stringWithFormat:@"d4e9a9414181819f3a47ff1ddd9b2ca3-%@-%@-V1-%@-%@-%@", @"properties", @"access", [self getReverseIDFromDeviceID:[self getDeviceID]],@"nosession", [self getDateString]];
+    NSString *secretString = [NSString stringWithFormat:@"d4e9a9414181819f3a47ff1ddd9b2ca3-%@-%@-V2-%@-%@-%@", @"services", @"access", [self getReverseIDFromDeviceID:[self getDeviceID]],@"nosession", [self getDateString]];
     NSString *secret = [secretString MD5Digest];
     return secret;
 }
 
 +(NSString *) getPropertiesSecretString
 {
-    NSString *secretString = [NSString stringWithFormat:@"d4e9a9414181819f3a47ff1ddd9b2ca3-%@-%@-V1-%@-%@", @"properties", @"index", [self getReverseIDFromDeviceID:[self getDeviceID]],[self getDateString]];
+    NSString *secretString = [NSString stringWithFormat:@"d4e9a9414181819f3a47ff1ddd9b2ca3-%@-%@-V2-%@-%@", @"properties", @"index", [self getReverseIDFromDeviceID:[self getDeviceID]],[self getDateString]];
     NSString *secret = [secretString MD5Digest];
     return secret;
 }

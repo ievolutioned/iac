@@ -43,16 +43,18 @@
 {
     FXFormLoginController *form = cell.field.form;
     
-    if (form.email.length <= 0)
-        [self show:@"El Correo Electronico es Requerido"];
+    if (form.NoEmpleado.length <= 0)
+        [self show:@"No. Empleado es Requerido"];
     else if (form.password.length <= 0)
         [self show:@"La Contraseña es Requerida"];
+    /*
     else if (![self NSStringIsValidEmail:form.email])
         [self show:@"El Correo Electronico no es valido"];
+     */
     else
     {
         [self starthud];
-        [ServerController doLogin:form.email withPass:form.password withCallback:^(bool susses, NSString * msg) {
+        [ServerController doLogin:form.NoEmpleado withPass:form.password withCallback:^(bool susses, NSString * msg) {
             if (susses)
             {
                 NSLog(@"login Ok");

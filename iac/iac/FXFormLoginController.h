@@ -10,7 +10,7 @@
 #import "FXForms.h"
 
 @interface FXFormLoginController : NSObject<FXForm>
-@property (nonatomic, copy) NSString *email;
+@property (nonatomic, copy) NSString *NoEmpleado;
 @property (nonatomic, copy) NSString *password;
 
 @end
