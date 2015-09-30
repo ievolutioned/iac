@@ -8,6 +8,8 @@
 
 #import "ListacursosViewController.h"
 #import "ServerConnection.h"
+#import "ServerController.h"
+#import "DynamicJsonControllerViewController.h"
 
 @interface ListacursosViewController ()
 @property (nonatomic, strong) NSArray *lstCursos;
@@ -18,28 +20,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"FormFieldsCursos" ofType:@"json"];
-    NSData *fieldsData = [NSData dataWithContentsOfFile:path];
-    
+   // NSString *path = [[NSBundle mainBundle] pathForResource:@"FormFieldsCursos" ofType:@"json"];
+    //NSData *fieldsData = [NSData dataWithContentsOfFile:path];
+   
+    /*
     [self starthud];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-            [ServerConnection curseList:^(NSArray * lst) {
         
+        [ServerController curseList:^(NSArray *lst) {
             self.lstCursos = lst;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //Your main thread code goes in here
+                [self.tableView reloadData];
+                
+                [self stophud];
+                
+            });
+       
         
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    //Your main thread code goes in here
-                    [self.tableView reloadData];
-                    
-                    [self stophud];
-
-                });
-                
-                
-            }];
+        }];
+        
+        
+        
     });
+     */
+    
+     self.lstCursos = [self fields];
    
     
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -50,6 +59,31 @@
                   forControlEvents:UIControlEventValueChanged];
 
 
+}
+
+- (NSArray *)fields
+{
+           NSString *path = [[NSBundle mainBundle] pathForResource:@"FormFieldsCursos" ofType:@"json"];
+
+        NSData *fieldsData = [NSData dataWithContentsOfFile:path];
+    
+    
+    NSMutableDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:fieldsData options:kNilOptions error:nil];
+    
+   if ([dictionary valueForKey:@"inquests"])
+    {
+        
+        NSArray *lst = [dictionary objectForKey:@"inquests"];
+        return lst;
+    }
+    else
+    {
+       return nil;
+        
+    }
+    
+    return nil;//[NSJSONSerialization JSONObjectWithData:fieldsData options:(NSJSONReadingOptions)0 error:NULL];
+   
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,7 +97,7 @@
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
-        [ServerConnection curseList:^(NSArray * lst) {
+        [ServerController curseList:^(NSArray * lst) {
             
             self.lstCursos = lst;
             
@@ -119,7 +153,7 @@
     
     NSDictionary *item = [self.lstCursos objectAtIndex:indexPath.row];
     
-    lblDescription.text = [item objectForKey:@"title"];
+    lblDescription.text = [item objectForKey:@"name"];
     
     //cell.detailTextLabel.text = [item objectForKey:@"title"];
     
@@ -134,9 +168,21 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AllEmpleadoController *rm = [[AllEmpleadoController alloc] init];
+    DynamicJsonControllerViewController *dynamic = [[DynamicJsonControllerViewController alloc] init];
     
-    [self.navigationController pushViewController:rm animated:rm];
+    NSDictionary *item = [self.lstCursos objectAtIndex:indexPath.row];
+    
+    NSArray *dicValue = [item objectForKey:@"content"];
+    
+    dynamic.jsonForm = dicValue;
+    
+    
+    
+    dynamic.title = [item objectForKey:@"name"];
+   
+   // dynamic.jsonName = @"FormFieldsMotivo";
+    
+    [self.navigationController pushViewController:dynamic animated:YES];
 }
 
 

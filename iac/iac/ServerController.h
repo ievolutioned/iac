@@ -14,4 +14,7 @@
 
 +(void)doLogin:(NSString * )username  withPass:(NSString *)pass withCallback:(void(^)(bool ,NSString *)) callback;
 
++(void)curseList:(void (^)(NSArray *))handler;
+
+
 @end

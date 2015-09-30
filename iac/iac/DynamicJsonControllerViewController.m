@@ -8,6 +8,7 @@
 
 #import "DynamicJsonControllerViewController.h"
 #import "DynamicFromLocalJson.h"
+#import "DynamicForm.h"
 
 @interface DynamicJsonControllerViewController ()
 
@@ -49,12 +50,65 @@
     
     [self.HUD bringSubviewToFront:self.HUD];
 }
+
 - (void)stophud
 {
     NSLog(@"stophud");
     [self.HUD  hide:YES];
     [self.HUD removeFromSuperview];
     self.HUD = nil;
+}
+
+
+- (void)presentNewForm:(UITableViewCell<FXFormFieldCell> *)cell
+{
+    DynamicForm *form = cell.field.form;
+    
+    NSDictionary *dicKey =  [form valueForKey:cell.field.key];
+    
+    if ([dicKey isKindOfClass:[NSDictionary class]])
+    {
+        
+        NSDictionary *dicVal = [dicKey objectForKey:[[dicKey allKeys] objectAtIndex:0]];
+        
+        NSArray *dicValue = [dicVal objectForKey:[[dicVal allKeys] objectAtIndex:0]];
+        
+        bool GoBack = YES;
+        
+        if ([dicValue isKindOfClass:[NSArray class]])
+        {
+            if (dicValue.count > 0)
+            {
+                DynamicJsonControllerViewController *dynamic = [[DynamicJsonControllerViewController alloc] init];
+                
+                dynamic.jsonForm = dicValue;
+                
+                GoBack = NO;
+                
+                [self.navigationController pushViewController:dynamic animated:YES];
+            }
+            
+            if (GoBack)
+                [self.navigationController popViewControllerAnimated:YES];
+            
+            NSLog(@"... we are here....");
+        }
+        
+        else
+        {
+            NSLog(@"... or here....");
+            
+        }
+        
+        
+        
+        
+    }
+    else
+    {
+        
+    }
+    
 }
 
 -(void)showMsg:(NSString *)msg

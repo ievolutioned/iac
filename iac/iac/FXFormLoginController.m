@@ -15,8 +15,8 @@
 - (NSArray *)fields
 {
     
-    self.NoEmpleado = @"";
-    self.password = @"";
+    self.NoEmpleado = @"12345678";
+    self.password = @"12345678";
     return @[
              
              //we want to add a group header for the field set of fields

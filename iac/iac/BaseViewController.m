@@ -124,9 +124,9 @@
 
 +(NSString *)UserToken
 {
-    NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
+    NSDictionary *dic = [self UserData];
     
-    return [defs stringForKey:@"setUserToken_3"];
+    return [dic objectForKey:@"admin_token"];
 }
 
 +(void)setUserData:(NSDictionary *)UserData
@@ -146,7 +146,7 @@
 
 +(BOOL) isLogin
 {
-    
+    return YES;
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     BOOL isUserLogged = ([defaults boolForKey:@"currentUser_3"]);
     

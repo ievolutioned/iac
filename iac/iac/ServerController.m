@@ -13,6 +13,7 @@
 +(void)doLogin:(NSString * )username  withPass:(NSString *)pass withCallback:(void(^)(bool ,NSString *)) callback
 {
     NSString *urlsource = [NSString stringWithFormat:@"https://iacgroup.herokuapp.com/api/services/access?iac_id=%@&password=%@",username,pass];
+    
     NSString *escapedUrl = [urlsource stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     NSString *jsonString = [ServerController performServiceCallToUrl:escapedUrl secretString:[self getLoginSecretString] dateString:[self getDateString] andDeviceID:[self getDeviceID]];
@@ -43,6 +44,39 @@
     callback(status,msg);
 }
 
++(void)curseList:(void (^)(NSArray *))handler
+{
+    NSString *urlsource = @"https://iacgroup.herokuapp.com/api/inquests/";
+    
+    NSString *escapedUrl = [urlsource stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSString *jsonString = [ServerController performServiceCallToUrl:escapedUrl secretString:[self getPropertiesSecretString] dateString:[self getDateString] andDeviceID:[self getDeviceID]];
+    
+    NSLog(@"%@",jsonString);
+    
+    NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSMutableDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    
+    bool status = NO;
+    NSString *msg = @"";
+    
+    if ([dictionary valueForKey:@"inquests"])
+    {
+       
+        NSArray *lst = [dictionary objectForKey:@"inquests"];
+         handler(lst);
+    }
+    else
+    {
+        handler(nil);
+        
+    }
+    
+    
+
+}
+
 
 +(NSString *) performServiceCallToUrl:(NSString *) escapedUrl secretString:(NSString *) secretString dateString:(NSString *) dateString andDeviceID:(NSString *) deviceID
 {
@@ -52,29 +86,33 @@
         NSURL *Myurl = [NSURL URLWithString:escapedUrl];
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: Myurl];
         
-        [request setHTTPMethod: @"GET"];
+        [request setHTTPMethod:@"GET"];
         //3bdac397f6b625ed86d05c46b4228f6d
-        [request setValue:@"V2" forHTTPHeaderField:@"X-version"];
-        [request setValue:@"3b7336f6d1f2a733903b6cd828cafdfc" forHTTPHeaderField:@"X-token"];
+        [request setValue:@"V1" forHTTPHeaderField:@"X-version"];
+        [request setValue:@"d4e9a9414181819f3a47ff1ddd9b2ca3" forHTTPHeaderField:@"X-token"];
+        
+        if ([BaseViewController isLogin ])
+            [request setValue:[BaseViewController UserToken] forHTTPHeaderField:@"X-admin-token"];
+        else
+            [request setValue:@"nosession" forHTTPHeaderField:@"X-admin-token"];
         
         
-        [request setValue:@"nosession" forHTTPHeaderField:@"X-admin-token"];
-        
-        [request setValue:secretString forHTTPHeaderField:@"X-secret"];
-        [request setValue:dateString forHTTPHeaderField:@"X-device-date"];
         [request setValue:deviceID forHTTPHeaderField:@"X-device-id"];
+        [request setValue:dateString forHTTPHeaderField:@"X-device-date"];
+         [request setValue:secretString forHTTPHeaderField:@"X-secret"];
         
+        
+        [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [request setValue:@"json" forHTTPHeaderField:@"Data-Type"];
         
         NSURLResponse * response = nil;
         NSError * error = nil;
         NSData * data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
         
-        if (data == nil) {
-            // Check for problems
-            if (error != nil) {
-                NSLog(@"Error: %@", error);
-                
-            }
+        if (error != nil) {
+            NSLog(@"Error: %@", error);
+            
         }
         else {
             stringReply = [(NSString *)[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -96,14 +134,14 @@
 
 +(NSString *) getLoginSecretString
 {
-    NSString *secretString = [NSString stringWithFormat:@"d4e9a9414181819f3a47ff1ddd9b2ca3-%@-%@-V2-%@-%@-%@", @"services", @"access", [self getReverseIDFromDeviceID:[self getDeviceID]],@"nosession", [self getDateString]];
+    NSString *secretString = [NSString stringWithFormat:@"d4e9a9414181819f3a47ff1ddd9b2ca3-%@-%@-V1-%@-%@-%@", @"services", @"access", [self getReverseIDFromDeviceID:[self getDeviceID]],@"nosession", [self getDateString]];
     NSString *secret = [secretString MD5Digest];
     return secret;
 }
 
 +(NSString *) getPropertiesSecretString
 {
-    NSString *secretString = [NSString stringWithFormat:@"d4e9a9414181819f3a47ff1ddd9b2ca3-%@-%@-V2-%@-%@", @"properties", @"index", [self getReverseIDFromDeviceID:[self getDeviceID]],[self getDateString]];
+    NSString *secretString = [NSString stringWithFormat:@"d4e9a9414181819f3a47ff1ddd9b2ca3-%@-%@-V1-%@-%@-%@", @"inquests", @"index", [self getReverseIDFromDeviceID:[self getDeviceID]],[BaseViewController UserToken],[self getDateString]];
     NSString *secret = [secretString MD5Digest];
     return secret;
 }

@@ -54,17 +54,28 @@
     else
     {
         [self starthud];
-        [ServerController doLogin:form.NoEmpleado withPass:form.password withCallback:^(bool susses, NSString * msg) {
-            if (susses)
-            {
-                NSLog(@"login Ok");
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }
-            else
-                [self show:msg];
-            [self stophud];
+        
+        
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
-        }];
+            [ServerController doLogin:form.NoEmpleado withPass:form.password withCallback:^(bool susses, NSString * msg) {
+                
+                if (susses)
+                {
+                    NSLog(@"login Ok");
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
+                else
+                    [self show:msg];
+                
+                
+                [self stophud];
+                
+            }];
+        });
+     
+        
         
     }
     

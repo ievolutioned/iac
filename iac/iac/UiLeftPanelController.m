@@ -40,7 +40,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0)
-        return 3;
+        return 1;
     else
         return 2;
 }
@@ -134,7 +134,7 @@
             case 0:
             {
                 ListacursosViewController *lst = [[ListacursosViewController alloc] initWithStyle:UITableViewStylePlain];
-                lst.title = @"Cursos";
+                lst.title = @"Asistencia a Cursos";
                 
                 UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:lst];
                 
