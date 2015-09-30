@@ -118,6 +118,8 @@
             stringReply = [(NSString *)[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             NSHTTPURLResponse *httpResponse;
             httpResponse = (NSHTTPURLResponse *)response;
+            
+            NSLog(@"%ld",(long)httpResponse.statusCode);
         }
         
     }
@@ -134,14 +136,19 @@
 
 +(NSString *) getLoginSecretString
 {
-    NSString *secretString = [NSString stringWithFormat:@"d4e9a9414181819f3a47ff1ddd9b2ca3-%@-%@-V1-%@-%@-%@", @"services", @"access", [self getReverseIDFromDeviceID:[self getDeviceID]],@"nosession", [self getDateString]];
+   NSString *secretString = [NSString stringWithFormat:@"d4e9a9414181819f3a47ff1ddd9b2ca3-%@-%@-V1-%@-%@-%@", @"services", @"access", [self getReverseIDFromDeviceID:[self getDeviceID]],@"nosession", [self getDateString]];
+   // NSString *secretString = [NSString stringWithFormat:@"3b7336f6d1f2a733903b6cd828cafdfc-%@-%@-V2-%@-%@-%@", @"services", @"access", [self getReverseIDFromDeviceID:[self getDeviceID]],@"nosession", [self getDateString]];
     NSString *secret = [secretString MD5Digest];
     return secret;
 }
 
 +(NSString *) getPropertiesSecretString
 {
+
     NSString *secretString = [NSString stringWithFormat:@"d4e9a9414181819f3a47ff1ddd9b2ca3-%@-%@-V1-%@-%@-%@", @"inquests", @"index", [self getReverseIDFromDeviceID:[self getDeviceID]],[BaseViewController UserToken],[self getDateString]];
+
+    //NSString *secretString = [NSString stringWithFormat:@"3b7336f6d1f2a733903b6cd828cafdfc-%@-%@-V2-%@-%@", @"properties", @"index", [self getReverseIDFromDeviceID:[self getDeviceID]],[self getDateString]];
+
     NSString *secret = [secretString MD5Digest];
     return secret;
 }
