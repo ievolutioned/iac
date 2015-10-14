@@ -20,8 +20,6 @@ NSString *const AVMetadataObjectTypeFace = @"face";
 
 @interface RSScannerViewController () <AVCaptureMetadataOutputObjectsDelegate>
 
-@property(nonatomic, strong) UIView *mainView;
-
 @property(nonatomic, strong) AVCaptureSession *session;
 @property(nonatomic, strong) AVCaptureDevice *device;
 @property(nonatomic, strong) AVCaptureDeviceInput *input;
@@ -33,6 +31,19 @@ NSString *const AVMetadataObjectTypeFace = @"face";
 @implementation RSScannerViewController
 
 #pragma mark - Private
+
+- (AVCaptureVideoOrientation)__interfaceOrientationToVideoOrientation:(UIInterfaceOrientation)orientation {
+    switch (orientation) {
+        case UIInterfaceOrientationPortraitUpsideDown:
+            return AVCaptureVideoOrientationPortraitUpsideDown;
+        case UIInterfaceOrientationLandscapeLeft:
+            return AVCaptureVideoOrientationLandscapeLeft;
+        case UIInterfaceOrientationLandscapeRight:
+            return AVCaptureVideoOrientationLandscapeRight;
+        default:
+            return AVCaptureVideoOrientationPortrait;
+    }
+}
 
 - (void)__applicationWillEnterForeground:(NSNotification *)notification {
     [self startRunning];
@@ -67,7 +78,7 @@ NSString *const AVMetadataObjectTypeFace = @"face";
 
 - (void)__setup {
     self.isCornersVisible = YES;
-    self.isBorderRectsVisible = YES;
+    self.isBorderRectsVisible = NO;
     self.isFocusMarkVisible = YES;
     
     if (self.session) {
@@ -102,16 +113,11 @@ NSString *const AVMetadataObjectTypeFace = @"face";
         [self.session addInput:self.input];
     }
     
-    self.mainView = [[UIView alloc] initWithFrame:self.view.bounds];
-    
-    [self.view addSubview:self.mainView];
-    
     self.layer =
     [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.session];
     self.layer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     self.layer.frame = self.view.bounds;
-    
-    [self.mainView.layer addSublayer:self.layer];
+    [self.view.layer addSublayer:self.layer];
     
     self.output = [[AVCaptureMetadataOutput alloc] init];
     dispatch_queue_t queue =
@@ -128,146 +134,98 @@ NSString *const AVMetadataObjectTypeFace = @"face";
         self.output.metadataObjectTypes = self.barcodeObjectTypes;
     }
     
-    [self.mainView bringSubviewToFront:self.highlightView];
+    [self.view bringSubviewToFront:self.highlightView];
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc]
                                                     initWithTarget:self
                                                     action:@selector(__handleTapGesture:)];
-
-    [self.mainView addGestureRecognizer:tapGestureRecognizer];
+    [self.view addGestureRecognizer:tapGestureRecognizer];
 }
-- (void)viewWillLayoutSubviews {
-    self.layer.frame = self.view.bounds;
-    if (self.layer.connection.supportsVideoOrientation) {
-        self.layer.connection.videoOrientation = [self interfaceOrientationToVideoOrientation:[UIApplication sharedApplication].statusBarOrientation];
+
+- (BOOL)__isModal {
+    if ([self presentingViewController])
+        return YES;
+    if ([[self presentingViewController] presentedViewController] == self)
+        return YES;
+    if ([[[self navigationController] presentingViewController] presentedViewController] ==
+        [self navigationController])
+        return YES;
+    if ([[[self tabBarController] presentingViewController]
+         isKindOfClass:[UITabBarController class]])
+        return YES;
+    
+    return NO;
+}
+
+- (void)__exit {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self dismissViewControllerAnimated:true completion:nil];
+    });
+}
+
+#pragma mark - Setter
+
+- (void)setTorchState:(BOOL)torchState {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // set button
+        // yellow when
+        // torch is on
+        [self.torchButton setTitleColor:(torchState ? [UIColor colorWithRed:1.0f
+                                                                      green:0.79f
+                                                                       blue:0.28f
+                                                                      alpha:1.0f]
+                                         : [UIColor whiteColor])
+                               forState:UIControlStateNormal];
+        [self.torchButton.layer setBorderColor:(torchState ? [UIColor colorWithRed:1.0f
+                                                                             green:0.79f
+                                                                              blue:0.28f
+                                                                             alpha:1.0f].CGColor
+                                                : [UIColor whiteColor].CGColor)];
+    });
+    
+    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    if ([device hasTorch]) {
+        [device lockForConfiguration:nil];
+        [device
+         setTorchMode:torchState ? AVCaptureTorchModeOn : AVCaptureTorchModeOff];
+        [device unlockForConfiguration];
     }
+    
+    _torchState = torchState;
 }
 
-- (AVCaptureVideoOrientation)interfaceOrientationToVideoOrientation:(UIInterfaceOrientation)orientation {
-    switch (orientation) {
-        case UIInterfaceOrientationPortrait:
-            return AVCaptureVideoOrientationPortrait;
-        case UIInterfaceOrientationPortraitUpsideDown:
-            return AVCaptureVideoOrientationPortraitUpsideDown;
-        case UIInterfaceOrientationLandscapeLeft:
-            return AVCaptureVideoOrientationLandscapeLeft;
-        case UIInterfaceOrientationLandscapeRight:
-            return AVCaptureVideoOrientationLandscapeRight;
-        default:
-            break;
-    }
-    NSLog(@"Warning - Didn't recognise interface orientation (%d)",orientation);
-    return AVCaptureVideoOrientationPortrait;
-}
-
--(void)initViews
-{
- 
-}
-
--(void)initConstraints
-{
-    
-    UIView *superview = self.view;
-    
-    UILabel *mylabel = [[UILabel alloc]init];
-    [mylabel setTranslatesAutoresizingMaskIntoConstraints:NO];
-    mylabel.text = @"MyLabel";
-    
-    UIButton *mybutton = [UIButton
-                          buttonWithType:UIButtonTypeRoundedRect];
-    [mybutton setTitle:@"My Button"
-              forState:UIControlStateNormal];
-    [mybutton setTranslatesAutoresizingMaskIntoConstraints:NO];
-    
-    //[superview addSubview:mylabel];
-    
-    
-    UIImageView *picture = [[UIImageView alloc] init];
-    picture.image = [UIImage imageNamed:@"fondoCamara.png"];
-    picture.translatesAutoresizingMaskIntoConstraints = NO;
-    picture.contentMode = UIViewContentModeCenter;
-    
-    [superview addSubview:picture];
-
-
-    
-    NSLayoutConstraint *myConstraint =[NSLayoutConstraint
-                                       constraintWithItem:picture
-                                       attribute:NSLayoutAttributeCenterY
-                                       relatedBy:NSLayoutRelationEqual
-                                       toItem:superview
-                                       attribute:NSLayoutAttributeCenterY
-                                       multiplier:1.0
-                                       constant:0];
-    
-    [superview addConstraint:myConstraint];
-    
-    myConstraint =[NSLayoutConstraint
-                   constraintWithItem:picture
-                   attribute:NSLayoutAttributeCenterX
-                   relatedBy:NSLayoutRelationEqual
-                   toItem:superview
-                   attribute:NSLayoutAttributeCenterX
-                   multiplier:1.0
-                   constant:0];
-    
-    [superview addConstraint:myConstraint];
- 
-   
-    
-    
-    
-}
-
-- (void)startRunning {
-    if (self.session.isRunning) {
-        return;
-    }
-    [self.session startRunning];
-}
-
-- (void)stopRunning {
-    if (!self.session.isRunning) {
-        return;
-    }
-    [self.session stopRunning];
-    
-    self.highlightView.cornersArray = nil;
-    self.highlightView.borderRectArray = nil;
-    [self.highlightView setNeedsDisplay];
-}
-
-#pragma mark - View lifecycle
+#pragma mark - Initialization
 
 - (id)initWithCornerView:(BOOL)showCornerView
              controlView:(BOOL)showControlsView
          barcodesHandler:(RSBarcodesHandler)barcodesHandler {
-    if (!self.highlightView && showCornerView) {
-        RSCornersView *cornerView =
-        [[RSCornersView alloc] initWithFrame:self.view.frame];
-        [self.mainView addSubview:cornerView];
-        [self.mainView bringSubviewToFront:cornerView];
+    if ((self = [super init])) {
+        if (!self.highlightView && showCornerView) {
+            RSCornersView *cornerView =
+            [[RSCornersView alloc] initWithFrame:self.view.frame];
+            cornerView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            [self.view addSubview:cornerView];
+            [self.view bringSubviewToFront:cornerView];
+            
+            self.highlightView = cornerView;
+            
+            self.isControlsVisible = showCornerView;
+        }
         
-        self.highlightView = cornerView;
+        if (!self.controlsView && showControlsView) {
+            UIView *controlsView = [[UIView alloc] initWithFrame:self.view.frame];
+            controlsView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            [self.view addSubview:controlsView];
+            [self.view bringSubviewToFront:controlsView];
+            
+            self.controlsView = controlsView;
+            self.isControlsVisible = showControlsView;
+            
+            self.isButtonBordersVisible = false;
+            
+            [self updateView];
+        }
         
-        self.isControlsVisible = showCornerView;
-    }
-    
-    if (!self.controlsView && showControlsView) {
-        UIView *controlsView = [[UIView alloc] initWithFrame:self.view.frame];
-        [self.mainView addSubview:controlsView];
-        [self.mainView bringSubviewToFront:controlsView];
-        
-        self.controlsView = controlsView;
-        self.isControlsVisible = showControlsView;
-        
-        self.isButtonBordersVisible = false;
-        
-       [self updateView];
-    }
-    
-    if (self) {
         self.barcodesHandler = barcodesHandler;
         
         self.tapGestureHandler = ^(CGPoint tapPoint) {};
@@ -282,75 +240,72 @@ NSString *const AVMetadataObjectTypeFace = @"face";
  preferredCameraPosition:(AVCaptureDevicePosition)cameraDevicePosition {
     self.preferredCameraPosition = cameraDevicePosition;
     
-    /*
-    [[UIDevice currentDevice] setValue:
-     [NSNumber numberWithInteger: UIInterfaceOrientationPortrait]
-                                forKey:@"orientation"];
-
-    */
     return [self initWithCornerView:showCornerView
                         controlView:showControlsView
                     barcodesHandler:barcodesHandler];
 }
 
+#pragma mark - View lifecycle
+
+- (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
+    
+    AVCaptureVideoOrientation target = [self __interfaceOrientationToVideoOrientation:[[UIApplication sharedApplication] statusBarOrientation]];
+    AVCaptureVideoOrientation source = self.layer.connection.videoOrientation;
+    if (self.layer.connection.supportsVideoOrientation && source != target) {
+        self.layer.connection.videoOrientation = target;
+    }
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    
+    CGRect frame = CGRectMake(0, 0, size.width, size.height);
+    self.layer.frame = frame;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-   /*
-    [[UIDevice currentDevice] setValue:
-     [NSNumber numberWithInteger: UIInterfaceOrientationPortrait]
-                                forKey:@"orientation"];
-
-    */
-    [self.mainView setBackgroundColor:[UIColor blackColor]];
+    [self.view setBackgroundColor:[UIColor blackColor]];
     [self __setup];
-    
-    [self initConstraints];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    /*
-    [[UIDevice currentDevice] setValue:
-     [NSNumber numberWithInteger: UIInterfaceOrientationPortrait]
-                                forKey:@"orientation"];
-*/
     
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(__applicationWillEnterForeground:)
-     name:UIApplicationWillEnterForegroundNotification
-     object:nil];
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(__applicationDidEnterBackground:)
-     name:UIApplicationDidEnterBackgroundNotification
-     object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(__applicationWillEnterForeground:)
+                                                 name:UIApplicationWillEnterForegroundNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(__applicationDidEnterBackground:)
+                                                 name:UIApplicationDidEnterBackgroundNotification
+                                               object:nil];
     
     [self startRunning];
     [self updateView];
-    
-    
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     
-    [[NSNotificationCenter defaultCenter]
-     removeObserver:self
-     name:UIApplicationWillEnterForegroundNotification
-     object:nil];
-    [[NSNotificationCenter defaultCenter]
-     removeObserver:self
-     name:UIApplicationDidEnterBackgroundNotification
-     object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIApplicationWillEnterForegroundNotification
+                                                  object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIApplicationDidEnterBackgroundNotification
+                                                  object:nil];
     
     [self stopRunning];
 }
 
 - (BOOL)shouldAutorotate {
-   [self updateView];
+    [self updateView];
     return YES;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
 }
 
 #pragma mark - AVCaptureMetadataOutputObjectsDelegate
@@ -418,87 +373,25 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
     }
 }
 
-- (void)switchCamera {
-    CATransition *animation = [CATransition animation];
-    animation.duration = .5f;
-    animation.timingFunction = [CAMediaTimingFunction
-                                functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    animation.type = @"oglFlip";
-    
-    for (AVCaptureDevice *d in
-         [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo]) {
-        if (d.position != _device.position) {
-            [self stopRunning];
-            _device = d;
-            
-            AVCaptureDeviceInput *oldInput = _input;
-            [_session removeInput:oldInput];
-            
-            _input = [[AVCaptureDeviceInput alloc] initWithDevice:_device error:nil];
-            
-            if ([_session canAddInput:_input]) {
-                [_session addInput:_input];
-                
-                [self setTorchState:false];
-                
-                if (self.device.position == AVCaptureDevicePositionFront) {
-                    animation.subtype = kCATransitionFromRight;
-                } else if (self.device.position == AVCaptureDevicePositionBack) {
-                    animation.subtype = kCATransitionFromLeft;
-                }
-                [self.layer addAnimation:animation forKey:nil];
-            } else {
-                [_session addInput:oldInput];
-            }
-            
-            [self startRunning];
-            break;
-        }
+#pragma mark - Public
+
+- (void)startRunning {
+    if (self.session.isRunning) {
+        return;
     }
+    [self.session startRunning];
 }
 
-- (void)exit {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self dismissViewControllerAnimated:true completion:nil];
-    });
-}
-
-- (void)toggleTorch {
-    [self setTorchState:!self.torchState];
-}
-
-- (void)setTorchState:(BOOL)torchState {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        // self.torchButton.titleLabel.textColor = ;
-        [self.torchButton setTitleColor:(torchState ? [UIColor colorWithRed:1.0f
-                                                                      green:0.79f
-                                                                       blue:0.28f
-                                                                      alpha:1.0f]
-                                         : [UIColor whiteColor])
-                               forState:UIControlStateNormal]; // set button
-        // yellow when
-        // torch is on
-        [self.torchButton.layer
-         setBorderColor:(torchState ? [UIColor colorWithRed:1.0f
-                                                      green:0.79f
-                                                       blue:0.28f
-                                                      alpha:1.0f].CGColor
-                         : [UIColor whiteColor].CGColor)];
-    });
-    
-    AVCaptureDevice *device =
-    [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    if ([device hasTorch]) {
-        [device lockForConfiguration:nil];
-        [device
-         setTorchMode:torchState ? AVCaptureTorchModeOn : AVCaptureTorchModeOff];
-        [device unlockForConfiguration];
+- (void)stopRunning {
+    if (!self.session.isRunning) {
+        return;
     }
+    [self.session stopRunning];
     
-    _torchState = torchState;
+    self.highlightView.cornersArray = nil;
+    self.highlightView.borderRectArray = nil;
+    [self.highlightView setNeedsDisplay];
 }
-
-#pragma mark - Interface
 
 - (void)updateView {
     if (!self.isControlsVisible) {
@@ -516,9 +409,6 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
     
     CGSize viewSize = self.view.frame.size;
     
-    self.sidebarView.hidden = YES;
-    self.controlsView.hidden = YES;
-
     if (!self.sidebarView) {
         self.sidebarView = [[UIView alloc] init];
         [self.sidebarView
@@ -529,7 +419,7 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
         [self.controlsView bringSubviewToFront:self.sidebarView];
     }
     
-    if (!self.cancelButton && [self isModal]) {
+    if (!self.cancelButton && [self __isModal]) {
         self.cancelButton = [[UIButton alloc] init];
         [self.cancelButton setTitle:@" cancel " forState:UIControlStateNormal];
         [self.cancelButton
@@ -539,14 +429,14 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
         [self.cancelButton setContentHorizontalAlignment:
          UIControlContentHorizontalAlignmentCenter];
         [self.cancelButton addTarget:self
-                              action:@selector(exit)
+                              action:@selector(__exit)
                     forControlEvents:UIControlEventTouchDown];
         
-       [self.controlsView addSubview:self.cancelButton];
+        [self.controlsView addSubview:self.cancelButton];
         [self.controlsView bringSubviewToFront:self.cancelButton];
     }
     
-    if (![self isModal]) {
+    if (![self __isModal]) {
         [self.cancelButton removeFromSuperview];
     }
     
@@ -564,7 +454,7 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
                                  action:@selector(switchCamera)
                        forControlEvents:UIControlEventTouchDown];
              
-             //[self.controlsView addSubview:self.flipButton];
+             [self.controlsView addSubview:self.flipButton];
              [self.controlsView bringSubviewToFront:self.flipButton];
          }
     
@@ -659,17 +549,10 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
         rotationAngle = -M_PI_2;
     [UIView animateWithDuration:0.5
                      animations:^{
-                         self.cancelButton.transform =
-                         CGAffineTransformMakeRotation(rotationAngle);
-                         self.torchButton.transform =
-                         CGAffineTransformMakeRotation(rotationAngle);
-                         self.flipButton.transform =
-                         CGAffineTransformMakeRotation(rotationAngle);
-                         
                          [self.sidebarView setFrame:sidebarRect];
                          [self.flipButton setFrame:flipButtonRect];
                          [self.cancelButton setFrame:cancelButtonRect];
-                         if ([self isModal]) {
+                         if ([self __isModal]) {
                              [self.torchButton setFrame:torchButtonRect];
                          } else {
                              [self.torchButton setFrame:cancelButtonRect];
@@ -680,46 +563,49 @@ didOutputMetadataObjects:(NSArray *)metadataObjects
     [self.flipButton sizeToFit];
     [self.cancelButton sizeToFit];
     [self.torchButton sizeToFit];
+}
+
+- (void)switchCamera {
+    CATransition *animation = [CATransition animation];
+    animation.duration = .5f;
+    animation.timingFunction = [CAMediaTimingFunction
+                                functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    animation.type = @"oglFlip";
     
-    
-   
+    for (AVCaptureDevice *d in
+         [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo]) {
+        if (d.position != _device.position) {
+            [self stopRunning];
+            _device = d;
+            
+            AVCaptureDeviceInput *oldInput = _input;
+            [_session removeInput:oldInput];
+            
+            _input = [[AVCaptureDeviceInput alloc] initWithDevice:_device error:nil];
+            
+            if ([_session canAddInput:_input]) {
+                [_session addInput:_input];
+                
+                [self setTorchState:false];
+                
+                if (self.device.position == AVCaptureDevicePositionFront) {
+                    animation.subtype = kCATransitionFromRight;
+                } else if (self.device.position == AVCaptureDevicePositionBack) {
+                    animation.subtype = kCATransitionFromLeft;
+                }
+                [self.layer addAnimation:animation forKey:nil];
+            } else {
+                [_session addInput:oldInput];
+            }
+            
+            [self startRunning];
+            break;
+        }
+    }
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:
-(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
+- (void)toggleTorch {
+    [self setTorchState:!self.torchState];
 }
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
-
-- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
-    return UIInterfaceOrientationPortrait;
-}
-
-- (NSUInteger)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskPortrait;
-}
-
-
-- (BOOL)isModal {
-    if ([self presentingViewController])
-        return YES;
-    if ([[self presentingViewController] presentedViewController] == self)
-        return YES;
-    if ([[[self navigationController] presentingViewController] presentedViewController] ==
-        [self navigationController])
-        return YES;
-    if ([[[self tabBarController] presentingViewController]
-         isKindOfClass:[UITabBarController class]])
-        return YES;
-    
-    return NO;
-}
-
-
-
-
 
 @end

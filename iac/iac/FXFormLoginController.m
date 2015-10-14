@@ -15,8 +15,8 @@
 - (NSArray *)fields
 {
     
-    self.NoEmpleado = @"12345678";
-    self.password = @"12345678";
+    self.NoEmpleado = @"123456789";
+    self.password = @"123456789";
     return @[
              
              //we want to add a group header for the field set of fields
@@ -30,9 +30,11 @@
               */
              
              
-             @{FXFormFieldKey: @"NoEmpleado",FXFormFieldDefaultValue:self.NoEmpleado, FXFormFieldHeader: @"Account",FXFormFieldTitle: @"No. empleado"},
+             @{FXFormFieldKey: @"NoEmpleado",FXFormFieldDefaultValue:self.NoEmpleado, FXFormFieldHeader: @"Account",FXFormFieldTitle: @"No. empleado"}
+             ,
              @{FXFormFieldKey: @"password",FXFormFieldDefaultValue:self.password},
-              @{FXFormFieldTitle: @"Sing In", FXFormFieldHeader: @"", FXFormFieldAction: @"submitRegistrationForm:"},
+             
+             @{FXFormFieldTitle: @"Sing In", FXFormFieldHeader: @"", FXFormFieldAction: @"submitRegistrationForm:"},
              
              ];
 }

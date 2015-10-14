@@ -31,6 +31,38 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+    self.view.backgroundColor = [UIColor clearColor];
+    
+    UIView *vheader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 151)];
+    
+    UIImage *logo = [UIImage imageNamed:@"logoIconLogin.png"];
+    
+    UIImageView *vlogo = [[UIImageView alloc] initWithImage:logo];
+    
+    vlogo.clipsToBounds = YES;
+    
+    vlogo.frame = vheader.frame;
+    
+    [vheader addSubview:vlogo];
+    
+    vheader.backgroundColor = [UIColor clearColor];
+    
+    self.tableView.tableHeaderView = vheader;
+    
+    
+    
+    UIImageView *vbj = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_login.png"]];
+    
+    vbj.clipsToBounds = YES;
+    
+    vbj.frame = self.view.frame;
+    
+    [self.view insertSubview:vbj atIndex:0];
+    
+    self.tableView.backgroundView = vbj;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,10 +79,7 @@
         [self show:@"No. Empleado es Requerido"];
     else if (form.password.length <= 0)
         [self show:@"La Contraseña es Requerida"];
-    /*
-    else if (![self NSStringIsValidEmail:form.email])
-        [self show:@"El Correo Electronico no es valido"];
-     */
+    
     else
     {
         [self starthud];

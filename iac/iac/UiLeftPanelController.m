@@ -53,7 +53,7 @@
             break;
             
         default:
-            return @"SITIOS DE INTERES";
+            return @"MI PERFIL";
             break;
     }
     

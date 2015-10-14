@@ -9,12 +9,13 @@
 #import "BaseViewController.h"
 #import "EncuestaSalidaController.h"
 #import "RSBarcodes.h"
-@interface HomeViewcontroller : BaseViewController
+@interface HomeViewcontroller : BaseViewController<UIWebViewDelegate>
+
 {
     RSScannerViewController *scanner;
 }
 - (IBAction)dom1:(id)sender;
 - (IBAction)dom2:(id)sender;
 - (IBAction)dom3:(id)sender;
-
+@property (nonatomic, copy) NSString *loaded;
 @end

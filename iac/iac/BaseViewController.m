@@ -146,7 +146,6 @@
 
 +(BOOL) isLogin
 {
-    return YES;
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     BOOL isUserLogged = ([defaults boolForKey:@"currentUser_3"]);
     

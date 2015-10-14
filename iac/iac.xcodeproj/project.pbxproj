@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		090149FB1AA0C95000E087DC /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 090149FA1AA0C95000E087DC /* ServerConnection.m */; };
+		091541771BCEC6C400C401F5 /* bg_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 091541761BCEC6C400C401F5 /* bg_login.png */; settings = {ASSET_TAGS = (); }; };
+		0915417B1BCEC8C100C401F5 /* logoIconLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 0915417A1BCEC8C100C401F5 /* logoIconLogin.png */; settings = {ASSET_TAGS = (); }; };
 		0918BC861AB0B5BD000034A5 /* DynamicFromLocalJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 0918BC851AB0B5BD000034A5 /* DynamicFromLocalJson.m */; };
 		0918BC8C1AB0B9CD000034A5 /* DynamicJsonControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0918BC8B1AB0B9CD000034A5 /* DynamicJsonControllerViewController.m */; };
 		0918BC901AB0BB4B000034A5 /* TermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0918BC8E1AB0BB4B000034A5 /* TermsViewController.m */; };
@@ -32,6 +34,7 @@
 		094B73A01A9CD9CB0082EE1C /* DynamicForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 094B739F1A9CD9CB0082EE1C /* DynamicForm.m */; };
 		094B73A21A9CD9D70082EE1C /* FormFields.json in Resources */ = {isa = PBXBuildFile; fileRef = 094B73A11A9CD9D70082EE1C /* FormFields.json */; };
 		095312EF1AB151CE001CC3E8 /* FormFieldsMotivo.json in Resources */ = {isa = PBXBuildFile; fileRef = 095312EE1AB151CE001CC3E8 /* FormFieldsMotivo.json */; };
+		0956BA801BBCA327000D86F8 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0956BA7F1BBCA327000D86F8 /* Fabric.framework */; settings = {ASSET_TAGS = (); }; };
 		095C756B1A9E778D00459FE3 /* RootForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 095C756A1A9E778D00459FE3 /* RootForm.m */; };
 		095C756E1A9E781C00459FE3 /* AllEmpleadoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 095C756D1A9E781C00459FE3 /* AllEmpleadoController.m */; };
 		09766C9C1AAF9137003F0CCF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 09766C9A1AAF9137003F0CCF /* Model.xcdatamodeld */; };
@@ -63,6 +66,8 @@
 /* Begin PBXFileReference section */
 		090149F91AA0C95000E087DC /* ServerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerConnection.h; sourceTree = "<group>"; };
 		090149FA1AA0C95000E087DC /* ServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerConnection.m; sourceTree = "<group>"; };
+		091541761BCEC6C400C401F5 /* bg_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_login.png; sourceTree = "<group>"; };
+		0915417A1BCEC8C100C401F5 /* logoIconLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoIconLogin.png; sourceTree = "<group>"; };
 		0918BC841AB0B5BD000034A5 /* DynamicFromLocalJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicFromLocalJson.h; sourceTree = "<group>"; };
 		0918BC851AB0B5BD000034A5 /* DynamicFromLocalJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicFromLocalJson.m; sourceTree = "<group>"; };
 		0918BC8A1AB0B9CD000034A5 /* DynamicJsonControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicJsonControllerViewController.h; sourceTree = "<group>"; };
@@ -104,6 +109,7 @@
 		094B739F1A9CD9CB0082EE1C /* DynamicForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicForm.m; sourceTree = "<group>"; };
 		094B73A11A9CD9D70082EE1C /* FormFields.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FormFields.json; sourceTree = "<group>"; };
 		095312EE1AB151CE001CC3E8 /* FormFieldsMotivo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FormFieldsMotivo.json; sourceTree = "<group>"; };
+		0956BA7F1BBCA327000D86F8 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		095C75691A9E778D00459FE3 /* RootForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootForm.h; sourceTree = "<group>"; };
 		095C756A1A9E778D00459FE3 /* RootForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootForm.m; sourceTree = "<group>"; };
 		095C756C1A9E781C00459FE3 /* AllEmpleadoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllEmpleadoController.h; sourceTree = "<group>"; };
@@ -143,6 +149,7 @@
 			files = (
 				09263D4E1A96DED7008E1704 /* Crashlytics.framework in Frameworks */,
 				E65C08FD162BC70C2E0CBA59 /* libPods.a in Frameworks */,
+				0956BA801BBCA327000D86F8 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +195,7 @@
 		092843591A9658C10099545A = {
 			isa = PBXGroup;
 			children = (
+				0956BA7F1BBCA327000D86F8 /* Fabric.framework */,
 				092843641A9658C20099545A /* iac */,
 				092843811A9658C20099545A /* iacTests */,
 				092843631A9658C20099545A /* Products */,
@@ -393,6 +401,8 @@
 		09BF38751A9D147B00DCB402 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				0915417A1BCEC8C100C401F5 /* logoIconLogin.png */,
+				091541761BCEC6C400C401F5 /* bg_login.png */,
 				09BF38761A9D148400DCB402 /* logoIcon.jpg */,
 			);
 			name = images;
@@ -528,6 +538,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				091541771BCEC6C400C401F5 /* bg_login.png in Resources */,
 				092843A01A965C960099545A /* HomeViewcontroller.xib in Resources */,
 				0918BC911AB0BB4B000034A5 /* TermsViewController.xib in Resources */,
 				092843791A9658C20099545A /* LaunchScreen.xib in Resources */,
@@ -538,6 +549,7 @@
 				09191F031A9D7B3B00EE6580 /* FormFieldsCursos.json in Resources */,
 				09BF387E1A9D2DEA00DCB402 /* FormFieldsSatisfaccion.json in Resources */,
 				093273CB1A9FEEB60001CC70 /* fondoCamara.png in Resources */,
+				0915417B1BCEC8C100C401F5 /* logoIconLogin.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -755,7 +767,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "05db2089-2ff2-46c9-95ad-6ffa1e1238d5";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -774,7 +786,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "05db2089-2ff2-46c9-95ad-6ffa1e1238d5";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

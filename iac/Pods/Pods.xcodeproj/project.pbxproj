@@ -7,527 +7,544 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		02E7C732783CE9D5689BED14 /* RSITF14Generator.h in Headers */ = {isa = PBXBuildFile; fileRef = E8FF169981C04180C4823B3A /* RSITF14Generator.h */; };
-		07968F18A3430839D62CD4EA /* RSScannerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 03AD3398D6FFE07B6382D89D /* RSScannerViewController.h */; };
-		137BCE23EAFBD49087256F98 /* RSEANGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 59F1B1C03405EEBC218D1865 /* RSEANGenerator.h */; };
-		1968691A5E950521F457CE37 /* Pods-RSBarcodes-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B470B87EA040DAE3D3D21BB /* Pods-RSBarcodes-dummy.m */; };
-		1A64D0BF6F4C800C27D22BB7 /* Pods-JASidePanels-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C6030BAE94E4B386635107E0 /* Pods-JASidePanels-dummy.m */; };
-		203534DF6CA6F104C8721D47 /* RSUPCEGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = F51C4796EB8690D9C2891998 /* RSUPCEGenerator.h */; };
-		280A10E3D225AFCF31905BD7 /* RSISSN13Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3435664849418879C52BF61D /* RSISSN13Generator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		2A35CCD664C20620B8DDE252 /* RSCode39Mod43Generator.h in Headers */ = {isa = PBXBuildFile; fileRef = 44DC0C3A0521420B4EA176FA /* RSCode39Mod43Generator.h */; };
-		2BEE0EF5301A7D36472FC8A5 /* RSExtendedCode39Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3076467DF49001C2756E6248 /* RSExtendedCode39Generator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		3246D1EA5FEC791CA3E76A43 /* RSISBN13Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDC00B7967D38FE3ADE93FE /* RSISBN13Generator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		370099C89030E0B807BB4C7B /* RSCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB4F3D2738EC5D88FA03470 /* RSCodeGenerator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		38B6961365F0E62DAD33DF60 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89A4FB8856651ECA9CA4385A /* Foundation.framework */; };
-		39A7BA3BA03A8463412B627C /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA24F9D76A83FD1E9E065E3 /* Pods-dummy.m */; };
-		3A5C1A10802C1B196146A35A /* RSCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = 76D77F62A631DB7781C9778E /* RSCornersView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		3E223EFF7C818923420ED169 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89A4FB8856651ECA9CA4385A /* Foundation.framework */; };
-		4308845C69E510A120BE4940 /* RSITF14Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = 55517C21894190593ECD2CF1 /* RSITF14Generator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		452381E9157BC4B7D32B26EA /* RSEAN8Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE8578EED516F4759FA160B /* RSEAN8Generator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		455C55B5455D922DFF1DBB3C /* RSBarcodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EA6AB65479D432762F04B1E /* RSBarcodes.h */; };
-		4BBA16BD5A757D62B37A06FB /* RSCode128Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A43410F54CDC6FBA16B8133 /* RSCode128Generator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		54A013DD9FEB68C37C79CF4F /* RSEAN8Generator.h in Headers */ = {isa = PBXBuildFile; fileRef = 58FC5E6F7D26EF8EF0B40E26 /* RSEAN8Generator.h */; };
-		577BE684226F88E9867BC7C5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86123F62EB59544BEF9DE4A8 /* QuartzCore.framework */; };
-		5E46B4F7000B9067C2FEAD83 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89A4FB8856651ECA9CA4385A /* Foundation.framework */; };
-		5F0D79288AF19860575A06A6 /* JASidePanelController.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D1211AC24E4972D58455A0A /* JASidePanelController.h */; };
-		649FD8A03AC03127B2DA3A65 /* RSCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA4D7CAE7A63C5D7C8D6CD5 /* RSCodeView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		7D88CC2DFC3DE1C55B7DDBC8 /* RSScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 493BC7595B7595918C41EA28 /* RSScannerViewController.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		820FBBF30A38524B2A5F8D82 /* RSISBN13Generator.h in Headers */ = {isa = PBXBuildFile; fileRef = B0A5B21A116A57BBFA04D8AC /* RSISBN13Generator.h */; };
-		8B3AA048BCAAED46D6DFCB5B /* RSCode39Generator.h in Headers */ = {isa = PBXBuildFile; fileRef = E9101023C27057FF881E69F7 /* RSCode39Generator.h */; };
-		8C0D811D3240C95DD5BDEE97 /* RSCode128Generator.h in Headers */ = {isa = PBXBuildFile; fileRef = BCF4C5663986876D07009D77 /* RSCode128Generator.h */; };
-		99DF14C4303C7D20BB46F641 /* RSUnifiedCodeGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BAD9939ADEE2C120A93143C /* RSUnifiedCodeGenerator.h */; };
-		A1EF825D132E8D0E8AB03BF3 /* RSCode39Mod43Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = DB21C01BE1549885CD0A8DDB /* RSCode39Mod43Generator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		A3D1EB4FB7C0239EFA46C08D /* UIViewController+JASidePanel.h in Headers */ = {isa = PBXBuildFile; fileRef = 04762F5F6AD9051DBD09A0BF /* UIViewController+JASidePanel.h */; };
-		BF8E85251550827EEF0A5BA0 /* RSCode39Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E2DAF90411071449C7C1670 /* RSCode39Generator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		C01314849837DE944E609791 /* RSCodeView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A0EF10D04E4D5EF37D1F601 /* RSCodeView.h */; };
-		CE6714056ED60F53541E86D8 /* RSEAN13Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = C10354245F49282EC382C9E2 /* RSEAN13Generator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		D45E9095DF20BB4650E58742 /* RSEANGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = E0A27904837B79418D68D77A /* RSEANGenerator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		D48A0156F91DB78941D33955 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0DD63C19E0FDE41534E71D /* CoreImage.framework */; };
-		D4EC2368EC888C6326627D95 /* RSCode93Generator.h in Headers */ = {isa = PBXBuildFile; fileRef = 97CD0538A0F3EF62F031DE98 /* RSCode93Generator.h */; };
-		DD11B4E8A13BB85206D35176 /* RSCodeGen.h in Headers */ = {isa = PBXBuildFile; fileRef = D4A18F19227BDF9ADD840C9F /* RSCodeGen.h */; };
-		E7A77184E072FB4F445AE29C /* RSCode93Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = 9323767055852062A7282DCB /* RSCode93Generator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		E804E15E8B61C08C0368536A /* RSExtendedCode39Generator.h in Headers */ = {isa = PBXBuildFile; fileRef = DCDF94AB9929AF54CD72D991 /* RSExtendedCode39Generator.h */; };
-		E8B7707030CF4243E4756446 /* UIViewController+JASidePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 681003614EFDAFE8338CAD62 /* UIViewController+JASidePanel.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		EAA1C3DB8C953F540F2A3DC8 /* JASidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = B18714785272FF600F279449 /* JASidePanelController.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		ED0F9ADAD83DD0493C812EFF /* RSCodeGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 1465C57E03F5A175968D5DDC /* RSCodeGenerator.h */; };
-		EFD7D7717CAA5819B42170EC /* RSCornersView.h in Headers */ = {isa = PBXBuildFile; fileRef = 409BF545B937FDD13DB09E17 /* RSCornersView.h */; };
-		F4AB6364A4F7E2866259890F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D0CA795E5231B479DF97B9 /* AVFoundation.framework */; };
-		F74B0A03B003119944BAF63B /* RSUPCEGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4415636E64318C6B1AB846AF /* RSUPCEGenerator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		F8643ACAA6EBEBAFB4CA6C6E /* RSISSN13Generator.h in Headers */ = {isa = PBXBuildFile; fileRef = BA1520295C1510DAC66F6307 /* RSISSN13Generator.h */; };
-		F959A2361938A216A2BC9C38 /* RSEAN13Generator.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A6A4871F114E1A01EE37A0D /* RSEAN13Generator.h */; };
-		FB32C45A09847D56A4FA8E7E /* RSUnifiedCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBAAD5DF3034A440B89CA1F /* RSUnifiedCodeGenerator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		02FEE029A01919D54BA2869435ACA5A9 /* RSScannerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = C3D3E656532EFCA81A7C720EFC82ABBF /* RSScannerViewController.h */; };
+		0C8799DC587D3D8DDA3503BFADBF8408 /* RSCodeView.h in Headers */ = {isa = PBXBuildFile; fileRef = A070B5AFCB0264EBB92F021344FAB707 /* RSCodeView.h */; };
+		0C96D8CFE40B7196D23E5868465287AE /* RSEAN13Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B047E9041A9FE7A0CF2393CE41C0FBD /* RSEAN13Generator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		1EE2EE103AA5368944A04AE20EEDA3C4 /* RSUnifiedCodeGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 3E84C9D8A5E93D64321E25E550AEECCA /* RSUnifiedCodeGenerator.h */; };
+		2659BD987CF3358370493C18EAA68151 /* RSCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = C6834F37D9F52B0A14CB20F17BD62CEB /* RSCodeGenerator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		29452F4FBDE2157B850A7F5B6BC46C71 /* RSCode93Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = A35F27587C935505EAFB0BF918CDD34B /* RSCode93Generator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		2D0157B81FD63C5F450C606AAFCF9EFF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B833AF3BD64FAF416ECC581497357A88 /* Foundation.framework */; };
+		2EA21C23F73CB63C94CB3DB2C21DD1EF /* RSCode39Mod43Generator.h in Headers */ = {isa = PBXBuildFile; fileRef = 25EA6828AEAC4D51AA6E872AB4178201 /* RSCode39Mod43Generator.h */; };
+		32FC02702C72D8C9E17096BC77864687 /* RSCode39Mod43Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = 93573C88332C1A4A8BB0B99DF5924840 /* RSCode39Mod43Generator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		37AADD7041C7047418CF097BA1A7A36F /* RSExtendedCode39Generator.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CA4B0E0E615F40131F1C9F76F09E169 /* RSExtendedCode39Generator.h */; };
+		3F95652D688DEC2A629F9565F8246A7A /* RSCodeGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BF2B4A88E40A53CFEBB5BC46A34C38D /* RSCodeGenerator.h */; };
+		448A0D6B2133F118FD7BB779896468E9 /* RSEANGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE2C435A2A119ED070411BABD971939 /* RSEANGenerator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		467EEBCA9162AD1C9485D45D134FF513 /* RSCode93Generator.h in Headers */ = {isa = PBXBuildFile; fileRef = 0ABE48865DD459FC7930A2D0A5571F61 /* RSCode93Generator.h */; };
+		4A1990FB23727201F75D62BCCC079853 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75D1555841D1E35B7D6C3D1CC347BA82 /* QuartzCore.framework */; };
+		4FF74DF155701B4027E4CF1249D12EBC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AAD756CB0B6AE8C0E43726318560883 /* AVFoundation.framework */; };
+		54D17B82BA5F7A7F5B7E4787D7AD69C2 /* RSISSN13Generator.h in Headers */ = {isa = PBXBuildFile; fileRef = BEACB52CCA1F8995A4B4C9F6B6A9D4A8 /* RSISSN13Generator.h */; };
+		55359996D42499CAC402F07D914AD8FB /* RSExtendedCode39Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F0DB2A94B6E6D441130A8914FBCA57 /* RSExtendedCode39Generator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		5F756FFFEBD3FF87B5C1C70A1256B510 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9AFE31B758FEFA7FE2D775119C4F9EC /* CoreImage.framework */; };
+		62F466D6C1FC5A4DC208A60F9B5EDC58 /* RSEAN8Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E15A84D9DACC66471DA46456ED2375 /* RSEAN8Generator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		6398116E2F5C012CA53763E6A32C0F40 /* RSEAN8Generator.h in Headers */ = {isa = PBXBuildFile; fileRef = 1ACCC2905CD23898573AE09AE63ACF49 /* RSEAN8Generator.h */; };
+		6CDE1D80A411F0C606A6C05A4391A192 /* RSCodeGen.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D5A8D0C805AA129C48BB94D5F67860F /* RSCodeGen.h */; };
+		6D1F8D6CBD53AE0C73C1D33496EA85BA /* RSUPCEGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBCC535F32DB3DC607C276D4977E55B /* RSUPCEGenerator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		7059B0876D57B17E1259C4BFA17BF9CD /* RSScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D0EE54C8FB63C2D8DBE2657A5A2CF2 /* RSScannerViewController.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		73CFDA6DE90DEBD90515B4165F7C19CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B833AF3BD64FAF416ECC581497357A88 /* Foundation.framework */; };
+		744945B334541277498F417478E3DAB6 /* RSCornersView.m in Sources */ = {isa = PBXBuildFile; fileRef = F44FDF707683EA419B313D0F9BCE33B9 /* RSCornersView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		74F4BC5AD7F2685E95FB459FECA8885B /* UIViewController+JASidePanel.h in Headers */ = {isa = PBXBuildFile; fileRef = 9E72066F16B300805C3A47251CEC26B1 /* UIViewController+JASidePanel.h */; };
+		7A1A46EDF44F345648691F271F6EBEB1 /* RSCode128Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = 460CAB6440236B60A241DAEC57245658 /* RSCode128Generator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		7DE96C97D83A27C655AE068BF7D7E8E5 /* RSUnifiedCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BCDFC9F8292B095B71DD0C7F0761B6C /* RSUnifiedCodeGenerator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		81B2067B7824234502137E912169B295 /* RSCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F3A31455ED10D7FB82FB9F87204EA0D /* RSCodeView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		82CB1F471933F8D4ED810E0B3A39175A /* RSISSN13Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = E3CE43BDDE0442621D3E9FC0B7D78764 /* RSISSN13Generator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		8BAAAB12FF115E5ED8A98B8101E54285 /* RSCornersView.h in Headers */ = {isa = PBXBuildFile; fileRef = B2A4EB0070FCB3BB5F05326325448A0A /* RSCornersView.h */; };
+		990986BC64EBF6DC4A1D387298279320 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 23C61ECBBFCCD2760A9ABB576ECC58E8 /* Pods-dummy.m */; };
+		9AD6BC6BD02312B30C9BCFC176199B82 /* JASidePanelController.h in Headers */ = {isa = PBXBuildFile; fileRef = B6604528FB364FE94C6362A4E39203F7 /* JASidePanelController.h */; };
+		A262495E94BDE89BB9FD135200E140C2 /* RSEAN13Generator.h in Headers */ = {isa = PBXBuildFile; fileRef = 3027211683C24BADC390B4E61B08D2C0 /* RSEAN13Generator.h */; };
+		B4ECAFF5E419A65B28AF350CE1E8251A /* RSEANGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = E682478640737455C3897E6C0603911B /* RSEANGenerator.h */; };
+		BC8390AFC80E616E38B2CB426B0BF4D7 /* RSBarcodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 95B98E23DA48C74B204169097536DEF8 /* RSBarcodes.h */; };
+		C875587BD6EE8B620832CA977FC80DE6 /* RSITF14Generator.h in Headers */ = {isa = PBXBuildFile; fileRef = 398BE48E09CE48E41402F599BF06CCD1 /* RSITF14Generator.h */; };
+		CE118E80BA1A2DB36277CD804FF4AC2B /* RSCode39Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C3098F38560DDC4DEEA02F971719A22 /* RSCode39Generator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		D0FC981E49C131BF9E95C7261E09323C /* JASidePanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA93104F7660B908C219540F52957CA /* JASidePanelController.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		D1E589A467E2940F84F15D06BC0177CF /* RSITF14Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = BB32B95E745D87AFEB4DACF6D18BA307 /* RSITF14Generator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		DCE9415926270A173BD0CE1F871AD0B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B833AF3BD64FAF416ECC581497357A88 /* Foundation.framework */; };
+		E29859EC5D6F94A33B9A566556354738 /* RSBarcodes-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E3EBC47A4CE84EAABDDB761BF63571 /* RSBarcodes-dummy.m */; };
+		E40BF831432AD911BC739469F58250DD /* RSCode128Generator.h in Headers */ = {isa = PBXBuildFile; fileRef = 04523FB1B02BE3500F97E1DD21BCDDE8 /* RSCode128Generator.h */; };
+		E5FF1477735F4510EB2116327E4B251A /* RSCode39Generator.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F0422913909A06EE756D472BB206AEC /* RSCode39Generator.h */; };
+		EE3B6D6783631A6479DE57E845C49322 /* JASidePanels-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BB4995992783F7C7FF9B8F48504942 /* JASidePanels-dummy.m */; };
+		EFE76903A094C6C4F9E5FE6E834E949A /* RSISBN13Generator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6392550DABEE9129AB8CC4E62BCD188B /* RSISBN13Generator.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		F0CCB0777115DF04339AE6D99A7018B1 /* RSISBN13Generator.h in Headers */ = {isa = PBXBuildFile; fileRef = F44F6FB17222108BA1DBB9E624208B64 /* RSISBN13Generator.h */; };
+		FB3C61BBB27E6C46BEF03CF101A79C43 /* UIViewController+JASidePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5981577416B7F781C0B448CEEA104697 /* UIViewController+JASidePanel.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		FE30013E38E47979EE3A6B53350FDB6E /* RSUPCEGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = DC14B210E023E57E7255AFDE9B6121B5 /* RSUPCEGenerator.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		709779BFD0AB38ECDDA68312 /* PBXContainerItemProxy */ = {
+		023FB7501C945B257256BD9543E6F4F7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = E4960555369420BEA248ABE9 /* Project object */;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D65123BCA0E1A1E15BA0FCFA;
-			remoteInfo = "Pods-RSBarcodes";
+			remoteGlobalIDString = 08A7858A7AEF85F91C067B2D1DDEC1BD;
+			remoteInfo = JASidePanels;
 		};
-		769965559A45D89DD58EA689 /* PBXContainerItemProxy */ = {
+		ECA6B669912567871410F3AD2FD9F940 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = E4960555369420BEA248ABE9 /* Project object */;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 169B215E6114911FE2B2A56A;
-			remoteInfo = "Pods-JASidePanels";
+			remoteGlobalIDString = 466DE5B6518B94D59F59C18908FD90A4;
+			remoteInfo = RSBarcodes;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03AD3398D6FFE07B6382D89D /* RSScannerViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSScannerViewController.h; path = RSBarcodes/RSScannerViewController.h; sourceTree = "<group>"; };
-		04407E67E23BA8131DCC4106 /* libPods-JASidePanels.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JASidePanels.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		04762F5F6AD9051DBD09A0BF /* UIViewController+JASidePanel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+JASidePanel.h"; path = "JASidePanels/Source/UIViewController+JASidePanel.h"; sourceTree = "<group>"; };
-		1465C57E03F5A175968D5DDC /* RSCodeGenerator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSCodeGenerator.h; path = RSBarcodes/RSCodeGenerator.h; sourceTree = "<group>"; };
-		17C9F128D2FC1323FEFC37C4 /* Pods-JASidePanels.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JASidePanels.xcconfig"; sourceTree = "<group>"; };
-		1D1211AC24E4972D58455A0A /* JASidePanelController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JASidePanelController.h; path = JASidePanels/Source/JASidePanelController.h; sourceTree = "<group>"; };
-		1DA24F9D76A83FD1E9E065E3 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		1E0DD63C19E0FDE41534E71D /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreImage.framework; sourceTree = DEVELOPER_DIR; };
-		2904DA286C175DC3F23D10AB /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		2A43410F54CDC6FBA16B8133 /* RSCode128Generator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSCode128Generator.m; path = RSBarcodes/RSCode128Generator.m; sourceTree = "<group>"; };
-		2A6A4871F114E1A01EE37A0D /* RSEAN13Generator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSEAN13Generator.h; path = RSBarcodes/RSEAN13Generator.h; sourceTree = "<group>"; };
-		3076467DF49001C2756E6248 /* RSExtendedCode39Generator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSExtendedCode39Generator.m; path = RSBarcodes/RSExtendedCode39Generator.m; sourceTree = "<group>"; };
-		342DBD0D46F1DC8E2637AF47 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		3435664849418879C52BF61D /* RSISSN13Generator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSISSN13Generator.m; path = RSBarcodes/RSISSN13Generator.m; sourceTree = "<group>"; };
-		409BF545B937FDD13DB09E17 /* RSCornersView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSCornersView.h; path = RSBarcodes/RSCornersView.h; sourceTree = "<group>"; };
-		4415636E64318C6B1AB846AF /* RSUPCEGenerator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSUPCEGenerator.m; path = RSBarcodes/RSUPCEGenerator.m; sourceTree = "<group>"; };
-		44DC0C3A0521420B4EA176FA /* RSCode39Mod43Generator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSCode39Mod43Generator.h; path = RSBarcodes/RSCode39Mod43Generator.h; sourceTree = "<group>"; };
-		4644D05E958A26AF49ADF78B /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
-		493BC7595B7595918C41EA28 /* RSScannerViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSScannerViewController.m; path = RSBarcodes/RSScannerViewController.m; sourceTree = "<group>"; };
-		4F5A895209C4A5F8F2AEA21D /* Pods-RSBarcodes-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RSBarcodes-Private.xcconfig"; sourceTree = "<group>"; };
-		55517C21894190593ECD2CF1 /* RSITF14Generator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSITF14Generator.m; path = RSBarcodes/RSITF14Generator.m; sourceTree = "<group>"; };
-		58FC5E6F7D26EF8EF0B40E26 /* RSEAN8Generator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSEAN8Generator.h; path = RSBarcodes/RSEAN8Generator.h; sourceTree = "<group>"; };
-		59F1B1C03405EEBC218D1865 /* RSEANGenerator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSEANGenerator.h; path = RSBarcodes/RSEANGenerator.h; sourceTree = "<group>"; };
-		5EA6AB65479D432762F04B1E /* RSBarcodes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSBarcodes.h; path = RSBarcodes/RSBarcodes.h; sourceTree = "<group>"; };
-		681003614EFDAFE8338CAD62 /* UIViewController+JASidePanel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+JASidePanel.m"; path = "JASidePanels/Source/UIViewController+JASidePanel.m"; sourceTree = "<group>"; };
-		6A0EF10D04E4D5EF37D1F601 /* RSCodeView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSCodeView.h; path = RSBarcodes/RSCodeView.h; sourceTree = "<group>"; };
-		6B470B87EA040DAE3D3D21BB /* Pods-RSBarcodes-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RSBarcodes-dummy.m"; sourceTree = "<group>"; };
-		6DDC00B7967D38FE3ADE93FE /* RSISBN13Generator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSISBN13Generator.m; path = RSBarcodes/RSISBN13Generator.m; sourceTree = "<group>"; };
-		72340676C59797CA528D240A /* libPods-RSBarcodes.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RSBarcodes.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		76D77F62A631DB7781C9778E /* RSCornersView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSCornersView.m; path = RSBarcodes/RSCornersView.m; sourceTree = "<group>"; };
-		775FFE93D3A555475D9BFA63 /* Pods-RSBarcodes-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RSBarcodes-prefix.pch"; sourceTree = "<group>"; };
-		7BAD9939ADEE2C120A93143C /* RSUnifiedCodeGenerator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSUnifiedCodeGenerator.h; path = RSBarcodes/RSUnifiedCodeGenerator.h; sourceTree = "<group>"; };
-		7E2DAF90411071449C7C1670 /* RSCode39Generator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSCode39Generator.m; path = RSBarcodes/RSCode39Generator.m; sourceTree = "<group>"; };
-		86123F62EB59544BEF9DE4A8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		89A4FB8856651ECA9CA4385A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		9323767055852062A7282DCB /* RSCode93Generator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSCode93Generator.m; path = RSBarcodes/RSCode93Generator.m; sourceTree = "<group>"; };
-		97CD0538A0F3EF62F031DE98 /* RSCode93Generator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSCode93Generator.h; path = RSBarcodes/RSCode93Generator.h; sourceTree = "<group>"; };
-		9BAD0EEE7F9313212C73186B /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
-		9CB4F3D2738EC5D88FA03470 /* RSCodeGenerator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSCodeGenerator.m; path = RSBarcodes/RSCodeGenerator.m; sourceTree = "<group>"; };
-		A1B295102582FA93A35ED4C4 /* Pods-RSBarcodes.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RSBarcodes.xcconfig"; sourceTree = "<group>"; };
-		AE6103CBAB3F609729F98C3C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
-		B0A5B21A116A57BBFA04D8AC /* RSISBN13Generator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSISBN13Generator.h; path = RSBarcodes/RSISBN13Generator.h; sourceTree = "<group>"; };
-		B18714785272FF600F279449 /* JASidePanelController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JASidePanelController.m; path = JASidePanels/Source/JASidePanelController.m; sourceTree = "<group>"; };
-		BA1520295C1510DAC66F6307 /* RSISSN13Generator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSISSN13Generator.h; path = RSBarcodes/RSISSN13Generator.h; sourceTree = "<group>"; };
-		BCF4C5663986876D07009D77 /* RSCode128Generator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSCode128Generator.h; path = RSBarcodes/RSCode128Generator.h; sourceTree = "<group>"; };
-		C10354245F49282EC382C9E2 /* RSEAN13Generator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSEAN13Generator.m; path = RSBarcodes/RSEAN13Generator.m; sourceTree = "<group>"; };
-		C6030BAE94E4B386635107E0 /* Pods-JASidePanels-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JASidePanels-dummy.m"; sourceTree = "<group>"; };
-		CB24A2005BE00B94CD7B3CAE /* Pods-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-environment.h"; sourceTree = "<group>"; };
-		CBF6697BFAC1817B7EFFA99B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
-		CC5905BAE5374B26D4ED74F9 /* Pods-JASidePanels-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-JASidePanels-prefix.pch"; sourceTree = "<group>"; };
-		CFBAAD5DF3034A440B89CA1F /* RSUnifiedCodeGenerator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSUnifiedCodeGenerator.m; path = RSBarcodes/RSUnifiedCodeGenerator.m; sourceTree = "<group>"; };
-		D4A18F19227BDF9ADD840C9F /* RSCodeGen.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSCodeGen.h; path = RSBarcodes/RSCodeGen.h; sourceTree = "<group>"; };
-		DB21C01BE1549885CD0A8DDB /* RSCode39Mod43Generator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSCode39Mod43Generator.m; path = RSBarcodes/RSCode39Mod43Generator.m; sourceTree = "<group>"; };
-		DCDF94AB9929AF54CD72D991 /* RSExtendedCode39Generator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSExtendedCode39Generator.h; path = RSBarcodes/RSExtendedCode39Generator.h; sourceTree = "<group>"; };
-		DCF8F91F8200A52723B8A483 /* Pods-JASidePanels-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JASidePanels-Private.xcconfig"; sourceTree = "<group>"; };
-		E0A27904837B79418D68D77A /* RSEANGenerator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSEANGenerator.m; path = RSBarcodes/RSEANGenerator.m; sourceTree = "<group>"; };
-		E8FF169981C04180C4823B3A /* RSITF14Generator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSITF14Generator.h; path = RSBarcodes/RSITF14Generator.h; sourceTree = "<group>"; };
-		E9101023C27057FF881E69F7 /* RSCode39Generator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSCode39Generator.h; path = RSBarcodes/RSCode39Generator.h; sourceTree = "<group>"; };
-		F51C4796EB8690D9C2891998 /* RSUPCEGenerator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSUPCEGenerator.h; path = RSBarcodes/RSUPCEGenerator.h; sourceTree = "<group>"; };
-		F5D0CA795E5231B479DF97B9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
-		F680D437BD58A4A1D12CA5C6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		FCE8578EED516F4759FA160B /* RSEAN8Generator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSEAN8Generator.m; path = RSBarcodes/RSEAN8Generator.m; sourceTree = "<group>"; };
-		FEA4D7CAE7A63C5D7C8D6CD5 /* RSCodeView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSCodeView.m; path = RSBarcodes/RSCodeView.m; sourceTree = "<group>"; };
+		04523FB1B02BE3500F97E1DD21BCDDE8 /* RSCode128Generator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSCode128Generator.h; path = RSBarcodes/RSCode128Generator.h; sourceTree = "<group>"; };
+		0ABE48865DD459FC7930A2D0A5571F61 /* RSCode93Generator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSCode93Generator.h; path = RSBarcodes/RSCode93Generator.h; sourceTree = "<group>"; };
+		0D099A7787C163C4DBD9E2472772912B /* RSBarcodes-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "RSBarcodes-Private.xcconfig"; sourceTree = "<group>"; };
+		15A529C27057E4A57D259CBC6E6CE49C /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
+		1A22EA5B8C84DE545B4CD8F036780372 /* libRSBarcodes.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRSBarcodes.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1ACCC2905CD23898573AE09AE63ACF49 /* RSEAN8Generator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSEAN8Generator.h; path = RSBarcodes/RSEAN8Generator.h; sourceTree = "<group>"; };
+		1BF2B4A88E40A53CFEBB5BC46A34C38D /* RSCodeGenerator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSCodeGenerator.h; path = RSBarcodes/RSCodeGenerator.h; sourceTree = "<group>"; };
+		23C61ECBBFCCD2760A9ABB576ECC58E8 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
+		2538DE1AE08FF33DDC9E2965388D87D5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
+		25EA6828AEAC4D51AA6E872AB4178201 /* RSCode39Mod43Generator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSCode39Mod43Generator.h; path = RSBarcodes/RSCode39Mod43Generator.h; sourceTree = "<group>"; };
+		2BCDFC9F8292B095B71DD0C7F0761B6C /* RSUnifiedCodeGenerator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSUnifiedCodeGenerator.m; path = RSBarcodes/RSUnifiedCodeGenerator.m; sourceTree = "<group>"; };
+		3027211683C24BADC390B4E61B08D2C0 /* RSEAN13Generator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSEAN13Generator.h; path = RSBarcodes/RSEAN13Generator.h; sourceTree = "<group>"; };
+		3301D098713200A5BC7B866B2FCAEF2F /* libJASidePanels.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libJASidePanels.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		398BE48E09CE48E41402F599BF06CCD1 /* RSITF14Generator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSITF14Generator.h; path = RSBarcodes/RSITF14Generator.h; sourceTree = "<group>"; };
+		3C3098F38560DDC4DEEA02F971719A22 /* RSCode39Generator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSCode39Generator.m; path = RSBarcodes/RSCode39Generator.m; sourceTree = "<group>"; };
+		3E84C9D8A5E93D64321E25E550AEECCA /* RSUnifiedCodeGenerator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSUnifiedCodeGenerator.h; path = RSBarcodes/RSUnifiedCodeGenerator.h; sourceTree = "<group>"; };
+		460CAB6440236B60A241DAEC57245658 /* RSCode128Generator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSCode128Generator.m; path = RSBarcodes/RSCode128Generator.m; sourceTree = "<group>"; };
+		4DFDD91A8FEEE28DB2FA7AC0627B1912 /* JASidePanels-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "JASidePanels-Private.xcconfig"; sourceTree = "<group>"; };
+		58F0DB2A94B6E6D441130A8914FBCA57 /* RSExtendedCode39Generator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSExtendedCode39Generator.m; path = RSBarcodes/RSExtendedCode39Generator.m; sourceTree = "<group>"; };
+		5981577416B7F781C0B448CEEA104697 /* UIViewController+JASidePanel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+JASidePanel.m"; path = "JASidePanels/Source/UIViewController+JASidePanel.m"; sourceTree = "<group>"; };
+		5AAD756CB0B6AE8C0E43726318560883 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		5D5A8D0C805AA129C48BB94D5F67860F /* RSCodeGen.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSCodeGen.h; path = RSBarcodes/RSCodeGen.h; sourceTree = "<group>"; };
+		5F0422913909A06EE756D472BB206AEC /* RSCode39Generator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSCode39Generator.h; path = RSBarcodes/RSCode39Generator.h; sourceTree = "<group>"; };
+		6392550DABEE9129AB8CC4E62BCD188B /* RSISBN13Generator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSISBN13Generator.m; path = RSBarcodes/RSISBN13Generator.m; sourceTree = "<group>"; };
+		641AE05DD55E5E6AC1590CD7B4A18F97 /* Pods-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
+		6B047E9041A9FE7A0CF2393CE41C0FBD /* RSEAN13Generator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSEAN13Generator.m; path = RSBarcodes/RSEAN13Generator.m; sourceTree = "<group>"; };
+		75D1555841D1E35B7D6C3D1CC347BA82 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		7C4C1B4DDAEA6E9290A8E43371CD0024 /* JASidePanels.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = JASidePanels.xcconfig; sourceTree = "<group>"; };
+		879F91AD722509378EE60F94C68C1DB8 /* JASidePanels-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "JASidePanels-prefix.pch"; sourceTree = "<group>"; };
+		8F3A31455ED10D7FB82FB9F87204EA0D /* RSCodeView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSCodeView.m; path = RSBarcodes/RSCodeView.m; sourceTree = "<group>"; };
+		93573C88332C1A4A8BB0B99DF5924840 /* RSCode39Mod43Generator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSCode39Mod43Generator.m; path = RSBarcodes/RSCode39Mod43Generator.m; sourceTree = "<group>"; };
+		95B98E23DA48C74B204169097536DEF8 /* RSBarcodes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSBarcodes.h; path = RSBarcodes/RSBarcodes.h; sourceTree = "<group>"; };
+		9CA4B0E0E615F40131F1C9F76F09E169 /* RSExtendedCode39Generator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSExtendedCode39Generator.h; path = RSBarcodes/RSExtendedCode39Generator.h; sourceTree = "<group>"; };
+		9E4FF56E1E0B4E8C2CF211BCBE30D489 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E72066F16B300805C3A47251CEC26B1 /* UIViewController+JASidePanel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIViewController+JASidePanel.h"; path = "JASidePanels/Source/UIViewController+JASidePanel.h"; sourceTree = "<group>"; };
+		A070B5AFCB0264EBB92F021344FAB707 /* RSCodeView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSCodeView.h; path = RSBarcodes/RSCodeView.h; sourceTree = "<group>"; };
+		A35F27587C935505EAFB0BF918CDD34B /* RSCode93Generator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSCode93Generator.m; path = RSBarcodes/RSCode93Generator.m; sourceTree = "<group>"; };
+		A9E15A84D9DACC66471DA46456ED2375 /* RSEAN8Generator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSEAN8Generator.m; path = RSBarcodes/RSEAN8Generator.m; sourceTree = "<group>"; };
+		B2A4EB0070FCB3BB5F05326325448A0A /* RSCornersView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSCornersView.h; path = RSBarcodes/RSCornersView.h; sourceTree = "<group>"; };
+		B3B334EBEFFD7322DD876E5022B093F3 /* RSBarcodes-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RSBarcodes-prefix.pch"; sourceTree = "<group>"; };
+		B3BB4995992783F7C7FF9B8F48504942 /* JASidePanels-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "JASidePanels-dummy.m"; sourceTree = "<group>"; };
+		B6604528FB364FE94C6362A4E39203F7 /* JASidePanelController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JASidePanelController.h; path = JASidePanels/Source/JASidePanelController.h; sourceTree = "<group>"; };
+		B833AF3BD64FAF416ECC581497357A88 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		B95464C6B99AC0B12ED7E736EA69E314 /* RSBarcodes.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RSBarcodes.xcconfig; sourceTree = "<group>"; };
+		BA05426FE3B22CA79A31FED05679FEAF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BB32B95E745D87AFEB4DACF6D18BA307 /* RSITF14Generator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSITF14Generator.m; path = RSBarcodes/RSITF14Generator.m; sourceTree = "<group>"; };
+		BEACB52CCA1F8995A4B4C9F6B6A9D4A8 /* RSISSN13Generator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSISSN13Generator.h; path = RSBarcodes/RSISSN13Generator.h; sourceTree = "<group>"; };
+		BEBCC535F32DB3DC607C276D4977E55B /* RSUPCEGenerator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSUPCEGenerator.m; path = RSBarcodes/RSUPCEGenerator.m; sourceTree = "<group>"; };
+		BF59BC15D23E1E1912C8F334E7236813 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
+		C3D3E656532EFCA81A7C720EFC82ABBF /* RSScannerViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSScannerViewController.h; path = RSBarcodes/RSScannerViewController.h; sourceTree = "<group>"; };
+		C6834F37D9F52B0A14CB20F17BD62CEB /* RSCodeGenerator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSCodeGenerator.m; path = RSBarcodes/RSCodeGenerator.m; sourceTree = "<group>"; };
+		CEE2C435A2A119ED070411BABD971939 /* RSEANGenerator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSEANGenerator.m; path = RSBarcodes/RSEANGenerator.m; sourceTree = "<group>"; };
+		CFA93104F7660B908C219540F52957CA /* JASidePanelController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JASidePanelController.m; path = JASidePanels/Source/JASidePanelController.m; sourceTree = "<group>"; };
+		D9AFE31B758FEFA7FE2D775119C4F9EC /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/CoreImage.framework; sourceTree = DEVELOPER_DIR; };
+		DC14B210E023E57E7255AFDE9B6121B5 /* RSUPCEGenerator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSUPCEGenerator.h; path = RSBarcodes/RSUPCEGenerator.h; sourceTree = "<group>"; };
+		E3CE43BDDE0442621D3E9FC0B7D78764 /* RSISSN13Generator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSISSN13Generator.m; path = RSBarcodes/RSISSN13Generator.m; sourceTree = "<group>"; };
+		E682478640737455C3897E6C0603911B /* RSEANGenerator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSEANGenerator.h; path = RSBarcodes/RSEANGenerator.h; sourceTree = "<group>"; };
+		E7E3EBC47A4CE84EAABDDB761BF63571 /* RSBarcodes-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RSBarcodes-dummy.m"; sourceTree = "<group>"; };
+		E9D0EE54C8FB63C2D8DBE2657A5A2CF2 /* RSScannerViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSScannerViewController.m; path = RSBarcodes/RSScannerViewController.m; sourceTree = "<group>"; };
+		F44F6FB17222108BA1DBB9E624208B64 /* RSISBN13Generator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RSISBN13Generator.h; path = RSBarcodes/RSISBN13Generator.h; sourceTree = "<group>"; };
+		F44FDF707683EA419B313D0F9BCE33B9 /* RSCornersView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RSCornersView.m; path = RSBarcodes/RSCornersView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		54AC6AF46DF21A7B48E4850B /* Frameworks */ = {
+		00AFB10225DD3140B1D4D287F0DDAB6A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4AB6364A4F7E2866259890F /* AVFoundation.framework in Frameworks */,
-				D48A0156F91DB78941D33955 /* CoreImage.framework in Frameworks */,
-				38B6961365F0E62DAD33DF60 /* Foundation.framework in Frameworks */,
+				2D0157B81FD63C5F450C606AAFCF9EFF /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A0F67092604BB61D82535DF8 /* Frameworks */ = {
+		04A8357ED284BF614078AA5E3990CB6F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E223EFF7C818923420ED169 /* Foundation.framework in Frameworks */,
-				577BE684226F88E9867BC7C5 /* QuartzCore.framework in Frameworks */,
+				73CFDA6DE90DEBD90515B4165F7C19CD /* Foundation.framework in Frameworks */,
+				4A1990FB23727201F75D62BCCC079853 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DDFFD364D9B7F39F142C436A /* Frameworks */ = {
+		139A1D2BBBEA838C932E447A227DA60E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E46B4F7000B9067C2FEAD83 /* Foundation.framework in Frameworks */,
+				4FF74DF155701B4027E4CF1249D12EBC /* AVFoundation.framework in Frameworks */,
+				5F756FFFEBD3FF87B5C1C70A1256B510 /* CoreImage.framework in Frameworks */,
+				DCE9415926270A173BD0CE1F871AD0B1 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		045483239649A38414C18859 = {
+		14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				342DBD0D46F1DC8E2637AF47 /* Podfile */,
-				87FB056C920EB2B6BF25118B /* Frameworks */,
-				CFD33AEF1F582247E8B6CF38 /* Pods */,
-				8824F8EAFBB956C8CF3B6814 /* Products */,
-				BF84CCDFBA8683D3D9F2B54B /* Targets Support Files */,
+				AA4058BCCBC065FDEEFBEE1734EAE14A /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		23FAFB295D00FCE2F11EBD28857278E6 /* RSBarcodes */ = {
+			isa = PBXGroup;
+			children = (
+				95B98E23DA48C74B204169097536DEF8 /* RSBarcodes.h */,
+				04523FB1B02BE3500F97E1DD21BCDDE8 /* RSCode128Generator.h */,
+				460CAB6440236B60A241DAEC57245658 /* RSCode128Generator.m */,
+				5F0422913909A06EE756D472BB206AEC /* RSCode39Generator.h */,
+				3C3098F38560DDC4DEEA02F971719A22 /* RSCode39Generator.m */,
+				25EA6828AEAC4D51AA6E872AB4178201 /* RSCode39Mod43Generator.h */,
+				93573C88332C1A4A8BB0B99DF5924840 /* RSCode39Mod43Generator.m */,
+				0ABE48865DD459FC7930A2D0A5571F61 /* RSCode93Generator.h */,
+				A35F27587C935505EAFB0BF918CDD34B /* RSCode93Generator.m */,
+				5D5A8D0C805AA129C48BB94D5F67860F /* RSCodeGen.h */,
+				1BF2B4A88E40A53CFEBB5BC46A34C38D /* RSCodeGenerator.h */,
+				C6834F37D9F52B0A14CB20F17BD62CEB /* RSCodeGenerator.m */,
+				A070B5AFCB0264EBB92F021344FAB707 /* RSCodeView.h */,
+				8F3A31455ED10D7FB82FB9F87204EA0D /* RSCodeView.m */,
+				B2A4EB0070FCB3BB5F05326325448A0A /* RSCornersView.h */,
+				F44FDF707683EA419B313D0F9BCE33B9 /* RSCornersView.m */,
+				3027211683C24BADC390B4E61B08D2C0 /* RSEAN13Generator.h */,
+				6B047E9041A9FE7A0CF2393CE41C0FBD /* RSEAN13Generator.m */,
+				1ACCC2905CD23898573AE09AE63ACF49 /* RSEAN8Generator.h */,
+				A9E15A84D9DACC66471DA46456ED2375 /* RSEAN8Generator.m */,
+				E682478640737455C3897E6C0603911B /* RSEANGenerator.h */,
+				CEE2C435A2A119ED070411BABD971939 /* RSEANGenerator.m */,
+				9CA4B0E0E615F40131F1C9F76F09E169 /* RSExtendedCode39Generator.h */,
+				58F0DB2A94B6E6D441130A8914FBCA57 /* RSExtendedCode39Generator.m */,
+				F44F6FB17222108BA1DBB9E624208B64 /* RSISBN13Generator.h */,
+				6392550DABEE9129AB8CC4E62BCD188B /* RSISBN13Generator.m */,
+				BEACB52CCA1F8995A4B4C9F6B6A9D4A8 /* RSISSN13Generator.h */,
+				E3CE43BDDE0442621D3E9FC0B7D78764 /* RSISSN13Generator.m */,
+				398BE48E09CE48E41402F599BF06CCD1 /* RSITF14Generator.h */,
+				BB32B95E745D87AFEB4DACF6D18BA307 /* RSITF14Generator.m */,
+				C3D3E656532EFCA81A7C720EFC82ABBF /* RSScannerViewController.h */,
+				E9D0EE54C8FB63C2D8DBE2657A5A2CF2 /* RSScannerViewController.m */,
+				DC14B210E023E57E7255AFDE9B6121B5 /* RSUPCEGenerator.h */,
+				BEBCC535F32DB3DC607C276D4977E55B /* RSUPCEGenerator.m */,
+				3E84C9D8A5E93D64321E25E550AEECCA /* RSUnifiedCodeGenerator.h */,
+				2BCDFC9F8292B095B71DD0C7F0761B6C /* RSUnifiedCodeGenerator.m */,
+				BE513F5D7A60EF9EFEDE53AE52B9DFEC /* Support Files */,
+			);
+			path = RSBarcodes;
+			sourceTree = "<group>";
+		};
+		3AB798EC84B11295CE7C601B2621EEC5 /* JASidePanels */ = {
+			isa = PBXGroup;
+			children = (
+				B6604528FB364FE94C6362A4E39203F7 /* JASidePanelController.h */,
+				CFA93104F7660B908C219540F52957CA /* JASidePanelController.m */,
+				9E72066F16B300805C3A47251CEC26B1 /* UIViewController+JASidePanel.h */,
+				5981577416B7F781C0B448CEEA104697 /* UIViewController+JASidePanel.m */,
+				A890F7B0BFEE0AB96B216345731CD874 /* Support Files */,
+			);
+			path = JASidePanels;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */,
+				961C1A9C1632DF0919CA73A5A120525F /* Pods */,
+				CCA510CFBEA2D207524CDA0D73C3B561 /* Products */,
+				D2411A5FE7F7A004607BED49990C37F4 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		457EE9271922B0DC15B33748 /* Pods */ = {
+		952EEBFAF8F7E620423C9F156F25A506 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2904DA286C175DC3F23D10AB /* Pods-acknowledgements.markdown */,
-				4644D05E958A26AF49ADF78B /* Pods-acknowledgements.plist */,
-				1DA24F9D76A83FD1E9E065E3 /* Pods-dummy.m */,
-				CB24A2005BE00B94CD7B3CAE /* Pods-environment.h */,
-				9BAD0EEE7F9313212C73186B /* Pods-resources.sh */,
-				CBF6697BFAC1817B7EFFA99B /* Pods.debug.xcconfig */,
-				AE6103CBAB3F609729F98C3C /* Pods.release.xcconfig */,
+				15A529C27057E4A57D259CBC6E6CE49C /* Pods-acknowledgements.markdown */,
+				BF59BC15D23E1E1912C8F334E7236813 /* Pods-acknowledgements.plist */,
+				23C61ECBBFCCD2760A9ABB576ECC58E8 /* Pods-dummy.m */,
+				641AE05DD55E5E6AC1590CD7B4A18F97 /* Pods-resources.sh */,
+				2538DE1AE08FF33DDC9E2965388D87D5 /* Pods.debug.xcconfig */,
+				BA05426FE3B22CA79A31FED05679FEAF /* Pods.release.xcconfig */,
 			);
 			name = Pods;
 			path = "Target Support Files/Pods";
 			sourceTree = "<group>";
 		};
-		63DEC4342A32E25D8E85C817 /* JASidePanels */ = {
+		961C1A9C1632DF0919CA73A5A120525F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1D1211AC24E4972D58455A0A /* JASidePanelController.h */,
-				B18714785272FF600F279449 /* JASidePanelController.m */,
-				04762F5F6AD9051DBD09A0BF /* UIViewController+JASidePanel.h */,
-				681003614EFDAFE8338CAD62 /* UIViewController+JASidePanel.m */,
-				664A1B4665FFFB3854A0E051 /* Support Files */,
-			);
-			path = JASidePanels;
-			sourceTree = "<group>";
-		};
-		664A1B4665FFFB3854A0E051 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				17C9F128D2FC1323FEFC37C4 /* Pods-JASidePanels.xcconfig */,
-				DCF8F91F8200A52723B8A483 /* Pods-JASidePanels-Private.xcconfig */,
-				C6030BAE94E4B386635107E0 /* Pods-JASidePanels-dummy.m */,
-				CC5905BAE5374B26D4ED74F9 /* Pods-JASidePanels-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Pods-JASidePanels";
-			sourceTree = "<group>";
-		};
-		73472EE6FBFA27FC47AA42DD /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				A1B295102582FA93A35ED4C4 /* Pods-RSBarcodes.xcconfig */,
-				4F5A895209C4A5F8F2AEA21D /* Pods-RSBarcodes-Private.xcconfig */,
-				6B470B87EA040DAE3D3D21BB /* Pods-RSBarcodes-dummy.m */,
-				775FFE93D3A555475D9BFA63 /* Pods-RSBarcodes-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Pods-RSBarcodes";
-			sourceTree = "<group>";
-		};
-		87FB056C920EB2B6BF25118B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9645BF3E192303A010FE64B8 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		8824F8EAFBB956C8CF3B6814 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F680D437BD58A4A1D12CA5C6 /* libPods.a */,
-				04407E67E23BA8131DCC4106 /* libPods-JASidePanels.a */,
-				72340676C59797CA528D240A /* libPods-RSBarcodes.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		9645BF3E192303A010FE64B8 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				F5D0CA795E5231B479DF97B9 /* AVFoundation.framework */,
-				1E0DD63C19E0FDE41534E71D /* CoreImage.framework */,
-				89A4FB8856651ECA9CA4385A /* Foundation.framework */,
-				86123F62EB59544BEF9DE4A8 /* QuartzCore.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		BF84CCDFBA8683D3D9F2B54B /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				457EE9271922B0DC15B33748 /* Pods */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		CFD33AEF1F582247E8B6CF38 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				63DEC4342A32E25D8E85C817 /* JASidePanels */,
-				F4ABB080D77BE46E6C477E0A /* RSBarcodes */,
+				3AB798EC84B11295CE7C601B2621EEC5 /* JASidePanels */,
+				23FAFB295D00FCE2F11EBD28857278E6 /* RSBarcodes */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		F4ABB080D77BE46E6C477E0A /* RSBarcodes */ = {
+		A890F7B0BFEE0AB96B216345731CD874 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				5EA6AB65479D432762F04B1E /* RSBarcodes.h */,
-				BCF4C5663986876D07009D77 /* RSCode128Generator.h */,
-				2A43410F54CDC6FBA16B8133 /* RSCode128Generator.m */,
-				E9101023C27057FF881E69F7 /* RSCode39Generator.h */,
-				7E2DAF90411071449C7C1670 /* RSCode39Generator.m */,
-				44DC0C3A0521420B4EA176FA /* RSCode39Mod43Generator.h */,
-				DB21C01BE1549885CD0A8DDB /* RSCode39Mod43Generator.m */,
-				97CD0538A0F3EF62F031DE98 /* RSCode93Generator.h */,
-				9323767055852062A7282DCB /* RSCode93Generator.m */,
-				D4A18F19227BDF9ADD840C9F /* RSCodeGen.h */,
-				1465C57E03F5A175968D5DDC /* RSCodeGenerator.h */,
-				9CB4F3D2738EC5D88FA03470 /* RSCodeGenerator.m */,
-				6A0EF10D04E4D5EF37D1F601 /* RSCodeView.h */,
-				FEA4D7CAE7A63C5D7C8D6CD5 /* RSCodeView.m */,
-				409BF545B937FDD13DB09E17 /* RSCornersView.h */,
-				76D77F62A631DB7781C9778E /* RSCornersView.m */,
-				2A6A4871F114E1A01EE37A0D /* RSEAN13Generator.h */,
-				C10354245F49282EC382C9E2 /* RSEAN13Generator.m */,
-				58FC5E6F7D26EF8EF0B40E26 /* RSEAN8Generator.h */,
-				FCE8578EED516F4759FA160B /* RSEAN8Generator.m */,
-				59F1B1C03405EEBC218D1865 /* RSEANGenerator.h */,
-				E0A27904837B79418D68D77A /* RSEANGenerator.m */,
-				DCDF94AB9929AF54CD72D991 /* RSExtendedCode39Generator.h */,
-				3076467DF49001C2756E6248 /* RSExtendedCode39Generator.m */,
-				B0A5B21A116A57BBFA04D8AC /* RSISBN13Generator.h */,
-				6DDC00B7967D38FE3ADE93FE /* RSISBN13Generator.m */,
-				BA1520295C1510DAC66F6307 /* RSISSN13Generator.h */,
-				3435664849418879C52BF61D /* RSISSN13Generator.m */,
-				E8FF169981C04180C4823B3A /* RSITF14Generator.h */,
-				55517C21894190593ECD2CF1 /* RSITF14Generator.m */,
-				03AD3398D6FFE07B6382D89D /* RSScannerViewController.h */,
-				493BC7595B7595918C41EA28 /* RSScannerViewController.m */,
-				F51C4796EB8690D9C2891998 /* RSUPCEGenerator.h */,
-				4415636E64318C6B1AB846AF /* RSUPCEGenerator.m */,
-				7BAD9939ADEE2C120A93143C /* RSUnifiedCodeGenerator.h */,
-				CFBAAD5DF3034A440B89CA1F /* RSUnifiedCodeGenerator.m */,
-				73472EE6FBFA27FC47AA42DD /* Support Files */,
+				7C4C1B4DDAEA6E9290A8E43371CD0024 /* JASidePanels.xcconfig */,
+				4DFDD91A8FEEE28DB2FA7AC0627B1912 /* JASidePanels-Private.xcconfig */,
+				B3BB4995992783F7C7FF9B8F48504942 /* JASidePanels-dummy.m */,
+				879F91AD722509378EE60F94C68C1DB8 /* JASidePanels-prefix.pch */,
 			);
-			path = RSBarcodes;
+			name = "Support Files";
+			path = "../Target Support Files/JASidePanels";
+			sourceTree = "<group>";
+		};
+		AA4058BCCBC065FDEEFBEE1734EAE14A /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				5AAD756CB0B6AE8C0E43726318560883 /* AVFoundation.framework */,
+				D9AFE31B758FEFA7FE2D775119C4F9EC /* CoreImage.framework */,
+				B833AF3BD64FAF416ECC581497357A88 /* Foundation.framework */,
+				75D1555841D1E35B7D6C3D1CC347BA82 /* QuartzCore.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		BE513F5D7A60EF9EFEDE53AE52B9DFEC /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B95464C6B99AC0B12ED7E736EA69E314 /* RSBarcodes.xcconfig */,
+				0D099A7787C163C4DBD9E2472772912B /* RSBarcodes-Private.xcconfig */,
+				E7E3EBC47A4CE84EAABDDB761BF63571 /* RSBarcodes-dummy.m */,
+				B3B334EBEFFD7322DD876E5022B093F3 /* RSBarcodes-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/RSBarcodes";
+			sourceTree = "<group>";
+		};
+		CCA510CFBEA2D207524CDA0D73C3B561 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3301D098713200A5BC7B866B2FCAEF2F /* libJASidePanels.a */,
+				9E4FF56E1E0B4E8C2CF211BCBE30D489 /* libPods.a */,
+				1A22EA5B8C84DE545B4CD8F036780372 /* libRSBarcodes.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D2411A5FE7F7A004607BED49990C37F4 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				952EEBFAF8F7E620423C9F156F25A506 /* Pods */,
+			);
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		9041D4F6752248FC1CE1A9DE /* Headers */ = {
+		08A5EDE6BE30119E3F5F035A979C6563 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				455C55B5455D922DFF1DBB3C /* RSBarcodes.h in Headers */,
-				8C0D811D3240C95DD5BDEE97 /* RSCode128Generator.h in Headers */,
-				8B3AA048BCAAED46D6DFCB5B /* RSCode39Generator.h in Headers */,
-				2A35CCD664C20620B8DDE252 /* RSCode39Mod43Generator.h in Headers */,
-				D4EC2368EC888C6326627D95 /* RSCode93Generator.h in Headers */,
-				DD11B4E8A13BB85206D35176 /* RSCodeGen.h in Headers */,
-				ED0F9ADAD83DD0493C812EFF /* RSCodeGenerator.h in Headers */,
-				C01314849837DE944E609791 /* RSCodeView.h in Headers */,
-				EFD7D7717CAA5819B42170EC /* RSCornersView.h in Headers */,
-				F959A2361938A216A2BC9C38 /* RSEAN13Generator.h in Headers */,
-				54A013DD9FEB68C37C79CF4F /* RSEAN8Generator.h in Headers */,
-				137BCE23EAFBD49087256F98 /* RSEANGenerator.h in Headers */,
-				E804E15E8B61C08C0368536A /* RSExtendedCode39Generator.h in Headers */,
-				820FBBF30A38524B2A5F8D82 /* RSISBN13Generator.h in Headers */,
-				F8643ACAA6EBEBAFB4CA6C6E /* RSISSN13Generator.h in Headers */,
-				02E7C732783CE9D5689BED14 /* RSITF14Generator.h in Headers */,
-				07968F18A3430839D62CD4EA /* RSScannerViewController.h in Headers */,
-				203534DF6CA6F104C8721D47 /* RSUPCEGenerator.h in Headers */,
-				99DF14C4303C7D20BB46F641 /* RSUnifiedCodeGenerator.h in Headers */,
+				BC8390AFC80E616E38B2CB426B0BF4D7 /* RSBarcodes.h in Headers */,
+				E40BF831432AD911BC739469F58250DD /* RSCode128Generator.h in Headers */,
+				E5FF1477735F4510EB2116327E4B251A /* RSCode39Generator.h in Headers */,
+				2EA21C23F73CB63C94CB3DB2C21DD1EF /* RSCode39Mod43Generator.h in Headers */,
+				467EEBCA9162AD1C9485D45D134FF513 /* RSCode93Generator.h in Headers */,
+				6CDE1D80A411F0C606A6C05A4391A192 /* RSCodeGen.h in Headers */,
+				3F95652D688DEC2A629F9565F8246A7A /* RSCodeGenerator.h in Headers */,
+				0C8799DC587D3D8DDA3503BFADBF8408 /* RSCodeView.h in Headers */,
+				8BAAAB12FF115E5ED8A98B8101E54285 /* RSCornersView.h in Headers */,
+				A262495E94BDE89BB9FD135200E140C2 /* RSEAN13Generator.h in Headers */,
+				6398116E2F5C012CA53763E6A32C0F40 /* RSEAN8Generator.h in Headers */,
+				B4ECAFF5E419A65B28AF350CE1E8251A /* RSEANGenerator.h in Headers */,
+				37AADD7041C7047418CF097BA1A7A36F /* RSExtendedCode39Generator.h in Headers */,
+				F0CCB0777115DF04339AE6D99A7018B1 /* RSISBN13Generator.h in Headers */,
+				54D17B82BA5F7A7F5B7E4787D7AD69C2 /* RSISSN13Generator.h in Headers */,
+				C875587BD6EE8B620832CA977FC80DE6 /* RSITF14Generator.h in Headers */,
+				02FEE029A01919D54BA2869435ACA5A9 /* RSScannerViewController.h in Headers */,
+				FE30013E38E47979EE3A6B53350FDB6E /* RSUPCEGenerator.h in Headers */,
+				1EE2EE103AA5368944A04AE20EEDA3C4 /* RSUnifiedCodeGenerator.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BD88EF456EE547F377F214F7 /* Headers */ = {
+		247008257D73813572B335F21114FC9B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F0D79288AF19860575A06A6 /* JASidePanelController.h in Headers */,
-				A3D1EB4FB7C0239EFA46C08D /* UIViewController+JASidePanel.h in Headers */,
+				9AD6BC6BD02312B30C9BCFC176199B82 /* JASidePanelController.h in Headers */,
+				74F4BC5AD7F2685E95FB459FECA8885B /* UIViewController+JASidePanel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		169B215E6114911FE2B2A56A /* Pods-JASidePanels */ = {
+		08A7858A7AEF85F91C067B2D1DDEC1BD /* JASidePanels */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CF92BAFABEE9B0D838268E63 /* Build configuration list for PBXNativeTarget "Pods-JASidePanels" */;
+			buildConfigurationList = 095BC844D6387AA929CBDC8AF3335815 /* Build configuration list for PBXNativeTarget "JASidePanels" */;
 			buildPhases = (
-				0AACD7D3BADD9624F243C607 /* Sources */,
-				A0F67092604BB61D82535DF8 /* Frameworks */,
-				BD88EF456EE547F377F214F7 /* Headers */,
+				2FDB72030A3B3EA60A0659ADAF09FE43 /* Sources */,
+				04A8357ED284BF614078AA5E3990CB6F /* Frameworks */,
+				247008257D73813572B335F21114FC9B /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Pods-JASidePanels";
-			productName = "Pods-JASidePanels";
-			productReference = 04407E67E23BA8131DCC4106 /* libPods-JASidePanels.a */;
+			name = JASidePanels;
+			productName = JASidePanels;
+			productReference = 3301D098713200A5BC7B866B2FCAEF2F /* libJASidePanels.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		5E4F8E8FC098887764403FB9 /* Pods */ = {
+		466DE5B6518B94D59F59C18908FD90A4 /* RSBarcodes */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8101F0BD2865E665080CFC49 /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildConfigurationList = F0AF99AF85AFFD059F0B597232E85C1C /* Build configuration list for PBXNativeTarget "RSBarcodes" */;
 			buildPhases = (
-				5F5E88D0B273A1FDAB328FB2 /* Sources */,
-				DDFFD364D9B7F39F142C436A /* Frameworks */,
+				FA8CB0FC32E78CC66E8CC423FD50F766 /* Sources */,
+				139A1D2BBBEA838C932E447A227DA60E /* Frameworks */,
+				08A5EDE6BE30119E3F5F035A979C6563 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				ACAF5211EFAD01F7E87BAACB /* PBXTargetDependency */,
-				A3B2631D9EDCDFB00D8F6CBA /* PBXTargetDependency */,
+			);
+			name = RSBarcodes;
+			productName = RSBarcodes;
+			productReference = 1A22EA5B8C84DE545B4CD8F036780372 /* libRSBarcodes.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		B05296D06DB9BA2023AD73972F1F78F4 /* Pods */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F5DD9A0CB670BEB73F6FFEA65EEA8A53 /* Build configuration list for PBXNativeTarget "Pods" */;
+			buildPhases = (
+				F819C00BA819FCF6ECB5D5352F670BE9 /* Sources */,
+				00AFB10225DD3140B1D4D287F0DDAB6A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				03EB1F827ABB7DDF6FDC3CB4FB3FB5EE /* PBXTargetDependency */,
+				DDF8C7D5B9B3A9441749B88152F1B1B2 /* PBXTargetDependency */,
 			);
 			name = Pods;
 			productName = Pods;
-			productReference = F680D437BD58A4A1D12CA5C6 /* libPods.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		D65123BCA0E1A1E15BA0FCFA /* Pods-RSBarcodes */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7969E031CEBA0A26E9873AA9 /* Build configuration list for PBXNativeTarget "Pods-RSBarcodes" */;
-			buildPhases = (
-				DEB2C961796881BA1FBED71C /* Sources */,
-				54AC6AF46DF21A7B48E4850B /* Frameworks */,
-				9041D4F6752248FC1CE1A9DE /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-RSBarcodes";
-			productName = "Pods-RSBarcodes";
-			productReference = 72340676C59797CA528D240A /* libPods-RSBarcodes.a */;
+			productReference = 9E4FF56E1E0B4E8C2CF211BCBE30D489 /* libPods.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		E4960555369420BEA248ABE9 /* Project object */ = {
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 			};
-			buildConfigurationList = 8240932EC51456AF10BF3ED7 /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 045483239649A38414C18859;
-			productRefGroup = 8824F8EAFBB956C8CF3B6814 /* Products */;
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = CCA510CFBEA2D207524CDA0D73C3B561 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5E4F8E8FC098887764403FB9 /* Pods */,
-				169B215E6114911FE2B2A56A /* Pods-JASidePanels */,
-				D65123BCA0E1A1E15BA0FCFA /* Pods-RSBarcodes */,
+				08A7858A7AEF85F91C067B2D1DDEC1BD /* JASidePanels */,
+				B05296D06DB9BA2023AD73972F1F78F4 /* Pods */,
+				466DE5B6518B94D59F59C18908FD90A4 /* RSBarcodes */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0AACD7D3BADD9624F243C607 /* Sources */ = {
+		2FDB72030A3B3EA60A0659ADAF09FE43 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAA1C3DB8C953F540F2A3DC8 /* JASidePanelController.m in Sources */,
-				1A64D0BF6F4C800C27D22BB7 /* Pods-JASidePanels-dummy.m in Sources */,
-				E8B7707030CF4243E4756446 /* UIViewController+JASidePanel.m in Sources */,
+				D0FC981E49C131BF9E95C7261E09323C /* JASidePanelController.m in Sources */,
+				EE3B6D6783631A6479DE57E845C49322 /* JASidePanels-dummy.m in Sources */,
+				FB3C61BBB27E6C46BEF03CF101A79C43 /* UIViewController+JASidePanel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5F5E88D0B273A1FDAB328FB2 /* Sources */ = {
+		F819C00BA819FCF6ECB5D5352F670BE9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39A7BA3BA03A8463412B627C /* Pods-dummy.m in Sources */,
+				990986BC64EBF6DC4A1D387298279320 /* Pods-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DEB2C961796881BA1FBED71C /* Sources */ = {
+		FA8CB0FC32E78CC66E8CC423FD50F766 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1968691A5E950521F457CE37 /* Pods-RSBarcodes-dummy.m in Sources */,
-				4BBA16BD5A757D62B37A06FB /* RSCode128Generator.m in Sources */,
-				BF8E85251550827EEF0A5BA0 /* RSCode39Generator.m in Sources */,
-				A1EF825D132E8D0E8AB03BF3 /* RSCode39Mod43Generator.m in Sources */,
-				E7A77184E072FB4F445AE29C /* RSCode93Generator.m in Sources */,
-				370099C89030E0B807BB4C7B /* RSCodeGenerator.m in Sources */,
-				649FD8A03AC03127B2DA3A65 /* RSCodeView.m in Sources */,
-				3A5C1A10802C1B196146A35A /* RSCornersView.m in Sources */,
-				CE6714056ED60F53541E86D8 /* RSEAN13Generator.m in Sources */,
-				452381E9157BC4B7D32B26EA /* RSEAN8Generator.m in Sources */,
-				D45E9095DF20BB4650E58742 /* RSEANGenerator.m in Sources */,
-				2BEE0EF5301A7D36472FC8A5 /* RSExtendedCode39Generator.m in Sources */,
-				3246D1EA5FEC791CA3E76A43 /* RSISBN13Generator.m in Sources */,
-				280A10E3D225AFCF31905BD7 /* RSISSN13Generator.m in Sources */,
-				4308845C69E510A120BE4940 /* RSITF14Generator.m in Sources */,
-				7D88CC2DFC3DE1C55B7DDBC8 /* RSScannerViewController.m in Sources */,
-				F74B0A03B003119944BAF63B /* RSUPCEGenerator.m in Sources */,
-				FB32C45A09847D56A4FA8E7E /* RSUnifiedCodeGenerator.m in Sources */,
+				E29859EC5D6F94A33B9A566556354738 /* RSBarcodes-dummy.m in Sources */,
+				7A1A46EDF44F345648691F271F6EBEB1 /* RSCode128Generator.m in Sources */,
+				CE118E80BA1A2DB36277CD804FF4AC2B /* RSCode39Generator.m in Sources */,
+				32FC02702C72D8C9E17096BC77864687 /* RSCode39Mod43Generator.m in Sources */,
+				29452F4FBDE2157B850A7F5B6BC46C71 /* RSCode93Generator.m in Sources */,
+				2659BD987CF3358370493C18EAA68151 /* RSCodeGenerator.m in Sources */,
+				81B2067B7824234502137E912169B295 /* RSCodeView.m in Sources */,
+				744945B334541277498F417478E3DAB6 /* RSCornersView.m in Sources */,
+				0C96D8CFE40B7196D23E5868465287AE /* RSEAN13Generator.m in Sources */,
+				62F466D6C1FC5A4DC208A60F9B5EDC58 /* RSEAN8Generator.m in Sources */,
+				448A0D6B2133F118FD7BB779896468E9 /* RSEANGenerator.m in Sources */,
+				55359996D42499CAC402F07D914AD8FB /* RSExtendedCode39Generator.m in Sources */,
+				EFE76903A094C6C4F9E5FE6E834E949A /* RSISBN13Generator.m in Sources */,
+				82CB1F471933F8D4ED810E0B3A39175A /* RSISSN13Generator.m in Sources */,
+				D1E589A467E2940F84F15D06BC0177CF /* RSITF14Generator.m in Sources */,
+				7059B0876D57B17E1259C4BFA17BF9CD /* RSScannerViewController.m in Sources */,
+				6D1F8D6CBD53AE0C73C1D33496EA85BA /* RSUPCEGenerator.m in Sources */,
+				7DE96C97D83A27C655AE068BF7D7E8E5 /* RSUnifiedCodeGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A3B2631D9EDCDFB00D8F6CBA /* PBXTargetDependency */ = {
+		03EB1F827ABB7DDF6FDC3CB4FB3FB5EE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "Pods-RSBarcodes";
-			target = D65123BCA0E1A1E15BA0FCFA /* Pods-RSBarcodes */;
-			targetProxy = 709779BFD0AB38ECDDA68312 /* PBXContainerItemProxy */;
+			name = JASidePanels;
+			target = 08A7858A7AEF85F91C067B2D1DDEC1BD /* JASidePanels */;
+			targetProxy = 023FB7501C945B257256BD9543E6F4F7 /* PBXContainerItemProxy */;
 		};
-		ACAF5211EFAD01F7E87BAACB /* PBXTargetDependency */ = {
+		DDF8C7D5B9B3A9441749B88152F1B1B2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "Pods-JASidePanels";
-			target = 169B215E6114911FE2B2A56A /* Pods-JASidePanels */;
-			targetProxy = 769965559A45D89DD58EA689 /* PBXContainerItemProxy */;
+			name = RSBarcodes;
+			target = 466DE5B6518B94D59F59C18908FD90A4 /* RSBarcodes */;
+			targetProxy = ECA6B669912567871410F3AD2FD9F940 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0A73EC3C8AB3408CA8834DD7 /* Release */ = {
+		052A17875CB827423D627183396CEB60 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DCF8F91F8200A52723B8A483 /* Pods-JASidePanels-Private.xcconfig */;
 			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-JASidePanels/Pods-JASidePanels-prefix.pch";
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		0ADA03722438D99CB7246E2B /* Debug */ = {
+		66A99859D65063E30856F40F5D456E20 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DCF8F91F8200A52723B8A483 /* Pods-JASidePanels-Private.xcconfig */;
+			baseConfigurationReference = 4DFDD91A8FEEE28DB2FA7AC0627B1912 /* JASidePanels-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-JASidePanels/Pods-JASidePanels-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/JASidePanels/JASidePanels-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
@@ -538,7 +555,23 @@
 			};
 			name = Debug;
 		};
-		14A2A3CB4A000365AC8EA434 /* Debug */ = {
+		9BFE90F1321D4CDBE797CD783A7D4F89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA05426FE3B22CA79A31FED05679FEAF /* Pods.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		B37F0F91F85060E28F1DAAB522DC7EC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -577,28 +610,12 @@
 			};
 			name = Debug;
 		};
-		3E76A877741248D2F973181A /* Debug */ = {
+		BC3C518D1EB92F703E55240924279390 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F5A895209C4A5F8F2AEA21D /* Pods-RSBarcodes-Private.xcconfig */;
+			baseConfigurationReference = 0D099A7787C163C4DBD9E2472772912B /* RSBarcodes-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-RSBarcodes/Pods-RSBarcodes-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		7F43E5D4A24B5D34743EEED3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F5A895209C4A5F8F2AEA21D /* Pods-RSBarcodes-Private.xcconfig */;
-			buildSettings = {
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-RSBarcodes/Pods-RSBarcodes-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/RSBarcodes/RSBarcodes-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
@@ -609,9 +626,25 @@
 			};
 			name = Release;
 		};
-		8B3397F242AE9B25481493A4 /* Debug */ = {
+		D35414E9CD9ABD0743235E3B3C261BFB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CBF6697BFAC1817B7EFFA99B /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 4DFDD91A8FEEE28DB2FA7AC0627B1912 /* JASidePanels-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/JASidePanels/JASidePanels-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		DFF1F457018B94C5DF3E0AAEB8097C96 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2538DE1AE08FF33DDC9E2965388D87D5 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -625,96 +658,62 @@
 			};
 			name = Debug;
 		};
-		941AEE347EC42FC25152A68A /* Release */ = {
+		F9B829E82082D61045F4810FBDA28FAD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AE6103CBAB3F609729F98C3C /* Pods.release.xcconfig */;
+			baseConfigurationReference = 0D099A7787C163C4DBD9E2472772912B /* RSBarcodes-Private.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/RSBarcodes/RSBarcodes-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 			};
-			name = Release;
-		};
-		A66BCC68215308C9460C5C5C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7969E031CEBA0A26E9873AA9 /* Build configuration list for PBXNativeTarget "Pods-RSBarcodes" */ = {
+		095BC844D6387AA929CBDC8AF3335815 /* Build configuration list for PBXNativeTarget "JASidePanels" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3E76A877741248D2F973181A /* Debug */,
-				7F43E5D4A24B5D34743EEED3 /* Release */,
+				66A99859D65063E30856F40F5D456E20 /* Debug */,
+				D35414E9CD9ABD0743235E3B3C261BFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8101F0BD2865E665080CFC49 /* Build configuration list for PBXNativeTarget "Pods" */ = {
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8B3397F242AE9B25481493A4 /* Debug */,
-				941AEE347EC42FC25152A68A /* Release */,
+				B37F0F91F85060E28F1DAAB522DC7EC1 /* Debug */,
+				052A17875CB827423D627183396CEB60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8240932EC51456AF10BF3ED7 /* Build configuration list for PBXProject "Pods" */ = {
+		F0AF99AF85AFFD059F0B597232E85C1C /* Build configuration list for PBXNativeTarget "RSBarcodes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				14A2A3CB4A000365AC8EA434 /* Debug */,
-				A66BCC68215308C9460C5C5C /* Release */,
+				F9B829E82082D61045F4810FBDA28FAD /* Debug */,
+				BC3C518D1EB92F703E55240924279390 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CF92BAFABEE9B0D838268E63 /* Build configuration list for PBXNativeTarget "Pods-JASidePanels" */ = {
+		F5DD9A0CB670BEB73F6FFEA65EEA8A53 /* Build configuration list for PBXNativeTarget "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0ADA03722438D99CB7246E2B /* Debug */,
-				0A73EC3C8AB3408CA8834DD7 /* Release */,
+				DFF1F457018B94C5DF3E0AAEB8097C96 /* Debug */,
+				9BFE90F1321D4CDBE797CD783A7D4F89 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = E4960555369420BEA248ABE9 /* Project object */;
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 }
