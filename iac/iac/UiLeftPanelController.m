@@ -8,10 +8,12 @@
 
 #import "UiLeftPanelController.h"
 #import "EncuestaSalidaController.h"
-
+#import "MBProgressHUD.h"
+#import "ServerConnection.h"
+#import "ServerController.h"
 
 @interface UiLeftPanelController ()
-
+@property (nonatomic, strong) NSMutableArray *lstCursos;
 @end
 
 @implementation UiLeftPanelController
@@ -24,6 +26,57 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    
+    self.lstCursos = [[NSMutableArray alloc] init];
+    
+    NSDictionary *LoadingDic = @{
+                                       @"name" : @"Loading...",
+                                       
+                                       };
+
+    
+    [self.lstCursos addObject:LoadingDic];
+
+    [self.tableView reloadData];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    
+         [ServerController curseList:^(NSArray * lst) {
+        
+        self.lstCursos = [[NSMutableArray alloc] init];
+        
+        
+        NSDictionary *EncuestadeSalida = @{
+                                    @"name" : @"Encuesta de Salida",
+                                    
+                                    };
+        
+        
+        [self.lstCursos addObject:EncuestadeSalida];
+        
+        NSDictionary *EvaluaciondePagos = @{
+                                           @"name" : @"Evaluacion de Pagos",
+                                           
+                                           };
+        
+        [self.lstCursos addObject:EvaluaciondePagos];
+        
+        for (NSDictionary *str in lst)
+        {
+             [self.lstCursos addObject:str];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+           
+            [self.tableView reloadData];
+            
+        });
+        
+        
+    }];
+         
+           });
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,7 +93,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0)
-        return 1;
+        return self.lstCursos.count;
     else
         return 2;
 }
@@ -76,7 +129,9 @@
     
     if (indexPath.section == 0)
     {
+        /*
         switch (indexPath.row) {
+              
             case 0:
             {
                  lblDescription.text = @"Asistencia a Cursos";
@@ -92,23 +147,62 @@
                  lblDescription.text = @"Encuesta de Satisfacción";
             }
                 break;
+                 
+                
+            case 0:
+            {
+                lblDescription.text = @"Encuesta de Salida";
+            }   break;
+            case 1:
+            {
+                lblDescription.text = @"Evaluacion de Pagos";
+            }
+                break;
+            case 2:
+            {
+                lblDescription.text = @"Evaluacion de Servicios Sanitarios";
+            }
+                break;
+            case 3:
+            {
+                lblDescription.text = @"Evaluacion de la Enfermeria";
+            }
+                break;
+            case 4:
+            {
+                lblDescription.text = @"Evaluacion de el Transporte";
+            }
+                break;
+            case 5:
+            {
+                lblDescription.text = @"Evaluacion de el Comedor";
+            }
+                break;
+
+                
+            default:
+            {
+                lblDescription.text = @"Encuesta de Satisfacción";
+            }
+                break;
         }
+         
+         */
+        NSDictionary *dic = [self.lstCursos objectAtIndex:indexPath.row];
+        
+        lblDescription.text = [dic objectForKey:@"name"];
+         
     }
     else
     {
         switch (indexPath.row) {
             case 0:
             {
-                 lblDescription.text = @"Recibos de Nómina";
+                 lblDescription.text = @"MI PERFIL";
             }   break;
-            case 1:
+           default:
             {
-                lblDescription.text = @"Programa de Reconocimientos";
-            }   break;
-                
-            default:
-            {
-                 lblDescription.text = @"Agregar Usuario";
+                 lblDescription.text = @"CERRAR SESION";
             }
                 break;
         }
@@ -131,7 +225,7 @@
     if (indexPath.section == 0)
     {
         switch (indexPath.row) {
-            case 0:
+            case 1:
             {
                 ListacursosViewController *lst = [[ListacursosViewController alloc] initWithStyle:UITableViewStylePlain];
                 lst.title = @"Asistencia a Cursos";
@@ -144,7 +238,7 @@
 
                 
             }   break;
-            case 1:
+            case 0:
             {
                 
                  EncuestaSalidaController *salida = [[EncuestaSalidaController alloc] init];
@@ -162,12 +256,15 @@
                 
             default:
             {
+                DynamicJsonControllerViewController *json = [[DynamicJsonControllerViewController alloc] init];
+                NSDictionary *dic = [self.lstCursos objectAtIndex:indexPath.row];
+                json.jsonForm = [dic objectForKey:@"content"];
                 
-                EscuestaSatisfaccionController *salida = [[EscuestaSatisfaccionController alloc] init];
+                //EscuestaSatisfaccionController *salida = [[EscuestaSatisfaccionController alloc] init];
                 
-                salida.title = @"Encuesta de Satisfacción";
+                json.title = [dic objectForKey:@"title"];
                 
-                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:salida];
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:json];
                 
                 nav.navigationBar.translucent = NO;
                 

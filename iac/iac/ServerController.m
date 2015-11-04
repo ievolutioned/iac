@@ -46,7 +46,7 @@
 
 +(void)curseList:(void (^)(NSArray *))handler
 {
-    NSString *urlsource = @"https://iacgroup.herokuapp.com/api/inquests/";
+    NSString *urlsource = [NSString stringWithFormat:@"%@?admin-token=%@",@"https://iacgroup.herokuapp.com/api/inquests",[BaseViewController UserToken]];
     
     NSString *escapedUrl = [urlsource stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
@@ -92,7 +92,10 @@
         [request setValue:@"d4e9a9414181819f3a47ff1ddd9b2ca3" forHTTPHeaderField:@"X-token"];
         
         if ([BaseViewController isLogin ])
+        {
             [request setValue:[BaseViewController UserToken] forHTTPHeaderField:@"X-admin-token"];
+        
+               }
         else
             [request setValue:@"nosession" forHTTPHeaderField:@"X-admin-token"];
         
