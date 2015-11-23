@@ -11,6 +11,7 @@
 #import "MBProgressHUD.h"
 #import "ServerConnection.h"
 #import "ServerController.h"
+#import "ProfileController.h"
 
 @interface UiLeftPanelController ()
 @property (nonatomic, strong) NSMutableArray *lstCursos;
@@ -277,16 +278,25 @@
     }
     else
     {
-        WebViewController *listcustomer = [[WebViewController alloc] init];
+        
+        UIViewController *controller = nil;
+        
+        
+        
+        
+        
         
         switch (indexPath.row) {
             case 0:
             {
-                listcustomer.urltoLoad = @"https://portal0012.globalview.adp.com/iac";
+                controller = [[ProfileController alloc] init];
+                
             }   break;
             case 1:
             {
-                listcustomer.urltoLoad = @"http://iacrewardsprogram.com/Services/default.aspx";
+                controller = [[WebViewController alloc] init];
+               // listcustomer.urltoLoad = @"http://iacrewardsprogram.com/Services/default.aspx";
+                ((WebViewController *)controller).urltoLoad = @"https://portal0012.globalview.adp.com/iac";
             }   break;
                 
             default:
@@ -296,7 +306,7 @@
                 break;
         }
         
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:listcustomer];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
         
         nav.navigationBar.translucent = NO;
         

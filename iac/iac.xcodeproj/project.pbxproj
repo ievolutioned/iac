@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		090149FB1AA0C95000E087DC /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 090149FA1AA0C95000E087DC /* ServerConnection.m */; };
-		091541771BCEC6C400C401F5 /* bg_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 091541761BCEC6C400C401F5 /* bg_login.png */; settings = {ASSET_TAGS = (); }; };
-		0915417B1BCEC8C100C401F5 /* logoIconLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 0915417A1BCEC8C100C401F5 /* logoIconLogin.png */; settings = {ASSET_TAGS = (); }; };
+		091541771BCEC6C400C401F5 /* bg_login.png in Resources */ = {isa = PBXBuildFile; fileRef = 091541761BCEC6C400C401F5 /* bg_login.png */; };
+		0915417B1BCEC8C100C401F5 /* logoIconLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 0915417A1BCEC8C100C401F5 /* logoIconLogin.png */; };
 		0918BC861AB0B5BD000034A5 /* DynamicFromLocalJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 0918BC851AB0B5BD000034A5 /* DynamicFromLocalJson.m */; };
 		0918BC8C1AB0B9CD000034A5 /* DynamicJsonControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0918BC8B1AB0B9CD000034A5 /* DynamicJsonControllerViewController.m */; };
 		0918BC901AB0BB4B000034A5 /* TermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0918BC8E1AB0BB4B000034A5 /* TermsViewController.m */; };
@@ -34,9 +34,11 @@
 		094B73A01A9CD9CB0082EE1C /* DynamicForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 094B739F1A9CD9CB0082EE1C /* DynamicForm.m */; };
 		094B73A21A9CD9D70082EE1C /* FormFields.json in Resources */ = {isa = PBXBuildFile; fileRef = 094B73A11A9CD9D70082EE1C /* FormFields.json */; };
 		095312EF1AB151CE001CC3E8 /* FormFieldsMotivo.json in Resources */ = {isa = PBXBuildFile; fileRef = 095312EE1AB151CE001CC3E8 /* FormFieldsMotivo.json */; };
-		0956BA801BBCA327000D86F8 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0956BA7F1BBCA327000D86F8 /* Fabric.framework */; settings = {ASSET_TAGS = (); }; };
+		0956BA801BBCA327000D86F8 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0956BA7F1BBCA327000D86F8 /* Fabric.framework */; };
 		095C756B1A9E778D00459FE3 /* RootForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 095C756A1A9E778D00459FE3 /* RootForm.m */; };
 		095C756E1A9E781C00459FE3 /* AllEmpleadoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 095C756D1A9E781C00459FE3 /* AllEmpleadoController.m */; };
+		095E78D21BFFA2E0005A3DF1 /* ProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 095E78D11BFFA2DF005A3DF1 /* ProfileController.m */; };
+		095E78D51BFFA482005A3DF1 /* FXFormProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 095E78D41BFFA482005A3DF1 /* FXFormProfileController.m */; };
 		09766C9C1AAF9137003F0CCF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 09766C9A1AAF9137003F0CCF /* Model.xcdatamodeld */; };
 		09766CA21AAF941B003F0CCF /* Poll.m in Sources */ = {isa = PBXBuildFile; fileRef = 09766CA11AAF941B003F0CCF /* Poll.m */; };
 		09A6A84E1AB7D58400267367 /* ServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A6A84D1AB7D58400267367 /* ServerController.m */; };
@@ -114,6 +116,10 @@
 		095C756A1A9E778D00459FE3 /* RootForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootForm.m; sourceTree = "<group>"; };
 		095C756C1A9E781C00459FE3 /* AllEmpleadoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllEmpleadoController.h; sourceTree = "<group>"; };
 		095C756D1A9E781C00459FE3 /* AllEmpleadoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllEmpleadoController.m; sourceTree = "<group>"; };
+		095E78D01BFFA2DF005A3DF1 /* ProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileController.h; sourceTree = "<group>"; };
+		095E78D11BFFA2DF005A3DF1 /* ProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileController.m; sourceTree = "<group>"; };
+		095E78D31BFFA482005A3DF1 /* FXFormProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXFormProfileController.h; sourceTree = "<group>"; };
+		095E78D41BFFA482005A3DF1 /* FXFormProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXFormProfileController.m; sourceTree = "<group>"; };
 		09766C9B1AAF9137003F0CCF /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		09766CA01AAF941B003F0CCF /* Poll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Poll.h; sourceTree = "<group>"; };
 		09766CA11AAF941B003F0CCF /* Poll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Poll.m; sourceTree = "<group>"; };
@@ -304,6 +310,7 @@
 		0928439A1A965C620099545A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				095E78CF1BFFA27A005A3DF1 /* Profile */,
 				09A6A8521AB7EA7600267367 /* Login */,
 				0918BC921AB0BF86000034A5 /* formularioDinamico */,
 				09D175D21A9FAD52009B6EB0 /* loadingCamera */,
@@ -348,6 +355,17 @@
 				095C756D1A9E781C00459FE3 /* AllEmpleadoController.m */,
 			);
 			name = agregarEmpleado;
+			sourceTree = "<group>";
+		};
+		095E78CF1BFFA27A005A3DF1 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				095E78D01BFFA2DF005A3DF1 /* ProfileController.h */,
+				095E78D11BFFA2DF005A3DF1 /* ProfileController.m */,
+				095E78D31BFFA482005A3DF1 /* FXFormProfileController.h */,
+				095E78D41BFFA482005A3DF1 /* FXFormProfileController.m */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		09766C991AAF9129003F0CCF /* CoreData */ = {
@@ -622,9 +640,11 @@
 				09766CA21AAF941B003F0CCF /* Poll.m in Sources */,
 				092843991A965C120099545A /* FXForms.m in Sources */,
 				094B73A01A9CD9CB0082EE1C /* DynamicForm.m in Sources */,
+				095E78D21BFFA2E0005A3DF1 /* ProfileController.m in Sources */,
 				0918BC861AB0B5BD000034A5 /* DynamicFromLocalJson.m in Sources */,
 				0918BC8C1AB0B9CD000034A5 /* DynamicJsonControllerViewController.m in Sources */,
 				09A6A84E1AB7D58400267367 /* ServerController.m in Sources */,
+				095E78D51BFFA482005A3DF1 /* FXFormProfileController.m in Sources */,
 				09766C9C1AAF9137003F0CCF /* Model.xcdatamodeld in Sources */,
 				092843681A9658C20099545A /* main.m in Sources */,
 				09BF387B1A9D1E7600DCB402 /* WebViewController.m in Sources */,

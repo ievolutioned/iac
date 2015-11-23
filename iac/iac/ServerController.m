@@ -78,6 +78,38 @@
 }
 
 
++(void)ProfileList:(void (^)(NSMutableDictionary *))handler
+{
+    NSString *urlsource = [NSString stringWithFormat:@"%@?admin-token=%@",@"http://iacgroup.herokuapp.com/api/admin/get_info_admin",[BaseViewController UserToken]];
+    
+    NSString *escapedUrl = [urlsource stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSString *jsonString = [ServerController performServiceCallToUrl:escapedUrl secretString:[self getProfileSecretString] dateString:[self getDateString] andDeviceID:[self getDeviceID]];
+    
+    NSLog(@"%@",jsonString);
+    
+    NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSMutableDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    
+    bool status = NO;
+    NSString *msg = @"";
+    
+    if ([dictionary valueForKey:@"amidn_info"])
+    {
+        
+        handler(dictionary);
+    }
+    else
+    {
+        handler(nil);
+        
+    }
+    
+    
+    
+}
+
 +(NSString *) performServiceCallToUrl:(NSString *) escapedUrl secretString:(NSString *) secretString dateString:(NSString *) dateString andDeviceID:(NSString *) deviceID
 {
     
@@ -152,6 +184,17 @@
 
     //NSString *secretString = [NSString stringWithFormat:@"3b7336f6d1f2a733903b6cd828cafdfc-%@-%@-V2-%@-%@", @"properties", @"index", [self getReverseIDFromDeviceID:[self getDeviceID]],[self getDateString]];
 
+    NSString *secret = [secretString MD5Digest];
+    return secret;
+}
+
++(NSString *) getProfileSecretString
+{
+    
+    NSString *secretString = [NSString stringWithFormat:@"d4e9a9414181819f3a47ff1ddd9b2ca3-%@-%@-V1-%@-%@-%@", @"admin", @"get_info_admin", [self getReverseIDFromDeviceID:[self getDeviceID]],[BaseViewController UserToken],[self getDateString]];
+    
+    //NSString *secretString = [NSString stringWithFormat:@"3b7336f6d1f2a733903b6cd828cafdfc-%@-%@-V2-%@-%@", @"properties", @"index", [self getReverseIDFromDeviceID:[self getDeviceID]],[self getDateString]];
+    
     NSString *secret = [secretString MD5Digest];
     return secret;
 }

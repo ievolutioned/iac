@@ -16,5 +16,5 @@
 
 +(void)curseList:(void (^)(NSArray *))handler;
 
-
++(void)ProfileList:(void (^)(NSMutableDictionary *))handler;
 @end
