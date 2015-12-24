@@ -11,7 +11,7 @@
 #import "FXFormProfileController.h"
 #import "ServerConnection.h"
 #import "ServerController.h"
-
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ProfileController ()
 @property (nonatomic, strong) NSDictionary *profileData;
@@ -36,21 +36,40 @@
     // Do any additional setup after loading the view.
     
     
-    self.view.backgroundColor = [UIColor clearColor];
+    //self.view.backgroundColor = [UIColor clearColor];
+    float withImg = [[UIScreen mainScreen] bounds].size.width * .33;
     
-    UIView *vheader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 151)];
+    UIView *vheader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 40 + withImg + 20)];
+    
+    
+    
+    vheader.backgroundColor = [UIColor clearColor];
+    
+    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc]initWithItems:[NSArray arrayWithObjects:@"Perfil", @"Contraseña", nil]];
+    segmentedControl.frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 40);
+    [segmentedControl addTarget:self action:@selector(segmentedControlHasChangedValue:) forControlEvents:UIControlEventValueChanged];
+    segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+    
+    segmentedControl.tintColor = [UIColor grayColor];
+   
+    [vheader addSubview:segmentedControl];
+    
+    segmentedControl.selectedSegmentIndex = 0;
+    
     
     UIImage *logo = [UIImage imageNamed:@"logoIconLogin.png"];
     
     UIImageView *vlogo = [[UIImageView alloc] initWithImage:logo];
     
+    vlogo.contentMode = UIViewContentModeScaleAspectFit;
+    
     vlogo.clipsToBounds = YES;
     
-    vlogo.frame = vheader.frame;
+    
+    
+    vlogo.frame = CGRectMake(([[UIScreen mainScreen] bounds].size.width / 2) - (withImg / 2), 40, withImg, withImg);;
     
     [vheader addSubview:vlogo];
-    
-    vheader.backgroundColor = [UIColor clearColor];
     
     self.tableView.tableHeaderView = vheader;
     
@@ -61,10 +80,6 @@
     vbj.clipsToBounds = YES;
     
     vbj.frame = self.view.frame;
-    
-    [self.view insertSubview:vbj atIndex:0];
-    
-    //self.tableView.backgroundView = vbj;
     
     [self starthud];
     
@@ -92,7 +107,34 @@
             data.FechaDeIngreso = @"";//[amidn_info objectForKey:@"email"];
             
             data.FechasDeVacaciones = @"";//[amidn_info objectForKey:@"email"];
+            
+            NSDictionary *avatar =[amidn_info objectForKey:@"avatar"];
+            
+            NSString *url = [avatar objectForKey:@"url"];
+            
+           // [vbj sd_setImageWithURL:[NSURL URLWithString:url]
+             //                 placeholderImage:[UIImage imageNamed:@"logoIconLogin.png"]];
+            
+            SDWebImageManager *manager = [SDWebImageManager sharedManager];
+            [manager downloadImageWithURL:[NSURL URLWithString:url]
+                                  options:0
+                                 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+                                     // progression tracking code
+                                     NSLog(@"...");
+                                 }
+                                completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                                    if (image) {
+                                        // do something with image
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                            
+                                            vlogo.image = image;
+                                            NSLog(@"...");
 
+                                        });
+                                                                           }
+                                }];
+            
+                        
             /*
              
              self.NumerodeEmpleado = @"";

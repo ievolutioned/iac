@@ -25,6 +25,13 @@ extern NSString *const AVMetadataObjectTypeAztecCode;
 
 #endif
 
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < 80000
+
+extern NSString *const AVMetadataObjectTypeInterleaved2of5Code;
+extern NSString *const AVMetadataObjectTypeITF14Code;
+
+#endif
+
 @interface RSUnifiedCodeGenerator : NSObject <RSCodeGenerator>
 
 + (instancetype)codeGen;
