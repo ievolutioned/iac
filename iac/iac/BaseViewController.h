@@ -32,5 +32,6 @@
 +(void) logOut;
 
 +(void) setLogin;
++(void) setLogout;
 
 @end

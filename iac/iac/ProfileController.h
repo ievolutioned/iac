@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FXForms.h"
 #import "MBProgressHUD.h"
+
 @interface ProfileController : FXFormViewController
 @property (nonatomic, retain)  MBProgressHUD *HUD;
 @end;

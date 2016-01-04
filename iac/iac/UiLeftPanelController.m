@@ -12,6 +12,7 @@
 #import "ServerConnection.h"
 #import "ServerController.h"
 #import "ProfileController.h"
+#import "LoginViewController.h"
 
 @interface UiLeftPanelController ()
 @property (nonatomic, strong) NSMutableArray *lstCursos;
@@ -301,6 +302,12 @@
                 
             default:
             {
+                
+                [BaseViewController setLogout];
+                
+                LoginViewController *controller = [[LoginViewController alloc] init];
+                
+                [self.navigationController presentViewController:controller animated:YES completion:nil];
                 return;
             }
                 break;

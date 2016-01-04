@@ -9,6 +9,7 @@
 #import "ProfileController.h"
 #import "FXForms.h"
 #import "FXFormProfileController.h"
+#import "FXFormProfilePasswordController.h"
 #import "ServerConnection.h"
 #import "ServerController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -51,7 +52,7 @@
     segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
     
     segmentedControl.tintColor = [UIColor grayColor];
-   
+    
     [vheader addSubview:segmentedControl];
     
     segmentedControl.selectedSegmentIndex = 0;
@@ -95,25 +96,31 @@
             
             data.Nombre = [amidn_info objectForKey:@"name"];
             data.NumerodeEmpleado = [amidn_info objectForKey:@"iac_id"];
+            
+            NSLog(@"<<<<<<<< Numero de empleado: %@",data.NumerodeEmpleado);
+            
             data.Correo = [amidn_info objectForKey:@"email"];
             data.Departamento = [amidn_info objectForKey:@"departament"];
-
+            
             data.Divp = [amidn_info objectForKey:@"divp"];
-
+            
             data.Planta = @"";
-
+            
             data.TipoDeEmpleado = @"";
             
             data.FechaDeIngreso = @"";//[amidn_info objectForKey:@"email"];
             
             data.FechasDeVacaciones = @"";//[amidn_info objectForKey:@"email"];
             
+            
+            data.NumerodeEmpleado = @"jedi";
+            
             NSDictionary *avatar =[amidn_info objectForKey:@"avatar"];
             
             NSString *url = [avatar objectForKey:@"url"];
             
-           // [vbj sd_setImageWithURL:[NSURL URLWithString:url]
-             //                 placeholderImage:[UIImage imageNamed:@"logoIconLogin.png"]];
+            // [vbj sd_setImageWithURL:[NSURL URLWithString:url]
+            //                 placeholderImage:[UIImage imageNamed:@"logoIconLogin.png"]];
             
             SDWebImageManager *manager = [SDWebImageManager sharedManager];
             [manager downloadImageWithURL:[NSURL URLWithString:url]
@@ -129,26 +136,12 @@
                                             
                                             vlogo.image = image;
                                             NSLog(@"...");
-
+                                            
                                         });
-                                                                           }
+                                    }
                                 }];
             
-                        
-            /*
-             
-             self.NumerodeEmpleado = @"";
-             self.Nombre = @"";
-             self.Correo = @"";
-             self.Departamento = @"";
-             self.Divp = @"";
-             self.Planta = @"";
-             self.TipoDeEmpleado = @"";
-             self.FechaDeIngreso = @"";
-             self.FechasDeVacaciones = @"";
-
-             
-             */
+            
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
@@ -164,6 +157,24 @@
     
 }
 
+- (void)segmentedControlHasChangedValue:(UISegmentedControl *)segment
+{
+    if(segment.selectedSegmentIndex == 0)
+    {
+        FXFormProfileController *viewlogin = [[FXFormProfileController alloc] init];
+        
+        self.formController.form = viewlogin;
+    }
+    else
+    {
+        FXFormProfilePasswordController *viewPass = [[FXFormProfilePasswordController alloc] init];
+        
+        self.formController.form = viewPass;
+    }
+    
+    [self.tableView reloadData];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -172,7 +183,7 @@
 #pragma mark - Events
 - (void)submitRegistrationForm:(UITableViewCell<FXFormFieldCell> *)cell
 {
-   
+    
     /*
      ((FXFormPickerEmpleadoCell *)cell).field.value = code.stringValue;
      ((FXFormPickerEmpleadoCell *)cell).empleadoNo = code.stringValue;

@@ -11,6 +11,7 @@
 @implementation FXFormProfileController
 
 
+
 - (NSArray *)fields
 {
     self.NumerodeEmpleado = @"";
@@ -38,7 +39,7 @@
              
              
              
-             @{FXFormFieldKey: @"Número de empleado",FXFormFieldDefaultValue:self.NumerodeEmpleado, FXFormFieldHeader: @"",FXFormFieldTitle: @"Número de empleado"}
+             @{FXFormFieldKey: @"Número de empleado",FXFormFieldDefaultValue:self.NumerodeEmpleado}
              ,
              
              @{FXFormFieldKey: @"Nombre",FXFormFieldDefaultValue:self.Nombre},

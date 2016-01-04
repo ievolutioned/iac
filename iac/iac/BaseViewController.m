@@ -167,12 +167,16 @@
 
 +(void) setLogin
 {
-    
     NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
     
     [defs setBool:YES forKey:@"currentUser_3"];
+}
+
++(void) setLogout
+{
+    NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
     
-    
+    [defs setBool:NO forKey:@"currentUser_3"];
 }
 
 

@@ -29,6 +29,7 @@
 		092843991A965C120099545A /* FXForms.m in Sources */ = {isa = PBXBuildFile; fileRef = 092843981A965C120099545A /* FXForms.m */; };
 		0928439F1A965C960099545A /* HomeViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0928439D1A965C960099545A /* HomeViewcontroller.m */; };
 		092843A01A965C960099545A /* HomeViewcontroller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0928439E1A965C960099545A /* HomeViewcontroller.xib */; };
+		092FBD681C3B12200060A34D /* FXFormProfilePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 092FBD671C3B12200060A34D /* FXFormProfilePasswordController.m */; };
 		093273CB1A9FEEB60001CC70 /* fondoCamara.png in Resources */ = {isa = PBXBuildFile; fileRef = 093273CA1A9FEEB60001CC70 /* fondoCamara.png */; };
 		094B739D1A9CD7650082EE1C /* ISO3166CountryValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 094B739C1A9CD7650082EE1C /* ISO3166CountryValueTransformer.m */; };
 		094B73A01A9CD9CB0082EE1C /* DynamicForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 094B739F1A9CD9CB0082EE1C /* DynamicForm.m */; };
@@ -104,6 +105,8 @@
 		0928439C1A965C960099545A /* HomeViewcontroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewcontroller.h; sourceTree = "<group>"; };
 		0928439D1A965C960099545A /* HomeViewcontroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewcontroller.m; sourceTree = "<group>"; };
 		0928439E1A965C960099545A /* HomeViewcontroller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewcontroller.xib; sourceTree = "<group>"; };
+		092FBD661C3B12200060A34D /* FXFormProfilePasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXFormProfilePasswordController.h; sourceTree = "<group>"; };
+		092FBD671C3B12200060A34D /* FXFormProfilePasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXFormProfilePasswordController.m; sourceTree = "<group>"; };
 		093273CA1A9FEEB60001CC70 /* fondoCamara.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fondoCamara.png; sourceTree = "<group>"; };
 		094B739B1A9CD7650082EE1C /* ISO3166CountryValueTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISO3166CountryValueTransformer.h; sourceTree = "<group>"; };
 		094B739C1A9CD7650082EE1C /* ISO3166CountryValueTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISO3166CountryValueTransformer.m; sourceTree = "<group>"; };
@@ -364,6 +367,8 @@
 				095E78D11BFFA2DF005A3DF1 /* ProfileController.m */,
 				095E78D31BFFA482005A3DF1 /* FXFormProfileController.h */,
 				095E78D41BFFA482005A3DF1 /* FXFormProfileController.m */,
+				092FBD661C3B12200060A34D /* FXFormProfilePasswordController.h */,
+				092FBD671C3B12200060A34D /* FXFormProfilePasswordController.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -639,6 +644,7 @@
 				09A6A8551AB7EACB00267367 /* LoginViewController.m in Sources */,
 				09766CA21AAF941B003F0CCF /* Poll.m in Sources */,
 				092843991A965C120099545A /* FXForms.m in Sources */,
+				092FBD681C3B12200060A34D /* FXFormProfilePasswordController.m in Sources */,
 				094B73A01A9CD9CB0082EE1C /* DynamicForm.m in Sources */,
 				095E78D21BFFA2E0005A3DF1 /* ProfileController.m in Sources */,
 				0918BC861AB0B5BD000034A5 /* DynamicFromLocalJson.m in Sources */,
