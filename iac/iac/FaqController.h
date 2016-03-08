@@ -10,4 +10,5 @@
 
 @interface FaqController : BaseViewController<UIWebViewDelegate>
 @property (nonatomic, copy) NSString *customUrl;
+@property (nonatomic, assign) BOOL showBack;
 @end

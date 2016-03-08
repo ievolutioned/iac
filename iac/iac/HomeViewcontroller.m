@@ -249,6 +249,21 @@
     
    }
 
+#pragma mark - New Browser
+-(void)openExternalURL:(NSURL *)url
+{
+    FaqController *faq = [[FaqController alloc] init];
+    faq.customUrl = [url absoluteString];
+    faq.showBack = YES;
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:faq];
+    nav.navigationBar.translucent = NO;
+    [self presentViewController:nav animated:YES completion:nil];
+}
+//NSLog(@"%@",[url absoluteString]);
+//[self openExternalURL:url];//Handle External URL here
+
+
 #pragma mark - webview delegate
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
@@ -283,6 +298,22 @@
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(nullable NSError *)error
 {
     [self stophud];
+}
+
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    
+    
+    if (navigationType == UIWebViewNavigationTypeLinkClicked){
+        
+        NSURL *url = request.URL;
+        NSLog(@"%@",[url absoluteString]);
+        [self openExternalURL:url];//Handle External URL here
+        
+    }
+    
+    return YES;
+    
 }
 
 -(void)initConstraints

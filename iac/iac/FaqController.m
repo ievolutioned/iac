@@ -13,6 +13,10 @@
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, copy) NSString *loaded;
 
+@property (nonatomic, strong) UIButton *leftBtn;
+
+@property (nonatomic, strong) UIButton *rightBtn;
+
 @end
 
 @implementation FaqController
@@ -34,10 +38,69 @@
         urlPage = [NSString stringWithFormat:@"%@?ref=%@&token_access=%@",self.customUrl,@"xedni/draobhsad",admin_token];
     
 
+    if (self.showBack)
+    {
+        self.leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        UIImage *leftIcon = [UIImage imageNamed:@"leftIcon"];
+        
+        [self.leftBtn setImage:leftIcon forState:UIControlStateNormal];
+        
+        self.leftBtn.frame = CGRectMake(0, 5, 25, 25);
+        
+        [self.leftBtn addTarget:self
+                    action:@selector(goback)
+          forControlEvents:UIControlEventTouchUpInside];
+        
+        self.rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        UIImage *rightIcon = [UIImage imageNamed:@"RightIcon"];
+        
+        [self.rightBtn addTarget:self
+                    action:@selector(goNext)
+          forControlEvents:UIControlEventTouchUpInside];
+        
+        [ self.rightBtn setImage:rightIcon forState:UIControlStateNormal];
+        
+         self.rightBtn.frame = CGRectMake(60, 5, 25, 25);
+        
+        
+        UIView *vCenter = [[UIView alloc] initWithFrame:CGRectMake(30, 0, 100, 30)];
+        
+        
+        [vCenter addSubview:self.leftBtn];
+        
+        [vCenter addSubview:self.rightBtn];
+        
+        
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cerrar" style:UIBarButtonItemStyleDone target:self action:@selector(closeView)];
+
+        
+           self.navigationItem.titleView = vCenter;
+        
+        [self.navigationItem.titleView sizeToFit];
+    }
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlPage]]];
 
 }
+-(void)closeView
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void) goback
+{
+    if ([self.webView canGoBack])
+        [ self.webView goBack];
+   
+}
+
+-(void) goNext
+{
+    [self.webView goForward];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

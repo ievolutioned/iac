@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 #import "EncuestaSalidaController.h"
 #import "RSBarcodes.h"
+#import "FaqController.h"
 @interface HomeViewcontroller : BaseViewController<UIWebViewDelegate>
 
 {
