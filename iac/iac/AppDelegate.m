@@ -8,19 +8,24 @@
 
 #import "AppDelegate.h"
 #import <Crashlytics/Crashlytics.h>
-#import "HomeViewcontroller.h"
+
+#import "ServerController.h"
+
 #import "UiLeftPanelController.h"
 #import "JASidePanelController.h"
 #import "objc/message.h"
 
 @interface AppDelegate () <UIApplicationDelegate>
 
-@property (nonatomic, strong) HomeViewcontroller * det;
+
 @property (strong, nonatomic) JASidePanelController *rootViewController;
+
+@property (nonatomic, copy) NSString *updateUrl;
+@property (nonatomic, copy) NSString *updateMsg;
 
 @property (nonatomic) BOOL screenIsPortraitOnly;
 @property (nonatomic) BOOL screenIsLansCapeOnly;
-
+@property (strong, nonatomic) UISplitViewController *splitViewController;
 @end
 
 @implementation AppDelegate
@@ -30,7 +35,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     
-  [Crashlytics startWithAPIKey:@"2b0ffb50e0ea57df9f66aed239124e0a9117c7ac"];
+    [BaseViewController setishomeLoadedOff];
+    
+   [Crashlytics startWithAPIKey:@"2b0ffb50e0ea57df9f66aed239124e0a9117c7ac"];
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
@@ -47,11 +54,13 @@
     
     self.rootViewController.leftFixedWidth = 240;
     
-    HomeViewcontroller *dash = [[HomeViewcontroller alloc] init];
+    self.det = [[HomeViewcontroller alloc] init];
     
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:dash];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.det];
     
     nav.navigationBar.translucent = NO;
+    
+     nav.navigationBar.tintColor = [UIColor darkGrayColor];
     
     self.rootViewController.centerPanel = nav;
     
@@ -59,11 +68,16 @@
     [self.rootViewController showLeftPanelAnimated:YES];
     
     
-    self.rootViewController.rightPanel = nil;
+    self.rootViewController.rightPanel = [[JASidePanelController alloc] init];
     
     self.window.rootViewController = self.rootViewController;;
     
+   
+    
+       
     [self.window makeKeyAndVisible];
+    
+    [self checkService];
     
     
     //[Poll save:@"this is a test" WithUserId:[[NSNumber alloc] initWithInt:20] Withinquestid:[[NSNumber alloc] initWithInt:20] WithResponse:@"{}" WithQuestion:@"{}" WithCreated:[NSDate date] WithUpdated:[NSDate date] issynched:[[NSNumber alloc] initWithInt:0]];
@@ -74,6 +88,71 @@
     
     return YES;
 }
+
+
+
+-(void) checkService
+{
+
+   NSString *shortVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+
+   self.updateUrl = @"";
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        [ServerController versionList:^(NSDictionary * nn) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                NSString *version_ios = [[nn objectForKey:@"last_versions_mobiles"] objectForKey:@"version_ios"];
+                
+                self.updateUrl = [[nn objectForKey:@"last_versions_mobiles"] objectForKey:@"url_ios"];
+                
+                self.updateMsg = [[nn objectForKey:@"last_versions_mobiles"] objectForKey:@"description_ios"];
+                
+                if (![version_ios isEqualToString:shortVersion])
+                {
+                    [self sendPopPup];
+                }
+                else
+                {
+                    
+                 
+                }
+                
+            });
+            
+            
+        }];
+    });
+}
+
+-(void)sendPopPup
+{
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:self.updateMsg
+                          message:nil
+                          delegate:self
+                          cancelButtonTitle:@"No"
+                          otherButtonTitles:@"Actualizar", nil];
+    [alert show];
+}
+
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+       
+    }
+    else if (buttonIndex == 1) {
+       [[UIApplication sharedApplication] openURL:[NSURL URLWithString: self.updateUrl ]];
+    }
+}
+
+
+-(BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation{
+    return YES;
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

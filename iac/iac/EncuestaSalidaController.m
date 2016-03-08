@@ -10,6 +10,7 @@
 #import "FXEncuentaSalidaController.h"
 #import "DynamicForm.h"
 #import "LoadingCameraViewController.h"
+#import "ServerController.h"
 @interface EncuestaSalidaController ()
 
 @end
@@ -26,12 +27,118 @@
         
         //self.formController.form = viewlogin;
         
-        //
+         self.inquest_id = @"9";
         self.formController.form = [[DynamicForm alloc] init];
     }
     return self;
 }
 
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.navigationItem.rightBarButtonItem= [[UIBarButtonItem alloc] initWithTitle:@"Enviar" style:UIBarButtonItemStyleDone target:self action:@selector(sendForm)];
+
+}
+
+-(void)sendForm
+{
+    DynamicForm *form = self.formController.form;
+    
+    
+    BOOL resp = YES;
+    
+    for (NSDictionary *dic in form.fields) {
+        
+        
+        if ([dic valueForKey:@"validate"] != nil)
+        {
+            id valueee = [form valueForKey:[dic valueForKey:@"key"]];
+            
+            if ([valueee isKindOfClass:[NSString class]])
+            {
+                if (valueee == (id)[NSNull null] || ( (NSString *) valueee).length == 0 )
+                {
+                    resp = NO;
+                }
+            }
+            else
+            {
+                if (valueee == [NSNull null])
+                {
+                    resp = NO;
+                }
+                else if (valueee == nil)
+                {
+                    resp = NO;
+                }
+            }
+            
+            if (!resp)
+            {
+                NSString *title = [dic valueForKey:@"title"];
+                
+                if (title.length == 0)
+                    title = [dic valueForKey:@"key"];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self show:[NSString stringWithFormat:@"%@ es requerido",title]];
+                });
+                
+                
+                break;
+            }
+            
+        }
+        
+    }
+    
+    if (resp)
+    {
+        [self starthud];
+        
+        
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
+            NSMutableDictionary *dickeys = nil;
+            
+            dickeys = [[NSMutableDictionary alloc] init];
+            
+            for (NSDictionary *dic in form.fields) {
+                
+                NSString *key = [dic valueForKey:@"key"];
+                id valueee = [form valueForKey:[dic valueForKey:@"key"]];
+                
+                NSLog(@"dic: %@ value: %@",key,valueee);
+                
+                
+                [dickeys setValue:valueee forKey:key];
+                
+            }
+            
+            [ServerController createForm:dickeys withinquest_id:self.inquest_id withhandler:^(BOOL resp,NSString *msg) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self stophud];
+                    
+                    if (!resp)
+                    {
+                        [self show:msg];
+                    }
+                    else
+                    {
+                        [self show:msg];
+                    }
+                });
+                
+            }];
+            
+            
+            
+            
+        });
+    }
+}
+    
 
 -(bool) validateField:(NSArray *)fields withCell:(UITableViewCell<FXFormFieldCell> *)cell
 {
@@ -95,10 +202,11 @@
     self.alredyPresenting = NO;
 }
 
+
 - (void)presentNewForm:(UITableViewCell<FXFormFieldCell> *)cell
 {
     DynamicForm *form = cell.field.form;
-  
+    
     NSDictionary *dicKey =  [form valueForKey:cell.field.key];
     
     if ([dicKey isKindOfClass:[NSDictionary class]])
@@ -108,45 +216,51 @@
         
         NSArray *dicValue = [dicVal objectForKey:[[dicVal allKeys] objectAtIndex:0]];
         
+        bool GoBack = YES;
+        
         if ([dicValue isKindOfClass:[NSArray class]])
         {
             if (dicValue.count > 0)
             {
-            DynamicJsonControllerViewController *dynamic = [[DynamicJsonControllerViewController alloc] init];
-            
-            dynamic.jsonForm = dicValue;
-            
-            [self.navigationController pushViewController:dynamic animated:YES];
+                DynamicJsonControllerViewController *dynamic = [[DynamicJsonControllerViewController alloc] init];
+                
+                dynamic.jsonForm = dicValue;
+                
+                GoBack = NO;
+                
+                [self.navigationController pushViewController:dynamic animated:YES];
             }
             
+            if (GoBack)
+                [self.navigationController popViewControllerAnimated:YES];
             
-            
-             NSLog(@"... we are here....");
+            NSLog(@"... we are here....");
         }
         
-       else
-       {
+        else
+        {
             NSLog(@"... or here....");
-           
-       }
+            
+        }
         
-       
-
+        
+        
         
     }
     else
     {
-        
+          NSLog(@"... or here.... 2");
     }
     
 }
+
 
 -(void)presentFormFromOption
 {
     DynamicJsonControllerViewController *dynamic = [[DynamicJsonControllerViewController alloc] init];
     
     dynamic.jsonName = @"FormFieldsMotivo";
-    
+   
     [self.navigationController pushViewController:dynamic animated:YES];
     
 }
@@ -191,13 +305,6 @@
     }
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    
-    // Do any additional setup after loading the view from its nib.
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

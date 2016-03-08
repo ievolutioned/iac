@@ -17,7 +17,7 @@
 {
     RSScannerViewController *scanner;
 }
-
+@property (nonatomic, strong) NSString *inquest_id;
 @property (nonatomic, retain)  MBProgressHUD *HUD;
 
 @property (nonatomic, assign) BOOL alredyPresenting;

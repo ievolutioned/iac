@@ -23,40 +23,28 @@
     self.TipoDeEmpleado = @"";
     self.FechaDeIngreso = @"";
     self.FechasDeVacaciones = @"";
-    
+    self.empleadonumber = @"-";
+
     return @[
              
-             //we want to add a group header for the field set of fields
-             //we do that by adding the header key to the first field in the group//Transaccion
-             /*
-              Venta = 0,
-              Renta,
-              VentaRenta,
-              
-              
-              */
-            
-             
-             
-             
-             @{FXFormFieldKey: @"Número de empleado",FXFormFieldDefaultValue:self.NumerodeEmpleado}
+              @{FXFormFieldTitle: @"Número de empleado",FXFormFieldKey:@"NumerodeEmpleado", FXFormFieldDefaultValue:self.NumerodeEmpleado,@"userInteractionEnabled": @(NO)}
              ,
-             
-             @{FXFormFieldKey: @"Nombre",FXFormFieldDefaultValue:self.Nombre},
+                         @{FXFormFieldKey: @"Nombre",FXFormFieldDefaultValue:self.Nombre ,@"userInteractionEnabled": @(NO)},
              
              @{FXFormFieldKey: @"Correo",FXFormFieldDefaultValue:self.Correo},
              
-             @{FXFormFieldKey: @"Departamento",FXFormFieldDefaultValue:self.Departamento},
+             @{FXFormFieldKey: @"Departamento",FXFormFieldDefaultValue:self.Departamento,@"userInteractionEnabled": @(NO)},
              
-             @{FXFormFieldKey: @"Divp",FXFormFieldDefaultValue:self.Divp},
+             @{FXFormFieldKey: @"Divp",FXFormFieldDefaultValue:self.Divp,@"userInteractionEnabled": @(NO)},
              
-             @{FXFormFieldKey: @"Planta",FXFormFieldDefaultValue:self.Planta},
+             @{FXFormFieldKey: @"Planta",FXFormFieldDefaultValue:self.Planta,@"userInteractionEnabled": @(NO)},
              
-             @{FXFormFieldKey: @"Tipo de empleado",FXFormFieldDefaultValue:self.TipoDeEmpleado},
+             @{FXFormFieldTitle: @"Tipo de empleado",FXFormFieldKey:@"TipoDeEmpleado",FXFormFieldDefaultValue:self.TipoDeEmpleado,@"userInteractionEnabled": @(NO)},
              
-             @{FXFormFieldKey: @"Fecha de ingreso",FXFormFieldDefaultValue:self.FechaDeIngreso},
+             @{FXFormFieldTitle: @"Fecha de ingreso",FXFormFieldKey:@"FechaDeIngreso",FXFormFieldDefaultValue:self.FechaDeIngreso,@"userInteractionEnabled": @(NO)},
              
-             @{FXFormFieldKey: @"Fechas de vacaciones",FXFormFieldDefaultValue:self.FechasDeVacaciones},
+             @{FXFormFieldTitle: @"Días de Vacaciones",FXFormFieldKey:@"FechasDeVacaciones",
+               FXFormFieldDefaultValue:self.FechasDeVacaciones,@"userInteractionEnabled": @(NO)},
              
             // @{FXFormFieldTitle: @"Sing In", FXFormFieldHeader: @"", FXFormFieldAction: @"submitRegistrationForm:"},
              

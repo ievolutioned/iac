@@ -13,9 +13,20 @@
 #import "ServerController.h"
 #import "ProfileController.h"
 #import "LoginViewController.h"
-
+#import "HomeViewcontroller.h"
+#import "FaqController.h"
+#import "AppDelegate.h"
+#import "AboutController.h"
 @interface UiLeftPanelController ()
+
 @property (nonatomic, strong) NSMutableArray *lstCursos;
+
+@property (nonatomic, strong) FaqController *faqController;
+@property (nonatomic, strong) FaqController *termsController;
+@property (nonatomic, strong) EncuestaSalidaController *exitPool;
+
+@property (nonatomic, strong) NSMutableArray *dynamicForms;
+
 @end
 
 @implementation UiLeftPanelController
@@ -33,52 +44,75 @@
     self.lstCursos = [[NSMutableArray alloc] init];
     
     NSDictionary *LoadingDic = @{
-                                       @"name" : @"Loading...",
-                                       
-                                       };
-
+                                 @"name" : @"Loading...",
+                                 
+                                 };
+    
     
     [self.lstCursos addObject:LoadingDic];
-
+    
     [self.tableView reloadData];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
     
-         [ServerController curseList:^(NSArray * lst) {
+    if ([BaseViewController UserMenu].count <= 0)
+    {
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
+        [ServerController curseList:^(NSArray * lst) {
+            
+            self.lstCursos = [[NSMutableArray alloc] init];
+            self.dynamicForms = [[NSMutableArray alloc] init];
+
+            for (NSDictionary *str in lst)
+            {
+                [self.lstCursos addObject:str];
+                
+                DynamicJsonControllerViewController *json = [[DynamicJsonControllerViewController alloc] init];
+                NSDictionary *dic = str;
+                json.inquest_id = [[dic objectForKey:@"id"] stringValue];
+                json.jsonForm = [dic objectForKey:@"content"];
+                 json.title = [dic objectForKey:@"title"];
+                
+                [self.dynamicForms addObject:json];
+                
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self.tableView reloadData];
+                
+            });
+            
+            
+        }];
+        
+    });
+    }
+    else
+    {
         self.lstCursos = [[NSMutableArray alloc] init];
-        
-        
-        NSDictionary *EncuestadeSalida = @{
-                                    @"name" : @"Encuesta de Salida",
-                                    
-                                    };
-        
-        
-        [self.lstCursos addObject:EncuestadeSalida];
-        
-        NSDictionary *EvaluaciondePagos = @{
-                                           @"name" : @"Evaluacion de Pagos",
-                                           
-                                           };
-        
-        [self.lstCursos addObject:EvaluaciondePagos];
-        
-        for (NSDictionary *str in lst)
+         self.dynamicForms = [[NSMutableArray alloc] init];
+        for (NSDictionary *str in [BaseViewController UserMenu])
         {
-             [self.lstCursos addObject:str];
+            [self.lstCursos addObject:str];
+            
+            DynamicJsonControllerViewController *json = [[DynamicJsonControllerViewController alloc] init];
+            NSDictionary *dic = str;
+            json.inquest_id = [[dic objectForKey:@"id"] stringValue];
+            json.jsonForm = [dic objectForKey:@"content"];
+            json.title = [dic objectForKey:@"title"];
+            
+            [self.dynamicForms addObject:json];
+
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
-           
+            
             [self.tableView reloadData];
             
         });
-        
-        
-    }];
-         
-           });
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,20 +124,25 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0)
+        return 3;
+    else if (section == 1)
         return self.lstCursos.count;
     else
-        return 2;
+        return 3;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     switch (section) {
         case 0:
+            return @"";
+            break;
+        case 1:
             return @"FORMULARIOS";
             break;
             
@@ -121,95 +160,64 @@
     static NSString * identifier = @"CellItem";
     
     UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    
     cell = nil;
-    if (cell == nil) {
+    
+    if (cell == nil)
+    {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     
-    UILabel * lblDescription = [[UILabel alloc] initWithFrame:CGRectMake(57, 8, 220, 25)];
-    lblDescription.textColor = [UIColor blackColor];
+    UILabel * lblDescription = [[UILabel alloc] initWithFrame:CGRectMake(25, 8, 220, 25)];
+    lblDescription.textColor = [UIColor darkTextColor];
     
     if (indexPath.section == 0)
     {
-        /*
+        lblDescription.frame = CGRectMake(14, 8, 220, 25);
+        lblDescription.textColor = [UIColor blackColor];
+        
         switch (indexPath.row) {
-              
             case 0:
-            {
-                 lblDescription.text = @"Asistencia a Cursos";
-            }   break;
-            case 1:
-            {
-                lblDescription.text = @"Encuesta de Salida";
-            }
+                lblDescription.text = @"INICIO";
+                break;
+                
+                case 1:
+                lblDescription.text = @"PREGUNTAS FRECUENTES";
                 break;
                 
             default:
-            {
-                 lblDescription.text = @"Encuesta de Satisfacción";
-            }
-                break;
-                 
-                
-            case 0:
-            {
-                lblDescription.text = @"Encuesta de Salida";
-            }   break;
-            case 1:
-            {
-                lblDescription.text = @"Evaluacion de Pagos";
-            }
-                break;
-            case 2:
-            {
-                lblDescription.text = @"Evaluacion de Servicios Sanitarios";
-            }
-                break;
-            case 3:
-            {
-                lblDescription.text = @"Evaluacion de la Enfermeria";
-            }
-                break;
-            case 4:
-            {
-                lblDescription.text = @"Evaluacion de el Transporte";
-            }
-                break;
-            case 5:
-            {
-                lblDescription.text = @"Evaluacion de el Comedor";
-            }
-                break;
-
-                
-            default:
-            {
-                lblDescription.text = @"Encuesta de Satisfacción";
-            }
+                lblDescription.text = @"POLITICAS PROCEDIMIENTOS FORMATOS";
                 break;
         }
-         
-         */
+    }
+    else if (indexPath.section == 1)
+    {
+        
         NSDictionary *dic = [self.lstCursos objectAtIndex:indexPath.row];
         
         lblDescription.text = [dic objectForKey:@"name"];
-         
+        
     }
-    else
+    else if (indexPath.section == 2)
     {
         switch (indexPath.row) {
             case 0:
             {
-                 lblDescription.text = @"MI PERFIL";
+                lblDescription.text = @"MI PERFIL";
             }   break;
-           default:
+                
+            case 1:
             {
-                 lblDescription.text = @"CERRAR SESION";
+                lblDescription.text = @"ACERCA DE";
+            }   break;
+            default:
+            {
+                lblDescription.text = @"CERRAR SESION";
             }
                 break;
         }
     }
-   
+    
     
     lblDescription.backgroundColor = [UIColor clearColor];
     [cell addSubview:lblDescription];
@@ -222,12 +230,60 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-   
     
     if (indexPath.section == 0)
     {
+        
+        UIViewController *dash = nil;
+        
+       
+        
+        
         switch (indexPath.row) {
+            case 0:
+            {
+                AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+                
+                dash = appDelegate.det;
+            }
+                break;
             case 1:
+            {
+                if (self.faqController == nil)
+                    self.faqController = [[FaqController alloc] init];
+                
+                dash = self.faqController;
+            }
+                break;
+            case 2:
+            {
+                if (self.termsController == nil)
+                {
+                    self.termsController = [[FaqController alloc] init];
+                
+                    self.termsController.customUrl = @"https://iacgroup.herokuapp.com/admin/procedures";
+                }
+                
+                dash = self.termsController;
+            }
+                
+                
+                break;
+        }
+        
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:dash];
+        
+        nav.navigationBar.translucent = NO;
+        
+        nav.navigationBar.tintColor = [UIColor darkGrayColor];
+        
+        self.sidePanelController.centerPanel = nav;
+        
+    }
+    else if (indexPath.section == 1)
+    {
+        switch (indexPath.row) {
+            case 991:
             {
                 ListacursosViewController *lst = [[ListacursosViewController alloc] initWithStyle:UITableViewStylePlain];
                 lst.title = @"Asistencia a Cursos";
@@ -235,49 +291,56 @@
                 UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:lst];
                 
                 nav.navigationBar.translucent = NO;
-                
+                 nav.navigationBar.tintColor = [UIColor darkGrayColor];
                 self.sidePanelController.centerPanel = nav;
-
+                
                 
             }   break;
             case 0:
             {
+             
+                if (self.exitPool == nil)
+                {
                 
-                 EncuestaSalidaController *salida = [[EncuestaSalidaController alloc] init];
+                self.exitPool = [[EncuestaSalidaController alloc] init];
                 
-                salida.title = @"Encuesta de Salida";
-                
-                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:salida];
+                self.exitPool.title = @"Encuesta de Salida";
+                }
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.exitPool];
                 
                 nav.navigationBar.translucent = NO;
-                
+                 nav.navigationBar.tintColor = [UIColor darkGrayColor];
                 self.sidePanelController.centerPanel = nav;
-
+                
                 
             }   break;
                 
             default:
             {
+                /*
                 DynamicJsonControllerViewController *json = [[DynamicJsonControllerViewController alloc] init];
                 NSDictionary *dic = [self.lstCursos objectAtIndex:indexPath.row];
+                json.inquest_id = [[dic objectForKey:@"id"] stringValue];
                 json.jsonForm = [dic objectForKey:@"content"];
-                
                 //EscuestaSatisfaccionController *salida = [[EscuestaSatisfaccionController alloc] init];
                 
                 json.title = [dic objectForKey:@"title"];
+                 */
                 
-                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:json];
+               
+                
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController: [self.dynamicForms objectAtIndex:indexPath.row]];
                 
                 nav.navigationBar.translucent = NO;
-                
+                 nav.navigationBar.tintColor = [UIColor darkGrayColor];
                 self.sidePanelController.centerPanel = nav;
-
+                
                 return;
             }
                 break;
         }
     }
-    else
+    else if (indexPath.section == 2)
     {
         
         UIViewController *controller = nil;
@@ -295,9 +358,7 @@
             }   break;
             case 1:
             {
-                controller = [[WebViewController alloc] init];
-               // listcustomer.urltoLoad = @"http://iacrewardsprogram.com/Services/default.aspx";
-                ((WebViewController *)controller).urltoLoad = @"https://portal0012.globalview.adp.com/iac";
+                controller = [[AboutController alloc] init];
             }   break;
                 
             default:
@@ -307,7 +368,12 @@
                 
                 LoginViewController *controller = [[LoginViewController alloc] init];
                 
-                [self.navigationController presentViewController:controller animated:YES completion:nil];
+                UINavigationController *navLog = [[UINavigationController alloc] initWithRootViewController:controller];
+                navLog.navigationBar.translucent = YES;
+                [self.navigationController presentViewController:navLog animated:YES completion:nil];
+                
+               
+                
                 return;
             }
                 break;
@@ -316,7 +382,7 @@
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
         
         nav.navigationBar.translucent = NO;
-        
+         nav.navigationBar.tintColor = [UIColor darkGrayColor];
         self.sidePanelController.centerPanel = nav;
     }
     
