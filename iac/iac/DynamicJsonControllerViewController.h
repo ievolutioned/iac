@@ -14,7 +14,7 @@
 @class MBProgressHUD;
 @interface DynamicJsonControllerViewController : FXFormViewController
 @property (nonatomic, retain)  MBProgressHUD *HUD;
-
+@property (nonatomic, strong) NSString *inquest_id;
 @property (nonatomic, strong) NSArray *jsonForm;
 @property (nonatomic, strong) NSString *jsonName;
 //@property (nonatomic, strong) NSString *title;

@@ -34,4 +34,13 @@
 +(void) setLogin;
 +(void) setLogout;
 
+
++(void)setUserMenu:(NSArray *)UserData;
++(NSArray *)UserMenu;
+
+
+
++(BOOL) ishomeLoaded;
++(void) setishomeLoaded;
++(void) setishomeLoadedOff;
 @end

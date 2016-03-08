@@ -10,7 +10,7 @@
 #import "FXForms.h"
 
 @interface FXFormProfileController : NSObject<FXForm>
-
+@property (nonatomic, copy) NSString *empleadonumber;
 @property (nonatomic, copy) NSString *NumerodeEmpleado;
 @property (nonatomic, copy) NSString *Nombre;
 @property (nonatomic, copy) NSString *Correo;

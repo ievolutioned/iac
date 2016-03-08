@@ -17,4 +17,10 @@
 +(void)curseList:(void (^)(NSArray *))handler;
 
 +(void)ProfileList:(void (^)(NSMutableDictionary *))handler;
+
++(void)createForm:(NSDictionary *)jsonDic withinquest_id:(NSString *)inquest_id withhandler:(void (^)(BOOL,NSString *))handle;
+
++(void)updateProfile:(NSDictionary *)jsonDic withinquest_id:(NSString *)inquest_id withhandler:(void (^)(BOOL,NSString *))handler;
+
++(void)versionList:(void (^)(NSDictionary *))handler;
 @end

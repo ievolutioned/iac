@@ -20,7 +20,7 @@
 {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]))
     {
-        FXFormLoginController *viewlogin = [[FXFormLoginController alloc] init];
+       FXFormLoginController *viewlogin = [[FXFormLoginController alloc] init];
         
         self.formController.form = viewlogin;
     }
@@ -43,7 +43,9 @@
     
     vlogo.clipsToBounds = YES;
     
-    vlogo.frame = vheader.frame;
+    vlogo.frame = vheader.frame;// CGRectMake(0, 0, logo.size.width, logo.size.height);
+    
+    [vlogo setContentMode:UIViewContentModeScaleAspectFit];
     
     [vheader addSubview:vlogo];
     
@@ -62,7 +64,17 @@
     [self.view insertSubview:vbj atIndex:0];
     
     self.tableView.backgroundView = vbj;
+    
+    
+    self.navigationController.navigationBar.tintColor = [UIColor darkGrayColor];
+    
+        self.navigationItem.leftBarButtonItem= [[UIBarButtonItem alloc] initWithTitle:@"CUENTA" style:UIBarButtonItemStyleDone target:self action:@selector(sendForm)];
 
+}
+
+-(void)sendForm
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -89,7 +101,7 @@
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
             [ServerController doLogin:form.NoEmpleado withPass:form.password withCallback:^(bool susses, NSString * msg) {
-                
+                 dispatch_async(dispatch_get_main_queue(), ^{
                 if (susses)
                 {
                     NSLog(@"login Ok");
@@ -100,7 +112,7 @@
                 
                 
                 [self stophud];
-                
+                 });
             }];
         });
      

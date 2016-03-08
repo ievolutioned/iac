@@ -119,7 +119,7 @@
     
     [defs setValue:UserToken forKey:@"setUserToken_3"];
     
-    [defs setBool:YES forKey:@"currentUser_3"];
+    [defs setBool:YES forKey:@"currentUser_4"];
 }
 
 +(NSString *)UserToken
@@ -132,7 +132,14 @@
 +(void)setUserData:(NSDictionary *)UserData
 {
     
-    [[NSUserDefaults standardUserDefaults] setObject:UserData forKey:@"UserData_3"];
+    NSMutableDictionary *prunedDictionary = [NSMutableDictionary dictionary];
+    for (NSString * key in [UserData allKeys])
+    {
+        if (![[UserData objectForKey:key] isKindOfClass:[NSNull class]])
+            [prunedDictionary setObject:[UserData objectForKey:key] forKey:key];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:prunedDictionary forKey:@"UserData_3"];
     //...
    // NSDictionary * myDictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"dictionaryKey"];
 }
@@ -143,21 +150,57 @@
 }
 
 
++(void)setUserMenu:(NSArray *)UserData
+{
+    
+    [[NSUserDefaults standardUserDefaults] setObject:UserData forKey:@"UserMenu_3"];
+}
+
++(NSArray *)UserMenu
+{
+    return [[NSUserDefaults standardUserDefaults] arrayForKey:@"UserMenu_3"];
+}
+
 
 +(BOOL) isLogin
 {
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    BOOL isUserLogged = ([defaults boolForKey:@"currentUser_3"]);
+    BOOL isUserLogged = ([defaults boolForKey:@"currentUser_4"]);
     
     return isUserLogged;
 }
+
+
++(BOOL) ishomeLoaded
+{
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    BOOL isUserLogged = ([defaults boolForKey:@"ishomeLoaded_4"]);
+    
+    return isUserLogged;
+}
+
++(void) setishomeLoaded
+{
+    NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
+    
+    [defs setBool:YES forKey:@"ishomeLoaded_4"];
+}
+
++(void) setishomeLoadedOff
+{
+    NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
+    
+    [defs setBool:NO forKey:@"ishomeLoaded_4"];
+}
+
+
 
 +(void) logOut
 {
     
     NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
     
-    [defs setBool:NO forKey:@"currentUser_3"];
+    [defs setBool:NO forKey:@"currentUser_4"];
     
     //[[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"UserData_3"];
     
@@ -169,14 +212,14 @@
 {
     NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
     
-    [defs setBool:YES forKey:@"currentUser_3"];
+    [defs setBool:YES forKey:@"currentUser_4"];
 }
 
 +(void) setLogout
 {
     NSUserDefaults * defs = [NSUserDefaults standardUserDefaults];
     
-    [defs setBool:NO forKey:@"currentUser_3"];
+    [defs setBool:NO forKey:@"currentUser_4"];
 }
 
 

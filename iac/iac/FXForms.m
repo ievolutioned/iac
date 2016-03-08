@@ -34,6 +34,7 @@
 #import <objc/runtime.h>
 
 #import "DynamicJsonControllerViewController.h"
+#import "DynamicForm.h"
 
 #pragma clang diagnostic ignored "-Wobjc-missing-property-synthesis"
 #pragma clang diagnostic ignored "-Wdirect-ivar-access"
@@ -1414,12 +1415,12 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
             
             if ([opt isKindOfClass:[NSDictionary class]])
             {
-                field.action = @"presentNewForm:";
-                break;
+              //  field.action = @"presentNewForm:";
+               // break;
             }
             else
             {
-               
+               // field.action = nil;
             }
             
             
@@ -1460,6 +1461,10 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
             if ([opt isKindOfClass:[NSDictionary class]])
             {
                 titleOpt = [[opt allKeys] objectAtIndex:0];
+            }
+            else if ([opt isKindOfClass:[NSString class]])
+            {
+                titleOpt = opt;
             }
             else
             {
@@ -2734,10 +2739,18 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
 
 @implementation FXFormDefaultCell
 
+- (void)setUp
+{
+    self.textLabel.numberOfLines = 0;
+    self.detailTextLabel.numberOfLines = 0;
+    self.detailTextLabel.textAlignment = NSTextAlignmentRight;
+}
 - (void)update
 {
     self.textLabel.text = self.field.title;
     self.detailTextLabel.text = [self.field fieldDescription];
+    
+    NSLog(self.detailTextLabel.text);
     
     if ([self.field.type isEqualToString:FXFormFieldTypeLabel])
     {
@@ -2768,6 +2781,65 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
     }
 }
 
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    //NSLog(self.textLabel.text);
+    
+    @try {
+        float labelWith =[[UIScreen mainScreen] bounds].size.width - 100;
+        
+        
+        
+        CGRect textRect = [self.textLabel.text boundingRectWithSize:CGSizeMake( labelWith - 30, CGFLOAT_MAX)
+                                                            options:NSStringDrawingUsesLineFragmentOrigin| NSStringDrawingUsesFontLeading
+                                                         attributes:@{NSFontAttributeName:self.textLabel.font}
+                                                            context:nil];
+        
+        self.textLabel.frame = CGRectMake(self.textLabel.frame.origin.x,(self.contentView.frame.size.height - textRect.size.height) / 2, textRect.size.width, textRect.size.height);
+        
+        
+        CGRect textRectDetail = [self.detailTextLabel.text boundingRectWithSize:CGSizeMake( 100, CGFLOAT_MAX)
+                                                                        options:NSStringDrawingUsesLineFragmentOrigin| NSStringDrawingUsesFontLeading
+                                                                     attributes:@{NSFontAttributeName:self.detailTextLabel.font}
+                                                                        context:nil];
+        
+        
+        self.detailTextLabel.frame = CGRectMake(labelWith - 20,(self.contentView.frame.size.height - textRectDetail.size.height) / 2,
+                                                textRectDetail.size.width, textRectDetail.size.height);
+  
+    }
+    @catch (NSException *exception) {
+        
+    }
+    @finally {
+        
+    }
+   
+    
+}
+
+
++ (CGFloat)heightForField:(FXFormField *)field width:(CGFloat)width
+{
+   width  =[[UIScreen mainScreen] bounds].size.width - 120;
+    static UITextView *textView;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        textView = [[UITextView alloc] init];
+        textView.font = [UIFont systemFontOfSize:17];
+    });
+    
+    textView.text = [field title] ?: @" ";
+    CGSize textViewSize = [textView sizeThatFits:CGSizeMake(width - FXFormFieldPaddingLeft - FXFormFieldPaddingRight, FLT_MAX)];
+    
+    CGFloat height = 0;//[field.title length]? 21: 0; // label height
+    height += FXFormFieldPaddingTop + ceilf(textViewSize.height);
+    return height;
+}
+
 - (void)didSelectWithTableView:(UITableView *)tableView controller:(UIViewController *)controller
 {
     if ([self.field.type isEqualToString:FXFormFieldTypeBoolean] || [self.field.type isEqualToString:FXFormFieldTypeOption])
@@ -2788,6 +2860,50 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
             {
                 //reload section, in case fields are linked
                 [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
+                /*
+                
+                bool GoBack = YES;
+                
+                DynamicForm *form = self.field.form;
+                
+                NSArray *dicValue =  form.fields ;
+                
+                if ([dicValue isKindOfClass:[NSArray class]])
+                {
+                    
+                    if ([dicValue isKindOfClass:[NSArray class]])
+                    {
+                        if (dicValue.count > 0)
+                        {
+                            DynamicJsonControllerViewController *dynamic = [[DynamicJsonControllerViewController alloc] init];
+                            
+                            dynamic.jsonForm = dicValue;
+                            
+                            GoBack = NO;
+                            
+                            [controller.navigationController pushViewController:dynamic animated:YES];
+                        }
+                        
+                        
+                    }
+                    
+                    else
+                    {
+                        
+                        
+                    }
+                    
+                    
+                    
+                    
+                }
+                else
+                {
+                    
+                }
+                if (GoBack)
+                    */
+                    [controller.navigationController popViewControllerAnimated:YES];
             }
         }
         else
@@ -2968,6 +3084,8 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
     self.textLabel.text = self.field.title;
     self.textField.placeholder = [self.field.placeholder fieldDescription];
     self.textField.text = [self.field fieldDescription];
+    
+    NSLog(self.textField.text);
     
     self.textField.returnKeyType = UIReturnKeyDone;
     self.textField.textAlignment = [self.field.title length]? NSTextAlignmentRight: NSTextAlignmentLeft;
@@ -3901,7 +4019,8 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
     self.segmentedControl = [[UISegmentedControl alloc] initWithItems:@[]];
     [self.segmentedControl addTarget:self action:@selector(valueChanged) forControlEvents:UIControlEventValueChanged];
     [self.contentView addSubview:self.segmentedControl];
-    
+    self.textLabel.numberOfLines = 0;
+
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
@@ -3909,12 +4028,58 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
 {
     [super layoutSubviews];
     
+    NSLog(self.textLabel.text);
+    /*
     CGRect segmentedControlFrame = self.segmentedControl.frame;
     segmentedControlFrame.origin.x = self.textLabel.frame.origin.x + self.textLabel.frame.size.width + FXFormFieldPaddingLeft;
     segmentedControlFrame.origin.y = (self.contentView.frame.size.height - segmentedControlFrame.size.height) / 2;
     segmentedControlFrame.size.width = self.contentView.bounds.size.width - segmentedControlFrame.origin.x - FXFormFieldPaddingRight;
     self.segmentedControl.frame = segmentedControlFrame;
+    
+    */
+    
+    
+    CGRect segmentedControlFrame = self.segmentedControl.frame;
+    segmentedControlFrame.origin.x = [[UIScreen mainScreen] bounds].size.width - 240;
+    
+    segmentedControlFrame.origin.y = (self.contentView.frame.size.height - segmentedControlFrame.size.height) / 2;
+    segmentedControlFrame.size.width = [[UIScreen mainScreen] bounds].size.width - 260;//;self.contentView.bounds.size.width - segmentedControlFrame.origin.x - FXFormFieldPaddingRight;
+    
+    segmentedControlFrame.origin.x = [[UIScreen mainScreen] bounds].size.width - ( segmentedControlFrame.size.width + 5);
+    
+    self.segmentedControl.frame = segmentedControlFrame;
+    
+    float labelWith =[[UIScreen mainScreen] bounds].size.width - segmentedControlFrame.size.width;
+    
+    
+    
+    CGRect textRect = [self.textLabel.text boundingRectWithSize:CGSizeMake( labelWith - 20, CGFLOAT_MAX)
+                                                        options:NSStringDrawingUsesLineFragmentOrigin| NSStringDrawingUsesFontLeading
+                                                     attributes:@{NSFontAttributeName:self.textLabel.font}
+                                                        context:nil];
+    
+    self.textLabel.frame = CGRectMake(self.textLabel.frame.origin.x,(self.contentView.frame.size.height - textRect.size.height) / 2, textRect.size.width, textRect.size.height);
+
 }
+
+
++ (CGFloat)heightForField:(FXFormField *)field width:(CGFloat)width
+{
+    static UITextView *textView;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        textView = [[UITextView alloc] init];
+        textView.font = [UIFont systemFontOfSize:17];
+    });
+    
+    textView.text = [field fieldDescription] ?: @" ";
+    CGSize textViewSize = [textView sizeThatFits:CGSizeMake(width - FXFormFieldPaddingLeft - FXFormFieldPaddingRight, FLT_MAX)];
+    
+    CGFloat height = [field.title length]? 21: 0; // label height
+    height += FXFormFieldPaddingTop + ceilf(textViewSize.height) + FXFormFieldPaddingBottom;
+    return height;
+}
+
 
 - (void)update
 {
@@ -3962,6 +4127,9 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
     [self.contentView addSubview:self.segmentedControl];
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    
+    self.textLabel.numberOfLines = 0;
 }
 
 - (void)layoutSubviews
@@ -3969,14 +4137,27 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
     [super layoutSubviews];
     
     CGRect segmentedControlFrame = self.segmentedControl.frame;
-    segmentedControlFrame.origin.x = [[UIScreen mainScreen] bounds].size.width - 220;
+    segmentedControlFrame.origin.x = [[UIScreen mainScreen] bounds].size.width - 240;
     
     segmentedControlFrame.origin.y = (self.contentView.frame.size.height - segmentedControlFrame.size.height) / 2;
-    segmentedControlFrame.size.width = self.contentView.bounds.size.width - segmentedControlFrame.origin.x - FXFormFieldPaddingRight;
+    segmentedControlFrame.size.width = [[UIScreen mainScreen] bounds].size.width - 260;//;self.contentView.bounds.size.width - segmentedControlFrame.origin.x - FXFormFieldPaddingRight;
+    
+    segmentedControlFrame.origin.x = [[UIScreen mainScreen] bounds].size.width - ( segmentedControlFrame.size.width + 5);
     
     self.segmentedControl.frame = segmentedControlFrame;
     
-    segmentedControlFrame.origin.x = [[UIScreen mainScreen] bounds].size.width - 220;
+    float labelWith =[[UIScreen mainScreen] bounds].size.width - segmentedControlFrame.size.width;
+    
+    
+    
+    CGRect textRect = [self.textLabel.text boundingRectWithSize:CGSizeMake( labelWith - 20, CGFLOAT_MAX)
+                                             options:NSStringDrawingUsesLineFragmentOrigin| NSStringDrawingUsesFontLeading
+                                          attributes:@{NSFontAttributeName:self.textLabel.font}
+                                             context:nil];
+    
+   self.textLabel.frame = CGRectMake(self.textLabel.frame.origin.x,(self.contentView.frame.size.height - textRect.size.height) / 2, textRect.size.width, textRect.size.height);
+    
+  
 }
 
 - (void)update
@@ -3992,6 +4173,24 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
             [self.segmentedControl setSelectedSegmentIndex:i];
         }
     }
+}
+
+
++ (CGFloat)heightForField:(FXFormField *)field width:(CGFloat)width
+{
+    static UITextView *textView;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        textView = [[UITextView alloc] init];
+        textView.font = [UIFont systemFontOfSize:17];
+    });
+    
+    textView.text = [field fieldDescription] ?: @" ";
+    CGSize textViewSize = [textView sizeThatFits:CGSizeMake(width - FXFormFieldPaddingLeft - FXFormFieldPaddingRight, FLT_MAX)];
+    
+    CGFloat height = [field.title length]? 21: 0; // label height
+    height += FXFormFieldPaddingTop + ceilf(textViewSize.height) + FXFormFieldPaddingBottom;
+    return height;
 }
 
 - (void)valueChanged
