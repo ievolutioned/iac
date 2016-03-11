@@ -90,7 +90,15 @@
     [self.webView goForward];
 }
 
-
+-(void)lauchLogin
+{
+    [BaseViewController logOut];
+    LoginViewController *controller = [[LoginViewController alloc] init];
+    
+    UINavigationController *navLog = [[UINavigationController alloc] initWithRootViewController:controller];
+    navLog.navigationBar.translucent = YES;
+    [self.navigationController presentViewController:navLog animated:YES completion:nil];
+}
 -(void) viewDidAppear:(BOOL)animated
 {
     
@@ -308,7 +316,19 @@
         
         NSURL *url = request.URL;
         NSLog(@"%@",[url absoluteString]);
-        [self openExternalURL:url];//Handle External URL here
+        
+        NSDictionary *data  = [BaseViewController UserData];
+        
+        NSString *admin_token = [data objectForKey:@"admin_token"];
+        
+        NSString *urlPage = [NSString stringWithFormat:@"https://iacgroup.herokuapp.com/admin?ref=%@&token_access=%@#",@"xedni/draobhsad",admin_token];
+       
+        if ([urlPage isEqualToString:[url absoluteString]])
+            {
+                
+            }
+        else
+            [self openExternalURL:url];//Handle External URL here
         
     }
     

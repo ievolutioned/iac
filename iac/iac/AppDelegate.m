@@ -14,9 +14,9 @@
 #import "UiLeftPanelController.h"
 #import "JASidePanelController.h"
 #import "objc/message.h"
-
+NSString *const notiScreenTouch = @"notiScreenTouch";
 @interface AppDelegate () <UIApplicationDelegate>
-
+@property (strong, nonatomic) NSTimer *idleTimer;
 
 @property (strong, nonatomic) JASidePanelController *rootViewController;
 
@@ -30,10 +30,80 @@
 
 @implementation AppDelegate
 
+- (UIResponder *)nextResponder {
+    [self resetIdleTimer];
+    return [super nextResponder];
+}
+#define kTimeoutUserInteraction 300
+- (void)resetIdleTimer {
+    
+    if (!self.idleTimer) {
+        self.idleTimer = [NSTimer scheduledTimerWithTimeInterval:kTimeoutUserInteraction target:self selector:@selector(idleTimerExceeded) userInfo:nil repeats:NO];
+        [[NSRunLoop currentRunLoop] addTimer:self.idleTimer forMode:NSDefaultRunLoopMode];
+    } else {
+        if (fabs([self.idleTimer.fireDate timeIntervalSinceNow]) < kTimeoutUserInteraction - 1.) {
+            self.idleTimer.fireDate = [NSDate dateWithTimeIntervalSinceNow:kTimeoutUserInteraction];
+        }
+    }
+    
+    /*
+    if (self.idleTimer) {
+        [self.idleTimer invalidate];
+    }*/
+    
+   // self.idleTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(idleTimerExceeded) userInfo:nil repeats:NO];
+}
 
+- (void)idleTimerExceeded {
+     self.idleTimer = nil;
+    // do something
+    switch ([[UIApplication sharedApplication] applicationState])
+    {
+        case UIApplicationStateActive:
+        case UIApplicationStateInactive:
+        {
+            [self.det lauchLogin];
+            
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.det];
+            
+            nav.navigationBar.translucent = NO;
+            
+            nav.navigationBar.tintColor = [UIColor darkGrayColor];
+            
+            self.rootViewController.centerPanel = nav;
+        }
+            break;
+            
+        case UIApplicationStateBackground:
+        {
+            [self.det lauchLogin];
+            
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.det];
+            
+            nav.navigationBar.translucent = NO;
+            
+            nav.navigationBar.tintColor = [UIColor darkGrayColor];
+            
+            self.rootViewController.centerPanel = nav;
+        }
+            break;
+    }
+
+    
+}
+
+- (void)onScreenTouch:(NSNotification *)notification
+{
+    UIEvent *event=[notification.userInfo objectForKey:@"data"];
+    
+    NSLog(@"touch screen!!!!!");
+   // CGPoint pt = [[[[event allTouches] allObjects] objectAtIndex:0] locationInView:self.button];
+   // NSLog(@"pt.x=%f, pt.y=%f", pt.x, pt.y);
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onScreenTouch:) name:notiScreenTouch object:nil];
     
     [BaseViewController setishomeLoadedOff];
     

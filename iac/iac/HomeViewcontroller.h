@@ -18,5 +18,8 @@
 - (IBAction)dom1:(id)sender;
 - (IBAction)dom2:(id)sender;
 - (IBAction)dom3:(id)sender;
+
+-(void)lauchLogin;
+
 @property (nonatomic, copy) NSString *loaded;
 @end
