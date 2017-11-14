@@ -38,6 +38,8 @@
         urlPage = [NSString stringWithFormat:@"%@?ref=%@&token_access=%@",self.customUrl,@"xedni/draobhsad",admin_token];
     
 
+    NSLog(@"%@",urlPage);
+    
     if (self.showBack)
     {
         self.leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -201,7 +203,7 @@
     [self stophud];
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(nullable NSError *)error
+- (void)webView:(UIWebView *)webView didFailLoadWithError:( NSError *)error
 {
     [self stophud];
 }

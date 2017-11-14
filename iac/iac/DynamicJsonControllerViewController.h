@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "FXForms.h"
-
+#import "RSBarcodes.h"
 #import "MBProgressHUD.h"
 
 @class MBProgressHUD;
-@interface DynamicJsonControllerViewController : FXFormViewController
+@interface DynamicJsonControllerViewController : FXFormViewController<UINavigationControllerDelegate, UIActionSheetDelegate,UIAlertViewDelegate>
+{
+    RSScannerViewController *scanner;
+}
+
 @property (nonatomic, retain)  MBProgressHUD *HUD;
 @property (nonatomic, strong) NSString *inquest_id;
 @property (nonatomic, strong) NSArray *jsonForm;

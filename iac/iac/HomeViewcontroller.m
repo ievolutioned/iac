@@ -10,9 +10,13 @@
 #import "LoginViewController.h"
 #import "ServerController.h"
 #import "BaseViewController.h"
+#import "ComedorFormViewController.h"
+#import "UIViewController+JASidePanel.h"
+#import "JASidePanelController.h"
 @interface HomeViewcontroller ()
 @property (nonatomic, strong) UIImageView *picture;
 @property (nonatomic, strong) UIWebView *webView;
+@property (nonatomic, assign) BOOL IsUserDinner;
 @end
 
 @implementation HomeViewcontroller
@@ -111,6 +115,33 @@
         NSString *admin_token = [data objectForKey:@"admin_token"];
         
         
+        
+        NSDictionary *amidn_info = [BaseViewController UserData];
+        
+        if ([amidn_info objectForKey:@"type_iac"])
+        {
+            NSString *type_iac = [amidn_info objectForKey:@"type_iac"];
+            if ([type_iac isEqualToString:@"comedor"])
+            {
+                self.IsUserDinner = YES;
+            }
+        }
+        
+        if (self.IsUserDinner)
+        {
+            ComedorFormViewController *DinnerController = [[ComedorFormViewController alloc] init];
+           
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:DinnerController];
+            
+            nav.navigationBar.translucent = NO;
+            
+            nav.navigationBar.tintColor = [UIColor darkGrayColor];
+            
+            self.sidePanelController.centerPanel = nav;
+            
+            return;
+        }
+        
         if (admin_token.length > 0)
         {
             NSString *urlPage = [NSString stringWithFormat:@"https://iacgroup.herokuapp.com/admin?ref=%@&token_access=%@",@"xedni/draobhsad",admin_token];
@@ -197,7 +228,6 @@
     
     self.webView.userInteractionEnabled = YES;
     
-    
     self.webView.translatesAutoresizingMaskIntoConstraints = NO; //add this line.
     
     [self updateViewConstraints];
@@ -206,6 +236,13 @@
 - (void)updateViewConstraints
 {
     [super updateViewConstraints];
+    
+    NSDictionary *viewBindings = NSDictionaryOfVariableBindings(self.view,_webView);
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_webView]-0-|" options:0 metrics:nil views:viewBindings]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[_webView]-0-|" options:0 metrics:nil views:viewBindings]];
+    
+    return;
+    
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
                                                           attribute:NSLayoutAttributeTop
                                                           relatedBy:NSLayoutRelationEqual
@@ -247,6 +284,7 @@
                                                           attribute:NSLayoutAttributeTrailing
                                                          multiplier:1.0
                                                            constant:0.0]];
+    
 }
 
 -(BOOL)splitViewController:(UISplitViewController *)svc shouldHideViewController:(UIViewController *)vc inOrientation:(UIInterfaceOrientation)orientation{
@@ -303,7 +341,7 @@
     NSLog(@"%@",yourHTMLSourceCodeString);
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(nullable NSError *)error
+- (void)webView:(UIWebView *)webView didFailLoadWithError:( NSError *)error
 {
     [self stophud];
 }

@@ -16,6 +16,7 @@
 		0918BC911AB0BB4B000034A5 /* TermsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0918BC8F1AB0BB4B000034A5 /* TermsViewController.xib */; };
 		09191F011A9D7AE000EE6580 /* ListacursosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09191F001A9D7AE000EE6580 /* ListacursosViewController.m */; };
 		09191F031A9D7B3B00EE6580 /* FormFieldsCursos.json in Resources */ = {isa = PBXBuildFile; fileRef = 09191F021A9D7B3B00EE6580 /* FormFieldsCursos.json */; };
+		091F5C6B1E5BB14E00655849 /* AsistenciaFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 091F5C6A1E5BB14E00655849 /* AsistenciaFormViewController.m */; };
 		09263D481A96CFF7008E1704 /* FXEncuentaSalidaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09263D471A96CFF7008E1704 /* FXEncuentaSalidaController.m */; };
 		09263D4B1A96D034008E1704 /* EncuestaSalidaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09263D4A1A96D034008E1704 /* EncuestaSalidaController.m */; };
 		09263D4E1A96DED7008E1704 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09263D4D1A96DED7008E1704 /* Crashlytics.framework */; };
@@ -54,9 +55,11 @@
 		09BF387E1A9D2DEA00DCB402 /* FormFieldsSatisfaccion.json in Resources */ = {isa = PBXBuildFile; fileRef = 09BF387D1A9D2DEA00DCB402 /* FormFieldsSatisfaccion.json */; };
 		09BF38811A9D2E9E00DCB402 /* EscuestaSatisfaccionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BF38801A9D2E9E00DCB402 /* EscuestaSatisfaccionController.m */; };
 		09BF38841A9D2F2700DCB402 /* DynamicFormSatisfaccion.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BF38831A9D2F2700DCB402 /* DynamicFormSatisfaccion.m */; };
+		09C247FF1E648E45001CDFF6 /* close_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C247FE1E648E45001CDFF6 /* close_delete.png */; };
 		09D175D51A9FAD6E009B6EB0 /* LoadingCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D175D41A9FAD6E009B6EB0 /* LoadingCameraViewController.m */; };
 		09D24B8E1C46B3F90014C548 /* FaqController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D24B8D1C46B3F90014C548 /* FaqController.m */; };
 		09E8F9E41C7E5FD500737A28 /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E8F9E31C7E5FD500737A28 /* AboutController.m */; };
+		09ED421F1E79B69B0018A2C2 /* ComedorFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09ED421E1E79B69A0018A2C2 /* ComedorFormViewController.m */; };
 		E65C08FD162BC70C2E0CBA59 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F946CAC4D9A06C0392FAF0B1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +88,8 @@
 		09191EFF1A9D7AE000EE6580 /* ListacursosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListacursosViewController.h; sourceTree = "<group>"; };
 		09191F001A9D7AE000EE6580 /* ListacursosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListacursosViewController.m; sourceTree = "<group>"; };
 		09191F021A9D7B3B00EE6580 /* FormFieldsCursos.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FormFieldsCursos.json; sourceTree = "<group>"; };
+		091F5C691E5BB14E00655849 /* AsistenciaFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsistenciaFormViewController.h; sourceTree = "<group>"; };
+		091F5C6A1E5BB14E00655849 /* AsistenciaFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsistenciaFormViewController.m; sourceTree = "<group>"; };
 		09263D461A96CFF7008E1704 /* FXEncuentaSalidaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXEncuentaSalidaController.h; sourceTree = "<group>"; };
 		09263D471A96CFF7008E1704 /* FXEncuentaSalidaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXEncuentaSalidaController.m; sourceTree = "<group>"; };
 		09263D491A96D034008E1704 /* EncuestaSalidaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncuestaSalidaController.h; sourceTree = "<group>"; };
@@ -150,12 +155,15 @@
 		09BF38801A9D2E9E00DCB402 /* EscuestaSatisfaccionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EscuestaSatisfaccionController.m; sourceTree = "<group>"; };
 		09BF38821A9D2F2700DCB402 /* DynamicFormSatisfaccion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicFormSatisfaccion.h; sourceTree = "<group>"; };
 		09BF38831A9D2F2700DCB402 /* DynamicFormSatisfaccion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicFormSatisfaccion.m; sourceTree = "<group>"; };
+		09C247FE1E648E45001CDFF6 /* close_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_delete.png; sourceTree = "<group>"; };
 		09D175D31A9FAD6E009B6EB0 /* LoadingCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingCameraViewController.h; sourceTree = "<group>"; };
 		09D175D41A9FAD6E009B6EB0 /* LoadingCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingCameraViewController.m; sourceTree = "<group>"; };
 		09D24B8C1C46B3F90014C548 /* FaqController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaqController.h; sourceTree = "<group>"; };
 		09D24B8D1C46B3F90014C548 /* FaqController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaqController.m; sourceTree = "<group>"; };
 		09E8F9E21C7E5FD500737A28 /* AboutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
 		09E8F9E31C7E5FD500737A28 /* AboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
+		09ED421D1E79B69A0018A2C2 /* ComedorFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComedorFormViewController.h; sourceTree = "<group>"; };
+		09ED421E1E79B69A0018A2C2 /* ComedorFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComedorFormViewController.m; sourceTree = "<group>"; };
 		1F82C7CFC24DB830533C5913 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3E59A50359271EF4F7A134A5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F946CAC4D9A06C0392FAF0B1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,6 +208,15 @@
 			name = ListaCursos;
 			sourceTree = "<group>";
 		};
+		091F5C681E5BB0D400655849 /* Asistencia */ = {
+			isa = PBXGroup;
+			children = (
+				091F5C691E5BB14E00655849 /* AsistenciaFormViewController.h */,
+				091F5C6A1E5BB14E00655849 /* AsistenciaFormViewController.m */,
+			);
+			name = Asistencia;
+			sourceTree = "<group>";
+		};
 		09263D451A96CF20008E1704 /* EncuestaSalida */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,7 +231,6 @@
 		092843591A9658C10099545A = {
 			isa = PBXGroup;
 			children = (
-				0956BA7F1BBCA327000D86F8 /* Fabric.framework */,
 				092843641A9658C20099545A /* iac */,
 				092843811A9658C20099545A /* iacTests */,
 				092843631A9658C20099545A /* Products */,
@@ -323,6 +339,8 @@
 		0928439A1A965C620099545A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				09ED421C1E79B5E30018A2C2 /* Comedor */,
+				091F5C681E5BB0D400655849 /* Asistencia */,
 				09E8F9E11C7E5F4400737A28 /* ABOUT */,
 				09D24B8B1C46B3CF0014C548 /* FAQ */,
 				095E78CF1BFFA27A005A3DF1 /* Profile */,
@@ -436,6 +454,7 @@
 		09BF38751A9D147B00DCB402 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				09C247FE1E648E45001CDFF6 /* close_delete.png */,
 				09A94CBE1C89F23400DD1C92 /* RightIcon.png */,
 				09A94CBF1C89F23400DD1C92 /* leftIcon.png */,
 				0915417A1BCEC8C100C401F5 /* logoIconLogin.png */,
@@ -490,9 +509,19 @@
 			name = ABOUT;
 			sourceTree = "<group>";
 		};
+		09ED421C1E79B5E30018A2C2 /* Comedor */ = {
+			isa = PBXGroup;
+			children = (
+				09ED421D1E79B69A0018A2C2 /* ComedorFormViewController.h */,
+				09ED421E1E79B69A0018A2C2 /* ComedorFormViewController.m */,
+			);
+			name = Comedor;
+			sourceTree = "<group>";
+		};
 		0FCD07F6F8928E6C0307F0FF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0956BA7F1BBCA327000D86F8 /* Fabric.framework */,
 				09263D4D1A96DED7008E1704 /* Crashlytics.framework */,
 				F946CAC4D9A06C0392FAF0B1 /* libPods.a */,
 			);
@@ -555,12 +584,13 @@
 		0928435A1A9658C10099545A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = ievolutioned;
 				TargetAttributes = {
 					092843611A9658C20099545A = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = A4BZ62RZ37;
+						ProvisioningStyle = Automatic;
 					};
 					0928437D1A9658C20099545A = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -601,6 +631,7 @@
 				09BF38771A9D148400DCB402 /* logoIcon@2x.jpg in Resources */,
 				094B73A21A9CD9D70082EE1C /* FormFields.json in Resources */,
 				092843761A9658C20099545A /* Images.xcassets in Resources */,
+				09C247FF1E648E45001CDFF6 /* close_delete.png in Resources */,
 				09A94CC01C89F23400DD1C92 /* RightIcon.png in Resources */,
 				095312EF1AB151CE001CC3E8 /* FormFieldsMotivo.json in Resources */,
 				09191F031A9D7B3B00EE6580 /* FormFieldsCursos.json in Resources */,
@@ -680,6 +711,7 @@
 				09766CA21AAF941B003F0CCF /* Poll.m in Sources */,
 				092843991A965C120099545A /* FXForms.m in Sources */,
 				092FBD681C3B12200060A34D /* FXFormProfilePasswordController.m in Sources */,
+				09ED421F1E79B69B0018A2C2 /* ComedorFormViewController.m in Sources */,
 				094B73A01A9CD9CB0082EE1C /* DynamicForm.m in Sources */,
 				095E78D21BFFA2E0005A3DF1 /* ProfileController.m in Sources */,
 				0918BC861AB0B5BD000034A5 /* DynamicFromLocalJson.m in Sources */,
@@ -690,6 +722,7 @@
 				092843681A9658C20099545A /* main.m in Sources */,
 				09BF387B1A9D1E7600DCB402 /* WebViewController.m in Sources */,
 				090149FB1AA0C95000E087DC /* ServerConnection.m in Sources */,
+				091F5C6B1E5BB14E00655849 /* AsistenciaFormViewController.m in Sources */,
 				09263D481A96CFF7008E1704 /* FXEncuentaSalidaController.m in Sources */,
 				0928439F1A965C960099545A /* HomeViewcontroller.m in Sources */,
 				09BF38741A9D103600DCB402 /* UiLeftPanelController.m in Sources */,
@@ -749,15 +782,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -770,7 +807,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -791,8 +828,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -800,13 +839,14 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -819,18 +859,20 @@
 			baseConfigurationReference = 3E59A50359271EF4F7A134A5 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = A4BZ62RZ37;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = iac/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = iac.Iacna.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3ea58149-fe4f-4668-9a0b-cffffdab7697";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -840,18 +882,20 @@
 			baseConfigurationReference = 1F82C7CFC24DB830533C5913 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = A4BZ62RZ37;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = iac/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = iac.Iacna.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3ea58149-fe4f-4668-9a0b-cffffdab7697";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -872,6 +916,7 @@
 				);
 				INFOPLIST_FILE = iacTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ievolutioned.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iac.app/iac";
@@ -890,6 +935,7 @@
 				);
 				INFOPLIST_FILE = iacTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ievolutioned.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iac.app/iac";

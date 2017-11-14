@@ -56,7 +56,7 @@
     [scanner setIsButtonBordersVisible:YES];
     [scanner setStopOnFirst:YES];
     
-   // [self.view addSubview:scanner.view];
+   [self.view addSubview:scanner.view];
     
     [[NSNotificationCenter defaultCenter] addObserver:self // put here the view controller which has to be notified
                                              selector:@selector(orientationChanged:)

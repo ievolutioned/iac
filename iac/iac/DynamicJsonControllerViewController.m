@@ -26,6 +26,8 @@
     else if (self.jsonForm.count > 0)
         self.formController.form = [[DynamicFromLocalJson alloc] initWitJsonForm:self.jsonForm];
   
+    NSLog(@"%@", self.jsonForm);
+    
     self.navigationItem.rightBarButtonItem= [[UIBarButtonItem alloc] initWithTitle:@"Enviar" style:UIBarButtonItemStyleDone target:self action:@selector(sendForm)];
 
 }
@@ -229,4 +231,150 @@
     
     [alertView show];
 }
+
+
+
+
+#pragma mark - reader
+- (void)openCamera:(UITableViewCell<FXFormFieldCell> *)cell
+{
+    //[self presentViewController:scanner animated:YES completion:nil]
+    
+    
+    if ([UIAlertController class])
+    {
+        UIAlertControllerStyle style = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)? UIAlertControllerStyleAlert: UIAlertControllerStyleActionSheet;
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:style];
+        
+        [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Escanear Credencial", nil) style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
+            [self actionSheet:nil didDismissWithButtonIndex:0];
+        }]];
+        
+        [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Agregar Manualmente", nil) style:UIAlertActionStyleDefault handler:^(__unused UIAlertAction *action) {
+            [self actionSheet:nil didDismissWithButtonIndex:1];
+        }]];
+        
+        [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Cancelar", nil) style:UIAlertActionStyleCancel handler:NULL]];
+        
+        
+        [self presentViewController:alert animated:YES completion:NULL];
+    }
+    else
+    {
+        
+        [[[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:NSLocalizedString(@"Cancelar", nil) destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Escanear Credencial", nil), NSLocalizedString(@"Agregar Manualmente", nil), nil] showInView:self.view];
+    }
+}
+
+
+
+
+#pragma mark - Navigation
+
+-(void) cancelScannel
+{
+    [scanner dismissViewControllerAnimated:YES completion:nil];
+    
+    scanner = nil;
+}
+
+-(void) flipCamera
+{
+    [scanner switchCamera];
+    
+}
+
+- (void)actionSheet:(__unused UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    
+    switch (buttonIndex)
+    {
+        case 0:
+        {
+            
+            scanner = [[RSScannerViewController alloc] initWithCornerView:YES
+                                                              controlView:YES
+                                                          barcodesHandler:^(NSArray *barcodeObjects) {
+                                                              if (barcodeObjects.count > 0) {
+                                                                  [barcodeObjects enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                                                                      dispatch_async(dispatch_get_main_queue(), ^{
+                                                                          AVMetadataMachineReadableCodeObject *code = obj;
+                                                                          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Barcode found"
+                                                                                                                          message:code.stringValue
+                                                                                                                         delegate:self
+                                                                                                                cancelButtonTitle:@"OK"
+                                                                                                                otherButtonTitles:nil];
+                                                                          //[scanner dismissViewControllerAnimated:true completion:nil];
+                                                                          //[scanner.navigationController popViewControllerAnimated:YES];
+                                                                          dispatch_async(dispatch_get_main_queue(), ^{
+                                                                              [scanner dismissViewControllerAnimated:true completion:nil];
+                                                                              [alert show];
+                                                                          });
+                                                                      });
+                                                                  }];
+                                                              }
+                                                              
+                                                          }
+                       
+                                                  preferredCameraPosition:AVCaptureDevicePositionBack];
+            
+            [scanner setIsButtonBordersVisible:YES];
+            [scanner setStopOnFirst:YES];
+            
+            
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:scanner];
+            
+            nav.navigationBar.translucent = NO;
+            
+            scanner.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(cancelScannel)];
+            
+            scanner.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Flip" style:UIBarButtonItemStyleDone target:self action:@selector(flipCamera)];
+            
+            [self presentViewController:nav animated:YES completion:nil];
+            
+            
+            break;
+        }
+        case 1:
+        {
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"No. De Credencial"
+                                                              message:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancelar"
+                                                    otherButtonTitles:@"Continuar", nil];
+            
+            [message setAlertViewStyle:UIAlertViewStylePlainTextInput];
+            
+            [message show];
+            break;
+        }
+    }
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    
+    UITextField *username = [alertView textFieldAtIndex:0];
+    
+    self.field.value = username.text;
+    
+    
+}
+
+- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView
+{
+    NSString *inputText = [[alertView textFieldAtIndex:0] text];
+    if( [inputText length] >= 1 )
+    {
+        
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+}
+
 @end

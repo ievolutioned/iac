@@ -1115,6 +1115,26 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
     _isInline = isInline;
 }
 
+- (void)setIsServer:(BOOL)isServer
+{
+    _isServer = isServer;
+}
+
+- (void)setTitledate:(NSString *)StrTitledate
+{
+    _titledate = StrTitledate;
+}
+
+
+- (void)setDeleteicon:(BOOL)isDeleteicon
+{
+    _deleteicon = isDeleteicon;
+}
+- (void)setExtrakey:(NSString *)extrakey
+{
+    _extrakey = extrakey;
+}
+
 - (void)setOptions:(NSArray *)options
 {
     _options = [options copy];
@@ -2191,6 +2211,8 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
             style = UITableViewCellStyleValue1;
         }
         
+        style = UITableViewCellStyleSubtitle;
+        
         //don't recycle cells - it would make things complicated
         return [[cellClass alloc] initWithStyle:style reuseIdentifier:NSStringFromClass(cellClass)];
     }
@@ -2219,7 +2241,9 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
 
 - (UITableViewCell *)tableView:(__unused UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [self cellForField:[self fieldForIndexPath:indexPath]];
+    UITableViewCell *cell =  [self cellForField:[self fieldForIndexPath:indexPath]];
+   
+    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -2750,8 +2774,6 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
     self.textLabel.text = self.field.title;
     self.detailTextLabel.text = [self.field fieldDescription];
     
-    NSLog(self.detailTextLabel.text);
-    
     if ([self.field.type isEqualToString:FXFormFieldTypeLabel])
     {
         self.accessoryType = UITableViewCellAccessoryNone;
@@ -2773,14 +2795,55 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
     {
         self.accessoryType = UITableViewCellAccessoryNone;
         self.textLabel.textAlignment = NSTextAlignmentCenter;
+          if (self.field.isInline)
+          {
+              self.imageView.image =  [UIImage imageNamed:@"close_delete.png"];
+          }
+        
     }
     else
     {
         self.accessoryType = UITableViewCellAccessoryNone;
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    
+    if (self.field.isServer)
+    {
+        
+    }
+    
+    if (self.field.deleteicon)
+    {
+        self.imageView.image =  [UIImage imageNamed:@"close_delete.png"];
+        
+        self.imageView.tag = [self.field.key integerValue];
+        
+        self.imageView.userInteractionEnabled = YES;
+        
+        UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapGesture:)];
+        
+        tapGesture1.numberOfTapsRequired = 1;
+        
+        [tapGesture1 setDelegate:self];
+        
+        [self.imageView addGestureRecognizer:tapGesture1];
+    }
+
+    
 }
 
+- (void) tapGesture: (UITapGestureRecognizer *)tap
+{
+    //handle Tap...
+ 
+    UIView *view = tap.view;
+    NSLog(@"%ld", (long)view.tag);//By tag, you can find out where you had tapped.
+    
+    NSLog(@"...");
+    
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"valueSelectedToDeleted" object:[NSString stringWithFormat:@"%ld",(long)view.tag]];
+}
 
 - (void)layoutSubviews
 {
@@ -2806,6 +2869,25 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
                                                                      attributes:@{NSFontAttributeName:self.detailTextLabel.font}
                                                                         context:nil];
         
+        if (self.field.action)
+        {
+            self.accessoryType = UITableViewCellAccessoryNone;
+            self.textLabel.textAlignment = NSTextAlignmentCenter;
+            if (self.field.isInline)
+            {
+                self.imageView.frame = CGRectMake(20,20,25,25);
+                
+              //  self.textLabel.frame = CGRectMake(50,(self.contentView.frame.size.height - textRect.size.height) / 2, textRect.size.width + 100, textRect.size.height);
+                
+            }
+        }
+        
+        if (self.field.deleteicon)
+        {
+            self.imageView.frame = CGRectMake(20,13,25,25);
+            self.textLabel.frame = CGRectMake(50,self.textLabel.frame.origin.y, textRect.size.width, textRect.size.height);
+            
+        }
         
         self.detailTextLabel.frame = CGRectMake(labelWith - 20,(self.contentView.frame.size.height - textRectDetail.size.height) / 2,
                                                 textRectDetail.size.width, textRectDetail.size.height);
@@ -2848,8 +2930,8 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
         
         self.field.value = @(![self.field.value boolValue]);
         
-         if (self.field.action)
-            self.field.action(self);
+        
+        
         
         self.accessoryType = [self.field.value boolValue]? UITableViewCellAccessoryCheckmark: UITableViewCellAccessoryNone;
         
@@ -2858,6 +2940,15 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
             NSIndexPath *indexPath = [tableView indexPathForCell:self];
             if (indexPath)
             {
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"valueSelected" object:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+                
+                if ([controller respondsToSelector:NSSelectorFromString(@"valueSelected")])
+                {
+                    [controller setValue:[NSString stringWithFormat:@"%ld",(long)indexPath.row] forKey:@"valueSelected"];
+                }
+
+                
                 //reload section, in case fields are linked
                 [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationAutomatic];
                 /*
@@ -2903,13 +2994,25 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
                 }
                 if (GoBack)
                     */
-                    [controller.navigationController popViewControllerAnimated:YES];
+                
+                
+               [controller.navigationController popViewControllerAnimated:YES];
+                
+               
+
             }
+            
+            if (self.field.action)
+                self.field.action(self);
         }
         else
         {
             //deselect the cell
             [tableView deselectRowAtIndexPath:tableView.indexPathForSelectedRow animated:YES];
+            
+            if (self.field.action)
+                self.field.action(self);
+
         }
     }
     else if (self.field.action && (![self.field isSubform] || !self.field.optionCount))
@@ -3077,6 +3180,19 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
         textFieldFrame.size.width = self.textField.superview.frame.size.width - textFieldFrame.origin.x - FXFormFieldPaddingRight;
     }
     self.textField.frame = textFieldFrame;
+    
+    if (self.field.deleteicon)
+    {
+        self.imageView.frame = CGRectMake(20,13,25,25);
+        self.textField.frame = CGRectMake(50,self.textField.frame.origin.y, self.textField.frame.size.width, self.textField.frame.size.height);
+        self.textField.enabled = NO;
+        
+        self.textField.textAlignment = NSTextAlignmentRight;
+        textFieldFrame.origin.x = self.textLabel.frame.origin.x + labelFrame.size.width + FXFormFieldLabelSpacing;
+        textFieldFrame.size.width = self.textField.superview.frame.size.width - textFieldFrame.origin.x - FXFormFieldPaddingRight;
+        
+         self.textLabel.frame = CGRectMake(50,self.textLabel.frame.origin.y, self.textLabel.frame.size.width, self.textLabel.frame.size.height);
+    }
 }
 
 - (void)update
@@ -3136,8 +3252,43 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
         self.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         self.textField.keyboardType = UIKeyboardTypeURL;
     }
+    
+    if (self.field.isServer)
+    {
+        self.textField.enabled = NO;
+    }
+    
+    if (self.field.deleteicon)
+    {
+        self.imageView.image =  [UIImage imageNamed:@"close_delete.png"];
+        
+        self.imageView.tag = [self.field.key integerValue];
+        
+        self.imageView.userInteractionEnabled = YES;
+        
+        UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapGesture:)];
+        
+        tapGesture1.numberOfTapsRequired = 1;
+        
+        [tapGesture1 setDelegate:self];
+        
+        [self.imageView addGestureRecognizer:tapGesture1];
+    }
+    
+    
 }
-
+- (void) tapGesture: (UITapGestureRecognizer *)tap
+{
+    //handle Tap...
+    
+    UIView *view = tap.view;
+    NSLog(@"%ld", (long)view.tag);//By tag, you can find out where you had tapped.
+    
+    NSLog(@"...");
+    
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"valueSelectedToDeleted" object:[NSString stringWithFormat:@"%ld",(long)view.tag]];
+}
 - (BOOL)textFieldShouldBeginEditing:(__unused UITextField *)textField
 {
     //welcome to hacksville, population: you
@@ -4028,8 +4179,7 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
 {
     [super layoutSubviews];
     
-    NSLog(self.textLabel.text);
-    /*
+     /*
     CGRect segmentedControlFrame = self.segmentedControl.frame;
     segmentedControlFrame.origin.x = self.textLabel.frame.origin.x + self.textLabel.frame.size.width + FXFormFieldPaddingLeft;
     segmentedControlFrame.origin.y = (self.contentView.frame.size.height - segmentedControlFrame.size.height) / 2;
@@ -4111,6 +4261,203 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
 
 @end
 
+
+
+
+
+
+@interface FXFormDefaultCellCustom ()
+
+@property (nonatomic, strong, readwrite)  UILabel *subtitleLabel;
+
+@end
+
+@implementation FXFormDefaultCellCustom
+
+- (void)setUp
+{
+    UIFont * customFont = [UIFont  systemFontOfSize:12];
+    NSString * text = @"[DATe]";
+    
+    self.subtitleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
+    self.subtitleLabel.text = text;
+    self.subtitleLabel.font = customFont;
+    self.subtitleLabel.numberOfLines = 1;
+    self.subtitleLabel.baselineAdjustment = UIBaselineAdjustmentAlignBaselines; // or UIBaselineAdjustmentAlignCenters, or UIBaselineAdjustmentNone
+    self.subtitleLabel.adjustsFontSizeToFitWidth = YES;
+    self.subtitleLabel.adjustsLetterSpacingToFitWidth = YES;
+    self.subtitleLabel.minimumScaleFactor = 10.0f/12.0f;
+    self.subtitleLabel.clipsToBounds = YES;
+    self.subtitleLabel.backgroundColor = [UIColor clearColor];
+    self.subtitleLabel.textColor = [UIColor blackColor];
+    self.subtitleLabel.textAlignment = NSTextAlignmentLeft;
+    
+    [self.contentView addSubview:self.subtitleLabel];
+    
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    
+    self.textLabel.numberOfLines = 0;
+}
+
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    //NSLog(self.textLabel.text);
+    
+    @try {
+        float labelWith =[[UIScreen mainScreen] bounds].size.width - 100;
+        
+        
+        
+        CGRect textRect = [self.textLabel.text boundingRectWithSize:CGSizeMake( labelWith - 30, CGFLOAT_MAX)
+                                                            options:NSStringDrawingUsesLineFragmentOrigin| NSStringDrawingUsesFontLeading
+                                                         attributes:@{NSFontAttributeName:self.textLabel.font}
+                                                            context:nil];
+        
+        self.textLabel.frame = CGRectMake(50,23, textRect.size.width, textRect.size.height);
+        
+        
+        CGRect textRectDetail = [self.detailTextLabel.text boundingRectWithSize:CGSizeMake( 100, CGFLOAT_MAX)
+                                                                        options:NSStringDrawingUsesLineFragmentOrigin| NSStringDrawingUsesFontLeading
+                                                                     attributes:@{NSFontAttributeName:self.detailTextLabel.font}
+                                                                        context:nil];
+        
+        if (self.field.action)
+        {
+            self.accessoryType = UITableViewCellAccessoryNone;
+            self.textLabel.textAlignment = NSTextAlignmentCenter;
+            if (self.field.isInline)
+            {
+                self.imageView.frame = CGRectMake(20,20,25,25);
+                
+                //  self.textLabel.frame = CGRectMake(50,(self.contentView.frame.size.height - textRect.size.height) / 2, textRect.size.width + 100, textRect.size.height);
+                
+            }
+        }
+        
+        if (self.field.deleteicon)
+        {
+            self.imageView.frame = CGRectMake(20,23,25,25);
+        }
+        
+        self.detailTextLabel.frame = CGRectMake(labelWith - 20,(self.contentView.frame.size.height - textRectDetail.size.height) / 2,
+                                                textRectDetail.size.width, textRectDetail.size.height);
+        
+        
+        CGRect segmentedControlFrame = CGRectMake(self.textLabel.frame.origin.x, self.textLabel.frame.size.height + self.textLabel.frame.origin.y, 320, 20);
+        self.subtitleLabel.frame = segmentedControlFrame;
+        
+    }
+    @catch (NSException *exception) {
+        
+    }
+    @finally {
+        
+    }
+    
+    
+}
+
+- (void)update
+{
+    self.textLabel.text = self.field.title;
+    self.detailTextLabel.text = [self.field fieldDescription];
+    self.subtitleLabel.text = self.field.titledate;
+    
+    if ([self.field.type isEqualToString:FXFormFieldTypeLabel])
+    {
+        self.accessoryType = UITableViewCellAccessoryNone;
+        if (!self.field.action)
+        {
+            self.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+    }
+    else if ([self.field isSubform] || self.field.segue)
+    {
+        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    else if ([self.field.type isEqualToString:FXFormFieldTypeBoolean] || [self.field.type isEqualToString:FXFormFieldTypeOption])
+    {
+        self.detailTextLabel.text = nil;
+        self.accessoryType = [self.field.value boolValue]? UITableViewCellAccessoryCheckmark: UITableViewCellAccessoryNone;
+    }
+    else if (self.field.action)
+    {
+        self.accessoryType = UITableViewCellAccessoryNone;
+        self.textLabel.textAlignment = NSTextAlignmentCenter;
+        if (self.field.isInline)
+        {
+            self.imageView.image =  [UIImage imageNamed:@"close_delete.png"];
+        }
+        
+    }
+    else
+    {
+        self.accessoryType = UITableViewCellAccessoryNone;
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    
+    
+    
+    if (self.field.deleteicon)
+    {
+        self.imageView.image =  [UIImage imageNamed:@"close_delete.png"];
+        
+        self.imageView.tag = [self.field.key integerValue];
+        
+        self.imageView.userInteractionEnabled = YES;
+        
+        UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapGesture:)];
+        
+        tapGesture1.numberOfTapsRequired = 1;
+        
+        [tapGesture1 setDelegate:self];
+        
+        [self.imageView addGestureRecognizer:tapGesture1];
+        
+         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    
+    
+}
+- (void) tapGesture: (UITapGestureRecognizer *)tap
+{
+    //handle Tap...
+    
+    UIView *view = tap.view;
+    NSLog(@"%ld", (long)view.tag);//By tag, you can find out where you had tapped.
+    
+    NSLog(@"...");
+    
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"valueSelectedToDeleted" object:[NSString stringWithFormat:@"%ld",(long)view.tag]];
+}
+
++ (CGFloat)heightForField:(FXFormField *)field width:(CGFloat)width
+{
+    width  =[[UIScreen mainScreen] bounds].size.width - 120;
+    static UITextView *textView;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        textView = [[UITextView alloc] init];
+        textView.font = [UIFont systemFontOfSize:17];
+    });
+    
+    textView.text = [field title] ?: @" ";
+    CGSize textViewSize = [textView sizeThatFits:CGSizeMake(width - FXFormFieldPaddingLeft - FXFormFieldPaddingRight, FLT_MAX)];
+    
+    CGFloat height = 0;//[field.title length]? 21: 0; // label height
+    height += FXFormFieldPaddingTop + ceilf(textViewSize.height);
+    return height + 25;
+}
+
+
+@end
+
+
 @interface FXFormOptionSegmentsCellCustom ()
 
 @property (nonatomic, strong, readwrite) UISegmentedControl *segmentedControl;
@@ -4157,6 +4504,11 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
     
    self.textLabel.frame = CGRectMake(self.textLabel.frame.origin.x,(self.contentView.frame.size.height - textRect.size.height) / 2, textRect.size.width, textRect.size.height);
     
+    if (self.field.deleteicon)
+    {
+        self.imageView.frame = CGRectMake(20,20,25,25);
+    }
+    
   
 }
 
@@ -4173,8 +4525,38 @@ static void FXFormPreprocessFieldDictionary(NSMutableDictionary *dictionary)
             [self.segmentedControl setSelectedSegmentIndex:i];
         }
     }
+    
+    if (self.field.deleteicon)
+    {
+        self.imageView.image =  [UIImage imageNamed:@"close_delete.png"];
+        
+        self.imageView.tag = [self.field.key integerValue];
+        
+        self.imageView.userInteractionEnabled = YES;
+        
+        UITapGestureRecognizer *tapGesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self  action:@selector(tapGesture:)];
+        
+        tapGesture1.numberOfTapsRequired = 1;
+        
+        [tapGesture1 setDelegate:self];
+        
+        [self.imageView addGestureRecognizer:tapGesture1];
+    }
+    
+    
 }
-
+- (void) tapGesture: (UITapGestureRecognizer *)tap
+{
+    //handle Tap...
+    
+    UIView *view = tap.view;
+    NSLog(@"%ld", (long)view.tag);//By tag, you can find out where you had tapped.
+    
+    NSLog(@"...");
+    
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"valueSelectedToDeleted" object:[NSString stringWithFormat:@"%ld",(long)view.tag]];
+}
 
 + (CGFloat)heightForField:(FXFormField *)field width:(CGFloat)width
 {

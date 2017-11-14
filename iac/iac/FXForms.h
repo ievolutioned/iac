@@ -54,6 +54,10 @@ UIKIT_EXTERN NSString *const FXFormFieldFooter; //footer
 UIKIT_EXTERN NSString *const FXFormFieldInline; //inline
 UIKIT_EXTERN NSString *const FXFormFieldSortable; //sortable
 UIKIT_EXTERN NSString *const FXFormFieldViewController; //viewController
+UIKIT_EXTERN NSString *const FXFormFieldDeleteicon; //viewController
+UIKIT_EXTERN NSString *const FXFormFieldExtrakey; //viewController
+UIKIT_EXTERN NSString *const FXFormFieldTitledate; //viewController
+UIKIT_EXTERN NSString *const FXFormFieldIsServer; //viewController
 
 UIKIT_EXTERN NSString *const FXFormFieldTypeDefault; //default
 UIKIT_EXTERN NSString *const FXFormFieldTypeLabel; //label
@@ -108,12 +112,18 @@ UIKIT_EXTERN NSString *const FXFormFieldKeyOptions; //key
 @property (nonatomic, readonly) id<FXForm> form;
 @property (nonatomic, readonly) NSString *key;
 @property (nonatomic, readonly) NSString *type;
+@property (nonatomic, strong) NSString *valueSelected;
 @property (nonatomic, readonly) NSString *title;
 @property (nonatomic, readonly) NSString *keyoptions;
 @property (nonatomic, readonly) id placeholder;
 @property (nonatomic, readonly) NSDictionary *fieldTemplate;
 @property (nonatomic, readonly) BOOL isSortable;
 @property (nonatomic, readonly) BOOL isInline;
+@property (nonatomic, readonly) BOOL deleteicon;
+@property (nonatomic, readonly) BOOL isServer;
+@property (nonatomic, readonly) NSString *extrakey;
+@property (nonatomic, readonly) NSString *titledate;
+
 @property (nonatomic, readonly) Class valueClass;
 @property (nonatomic, readonly) id viewController;
 @property (nonatomic, readonly) void (^action)(id sender);
@@ -286,6 +296,12 @@ UIKIT_EXTERN NSString *const FXFormFieldKeyOptions; //key
 @interface FXFormOptionSegmentsCellCustom : FXFormBaseCell
 
 @property (nonatomic, readonly) UISegmentedControl *segmentedControl;
+
+@end
+
+@interface FXFormDefaultCellCustom : FXFormBaseCell
+
+@property (nonatomic, readonly) UILabel *subtitleLabel;
 
 @end
 

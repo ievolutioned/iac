@@ -57,6 +57,19 @@ NSString *const notiScreenTouch = @"notiScreenTouch";
 - (void)idleTimerExceeded {
      self.idleTimer = nil;
     // do something
+    
+    NSDictionary *amidn_info = [BaseViewController UserData];
+    
+    if ([amidn_info objectForKey:@"type_iac"])
+    {
+        NSString *type_iac = [amidn_info objectForKey:@"type_iac"];
+        if ([type_iac isEqualToString:@"comedor"])
+        {
+            return;
+        }
+    }
+    
+    
     switch ([[UIApplication sharedApplication] applicationState])
     {
         case UIApplicationStateActive:
@@ -163,38 +176,55 @@ NSString *const notiScreenTouch = @"notiScreenTouch";
 
 -(void) checkService
 {
-
-   NSString *shortVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-
-   self.updateUrl = @"";
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    @try {
+        NSString *shortVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
         
-        [ServerController versionList:^(NSDictionary * nn) {
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
+        self.updateUrl = @"";
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            @try {
+            [ServerController versionList:^(NSDictionary * nn) {
                 
-                NSString *version_ios = [[nn objectForKey:@"last_versions_mobiles"] objectForKey:@"version_ios"];
-                
-                self.updateUrl = [[nn objectForKey:@"last_versions_mobiles"] objectForKey:@"url_ios"];
-                
-                self.updateMsg = [[nn objectForKey:@"last_versions_mobiles"] objectForKey:@"description_ios"];
-                
-                if (![version_ios isEqualToString:shortVersion])
-                {
-                    [self sendPopPup];
-                }
-                else
-                {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                     @try {
+                    NSString *version_ios = [[nn objectForKey:@"last_versions_mobiles"] objectForKey:@"version_ios"];
                     
-                 
-                }
+                    self.updateUrl = [[nn objectForKey:@"last_versions_mobiles"] objectForKey:@"url_ios"];
+                    
+                    self.updateMsg = [[nn objectForKey:@"last_versions_mobiles"] objectForKey:@"description_ios"];
+                    
+                    if (![version_ios isEqualToString:shortVersion])
+                    {
+                        [self sendPopPup];
+                    }
+                    else
+                    {
+                        
+                        
+                    }
+                     } @catch (NSException *exception) {
+                         
+                     } @finally {
+                         
+                     }
+
+                    
+                });
                 
-            });
+                
+            }];
+            } @catch (NSException *exception) {
+                
+            } @finally {
+                
+            }
+        });
             
-            
-        }];
-    });
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
+    }
 }
 
 -(void)sendPopPup
