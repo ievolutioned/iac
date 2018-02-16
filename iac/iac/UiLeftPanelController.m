@@ -504,7 +504,7 @@
                     {
                         self.termsController = [[FaqController alloc] init];
                         
-                        self.termsController.customUrl = @"https://iacgroup.herokuapp.com/admin/procedures";
+                        self.termsController.customUrl = @"https://auria.herokuapp.com/admin/procedures";
                     }
                     
                     dash = self.termsController;
@@ -517,7 +517,7 @@
                     {
                         self.ContactController = [[FaqController alloc] init];
                         
-                        self.ContactController.customUrl = @"https://iacgroup.herokuapp.com/admin/comment";
+                        self.ContactController.customUrl = @"https://auria.herokuapp.com/admin/comment";
                     }
                     
                     dash = self.ContactController;
@@ -530,7 +530,7 @@
                     {
                         self.HeadController = [[FaqController alloc] init];
                         
-                        self.HeadController.customUrl = @"https://iacgroup.herokuapp.com/admin/head_count";
+                        self.HeadController.customUrl = @"https://auria.herokuapp.com/admin/head_count";
                     }
                     
                     dash = self.HeadController;
@@ -544,7 +544,7 @@
                     {
                         self.VideoController = [[FaqController alloc] init];
                         
-                        self.VideoController.customUrl = @"https://iacgroup.herokuapp.com/admin/videoteca";
+                        self.VideoController.customUrl = @"https://auria.herokuapp.com/admin/videoteca";
                     }
                     
                     dash = self.VideoController;
@@ -587,7 +587,7 @@
                 {
                     self.termsController = [[FaqController alloc] init];
                 
-                    self.termsController.customUrl = @"https://iacgroup.herokuapp.com/admin/procedures";
+                    self.termsController.customUrl = @"https://auria.herokuapp.com/admin/procedures";
                 }
                 
                 dash = self.termsController;
@@ -600,7 +600,7 @@
                 {
                     self.ContactController = [[FaqController alloc] init];
                     
-                    self.ContactController.customUrl = @"https://iacgroup.herokuapp.com/admin/comment";
+                    self.ContactController.customUrl = @"https://auria.herokuapp.com/admin/comment";
                 }
                 
                 dash = self.ContactController;
@@ -613,7 +613,7 @@
                 {
                     self.HeadController = [[FaqController alloc] init];
                     
-                    self.HeadController.customUrl = @"https://iacgroup.herokuapp.com/admin/head_count";
+                    self.HeadController.customUrl = @"https://auria.herokuapp.com/admin/head_count";
                 }
                 
                 dash = self.HeadController;
@@ -627,7 +627,7 @@
                 {
                     self.VideoController = [[FaqController alloc] init];
                     
-                    self.VideoController.customUrl = @"https://iacgroup.herokuapp.com/admin/videoteca";
+                    self.VideoController.customUrl = @"https://auria.herokuapp.com/admin/videoteca";
                 }
                 
                 dash = self.VideoController;
@@ -640,7 +640,7 @@
                 {
                     self.OrganizationController = [[FaqController alloc] init];
                     
-                    self.OrganizationController.customUrl = @"http://iacgroup.herokuapp.com/admin/organization_charts";
+                    self.OrganizationController.customUrl = @"http://auria.herokuapp.com/admin/organization_charts";
                 }
                 
                 dash = self.OrganizationController;

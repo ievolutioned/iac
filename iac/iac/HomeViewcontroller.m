@@ -80,7 +80,7 @@
         NSString *admin_token = [data objectForKey:@"admin_token"];
 
         
-        NSString *urlPage = [NSString stringWithFormat:@"https://iacgroup.herokuapp.com/admin?ref=%@&token_access=%@",@"xedni/draobhsad",admin_token];
+        NSString *urlPage = [NSString stringWithFormat:@"https://auria.herokuapp.com/admin?ref=%@&token_access=%@",@"xedni/draobhsad",admin_token];
         
         //[self starthud];
         
@@ -144,7 +144,7 @@
         
         if (admin_token.length > 0)
         {
-            NSString *urlPage = [NSString stringWithFormat:@"https://iacgroup.herokuapp.com/admin?ref=%@&token_access=%@",@"xedni/draobhsad",admin_token];
+            NSString *urlPage = [NSString stringWithFormat:@"https://auria.herokuapp.com/admin?ref=%@&token_access=%@",@"xedni/draobhsad",admin_token];
             
             //[self starthud];
             
@@ -359,7 +359,7 @@
         
         NSString *admin_token = [data objectForKey:@"admin_token"];
         
-        NSString *urlPage = [NSString stringWithFormat:@"https://iacgroup.herokuapp.com/admin?ref=%@&token_access=%@#",@"xedni/draobhsad",admin_token];
+        NSString *urlPage = [NSString stringWithFormat:@"https://auria.herokuapp.com/admin?ref=%@&token_access=%@#",@"xedni/draobhsad",admin_token];
        
         if ([urlPage isEqualToString:[url absoluteString]])
             {

@@ -61,6 +61,9 @@
 		09E8F9E41C7E5FD500737A28 /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E8F9E31C7E5FD500737A28 /* AboutController.m */; };
 		09ED421F1E79B69B0018A2C2 /* ComedorFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09ED421E1E79B69A0018A2C2 /* ComedorFormViewController.m */; };
 		91B90545F0E116F2E25A3B2D /* libPods-iac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AE6809C02742F3BF151684A /* libPods-iac.a */; };
+		CA9EEC00203642E800DE7868 /* logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CA9EEBFF203642E800DE7868 /* logo.jpg */; };
+		CA9EEC0320376DCC00DE7868 /* auria.png in Resources */ = {isa = PBXBuildFile; fileRef = CA9EEC0120376DCB00DE7868 /* auria.png */; };
+		CA9EEC0420376DCC00DE7868 /* bg_login_activity.png in Resources */ = {isa = PBXBuildFile; fileRef = CA9EEC0220376DCB00DE7868 /* bg_login_activity.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +170,9 @@
 		0AE6809C02742F3BF151684A /* libPods-iac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-iac.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		323D94C02DE5D2B734681F6E /* Pods-iac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iac.release.xcconfig"; path = "Pods/Target Support Files/Pods-iac/Pods-iac.release.xcconfig"; sourceTree = "<group>"; };
 		7B5EAAB8807931E767941158 /* Pods-iac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iac/Pods-iac.debug.xcconfig"; sourceTree = "<group>"; };
+		CA9EEBFF203642E800DE7868 /* logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logo.jpg; sourceTree = "<group>"; };
+		CA9EEC0120376DCB00DE7868 /* auria.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = auria.png; sourceTree = "<group>"; };
+		CA9EEC0220376DCB00DE7868 /* bg_login_activity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_login_activity.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -454,8 +460,11 @@
 		09BF38751A9D147B00DCB402 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				CA9EEBFF203642E800DE7868 /* logo.jpg */,
 				09C247FE1E648E45001CDFF6 /* close_delete.png */,
 				09A94CBE1C89F23400DD1C92 /* RightIcon.png */,
+				CA9EEC0120376DCB00DE7868 /* auria.png */,
+				CA9EEC0220376DCB00DE7868 /* bg_login_activity.png */,
 				09A94CBF1C89F23400DD1C92 /* leftIcon.png */,
 				0915417A1BCEC8C100C401F5 /* logoIconLogin.png */,
 				091541761BCEC6C400C401F5 /* bg_login.png */,
@@ -628,10 +637,13 @@
 				092843A01A965C960099545A /* HomeViewcontroller.xib in Resources */,
 				0918BC911AB0BB4B000034A5 /* TermsViewController.xib in Resources */,
 				09A94CC11C89F23400DD1C92 /* leftIcon.png in Resources */,
+				CA9EEC0320376DCC00DE7868 /* auria.png in Resources */,
+				CA9EEC0420376DCC00DE7868 /* bg_login_activity.png in Resources */,
 				092843791A9658C20099545A /* LaunchScreen.xib in Resources */,
 				09BF38771A9D148400DCB402 /* logoIcon@2x.jpg in Resources */,
 				094B73A21A9CD9D70082EE1C /* FormFields.json in Resources */,
 				092843761A9658C20099545A /* Images.xcassets in Resources */,
+				CA9EEC00203642E800DE7868 /* logo.jpg in Resources */,
 				09C247FF1E648E45001CDFF6 /* close_delete.png in Resources */,
 				09A94CC01C89F23400DD1C92 /* RightIcon.png in Resources */,
 				095312EF1AB151CE001CC3E8 /* FormFieldsMotivo.json in Resources */,
@@ -888,7 +900,7 @@
 				INFOPLIST_FILE = iac/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = iac.Iacna.com;
+				PRODUCT_BUNDLE_IDENTIFIER = auria.Iacna.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -911,7 +923,7 @@
 				INFOPLIST_FILE = iac/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = iac.Iacna.com;
+				PRODUCT_BUNDLE_IDENTIFIER = auria.Iacna.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

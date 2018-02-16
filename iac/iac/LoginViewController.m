@@ -35,9 +35,9 @@
     
     self.view.backgroundColor = [UIColor clearColor];
     
-    UIView *vheader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 151)];
+    UIView *vheader = [[UIView alloc] initWithFrame:CGRectMake(0, 10, [[UIScreen mainScreen] bounds].size.width, 151)];
     
-    UIImage *logo = [UIImage imageNamed:@"logoIconLogin.png"];
+    UIImage *logo = [UIImage imageNamed:@"auria.png"];
     
     UIImageView *vlogo = [[UIImageView alloc] initWithImage:logo];
     
@@ -55,7 +55,7 @@
     
     
     
-    UIImageView *vbj = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_login.png"]];
+    UIImageView *vbj = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_login_activity.png"]];
     
     vbj.clipsToBounds = YES;
     

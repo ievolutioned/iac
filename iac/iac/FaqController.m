@@ -32,7 +32,7 @@
     
     NSString *admin_token = [data objectForKey:@"admin_token"];
     
-    NSString *urlPage = [NSString stringWithFormat:@"https://iacgroup.herokuapp.com/admin/asks?ref=%@&token_access=%@",@"xedni/draobhsad",admin_token];
+    NSString *urlPage = [NSString stringWithFormat:@"https://auria.herokuapp.com/admin/asks?ref=%@&token_access=%@",@"xedni/draobhsad",admin_token];
     
     if (self.customUrl.length > 0)
         urlPage = [NSString stringWithFormat:@"%@?ref=%@&token_access=%@",self.customUrl,@"xedni/draobhsad",admin_token];

@@ -15,7 +15,7 @@
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     
-    [request setURL:[NSURL URLWithString:@"https://iacgroup.herokuapp.com/courses.json"]];
+    [request setURL:[NSURL URLWithString:@"https://auria.herokuapp.com/courses.json"]];
     
     [request setHTTPMethod:@"GET"];
     
