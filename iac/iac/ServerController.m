@@ -12,7 +12,7 @@
 //https://iacgroup.herokuapp.com
 +(void)doLogin:(NSString * )username  withPass:(NSString *)pass withCallback:(void(^)(bool ,NSString *)) callback
 {
-    NSString *urlsource = [NSString stringWithFormat:@"http://iac-group-stage.herokuapp.com/api/services/access?iac_id=%@&password=%@",username,pass];
+    NSString *urlsource = [NSString stringWithFormat:@"http://iacgroup.herokuapp.com/api/services/access?iac_id=%@&password=%@",username,pass];
     
     NSString *escapedUrl = [urlsource stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
@@ -48,7 +48,7 @@
 
 +(void)versionList:(void (^)(NSDictionary *))handler
 {
-    NSString *urlsource = @"http://iac-group-stage.herokuapp.com/api/services/mobile_versions/";
+    NSString *urlsource = @"http://iacgroup.herokuapp.com/api/services/mobile_versions/";
     
     NSString *escapedUrl = [urlsource stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
@@ -69,7 +69,7 @@
 
 +(void)curseList:(void (^)(NSArray *))handler
 {
-    NSString *urlsource = [NSString stringWithFormat:@"%@?admin-token=%@",@"http://iac-group-stage.herokuapp.com/api/inquests",[BaseViewController UserToken]];
+    NSString *urlsource = [NSString stringWithFormat:@"%@?admin-token=%@",@"http://iacgroup.herokuapp.com/api/inquests",[BaseViewController UserToken]];
     
     NSString *escapedUrl = [urlsource stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
@@ -141,7 +141,7 @@
 
 +(void)comensalListUsersAvailable:(NSString *)UserId withRestrinction:(NSString *)Restrinction withHandler:(void (^)(NSMutableDictionary *))handler
 {
-    NSString *urlsource = [NSString stringWithFormat:@"%@%@&admin-token=%@&restricted=%@",@"http://iac-group-stage.herokuapp.com/api/dining_room/validate_dining_room?iac_id=",UserId,[BaseViewController UserToken],Restrinction];
+    NSString *urlsource = [NSString stringWithFormat:@"%@%@&admin-token=%@&restricted=%@",@"http://iacgroup.herokuapp.com/api/dining_room/validate_dining_room?iac_id=",UserId,[BaseViewController UserToken],Restrinction];
     
     NSString *escapedUrl = [urlsource stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
@@ -163,7 +163,7 @@
 
 +(void)curseListUsersAvailable:(NSString *)CursoId withHandler:(void (^)(NSArray *))handler
 {
-    NSString *urlsource = [NSString stringWithFormat:@"%@%@%@?admin-token=%@",@"http://iac-group-stage.herokuapp.com/api/info_courses/",CursoId,@"/get_course_attendees",[BaseViewController UserToken]];
+    NSString *urlsource = [NSString stringWithFormat:@"%@%@%@?admin-token=%@",@"http://iacgroup.herokuapp.com/api/info_courses/",CursoId,@"/get_course_attendees",[BaseViewController UserToken]];
     
     NSString *escapedUrl = [urlsource stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
@@ -184,7 +184,7 @@
 
 +(void)ProfileList:(void (^)(NSMutableDictionary *))handler
 {
-    NSString *urlsource = [NSString stringWithFormat:@"%@?admin-token=%@",@"http://iac-group-stage.herokuapp.com/api/admin/get_info_admin",[BaseViewController UserToken]];
+    NSString *urlsource = [NSString stringWithFormat:@"%@?admin-token=%@",@"http://iacgroup.herokuapp.com/api/admin/get_info_admin",[BaseViewController UserToken]];
     
     NSString *escapedUrl = [urlsource stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
@@ -216,7 +216,7 @@
     {
         @try {
         
-        NSString *urlsource = [NSString stringWithFormat:@"%@?admin-token=%@&site_id=%@",@"http://iac-group-stage.herokuapp.com/api/dining_room/get_commensals",[BaseViewController UserToken],site_id];
+        NSString *urlsource = [NSString stringWithFormat:@"%@?admin-token=%@&site_id=%@",@"http://iacgroup.herokuapp.com/api/dining_room/get_commensals",[BaseViewController UserToken],site_id];
         
         NSString *escapedUrl = [urlsource stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         
@@ -251,7 +251,7 @@
 {
     @try {
         
-        NSString *urlsource = [NSString stringWithFormat:@"%@?admin-token=%@&commensal_id=%@",@"http://iac-group-stage.herokuapp.com/api/dining_room/delete_commensal",[BaseViewController UserToken],user_id];
+        NSString *urlsource = [NSString stringWithFormat:@"%@?admin-token=%@&commensal_id=%@",@"http://iacgroup.herokuapp.com/api/dining_room/delete_commensal",[BaseViewController UserToken],user_id];
         
         NSString *escapedUrl = [urlsource stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         
@@ -275,7 +275,7 @@
 }
 
 
-//http://iac-group-stage.herokuapp.com/api/dining_room/validate_dining_room?admin-token=b5d8691e44c3acd656a78c190650bfe1&iac_id=12345678&restricted=true
+//http://iacgroup.herokuapp.com/api/dining_room/validate_dining_room?admin-token=b5d8691e44c3acd656a78c190650bfe1&iac_id=12345678&restricted=true
 
 
 +(void)createFormAsistencia:(NSDictionary *)jsonDic withiCurse_id:(NSString *)Curse_id withiAttendee_ids:(NSString *)attendee_ids withhandler:(void (^)(BOOL,NSString *))handler
@@ -349,7 +349,7 @@
 
 +(void)createForm:(NSDictionary *)jsonDic withinquest_id:(NSString *)inquest_id withhandler:(void (^)(BOOL,NSString *))handler
 {
-    NSString *urlsource = @"http://iac-group-stage.herokuapp.com/api/user_responses/";
+    NSString *urlsource = @"http://iacgroup.herokuapp.com/api/user_responses/";
     
     NSString *escapedUrl = [urlsource stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
@@ -429,7 +429,7 @@
 
 +(void)createFormComedor:(NSDictionary *)jsonDic withhandler:(void (^)(BOOL,NSString *))handler
 {
-    NSString *urlsource = [NSString stringWithFormat:@"%@?admin-token=%@",@"http://iac-group-stage.herokuapp.com/api/dining_room/",[BaseViewController UserToken]];
+    NSString *urlsource = [NSString stringWithFormat:@"%@?admin-token=%@",@"http://iacgroup.herokuapp.com/api/dining_room/",[BaseViewController UserToken]];
     
     NSString *escapedUrl = [urlsource stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
